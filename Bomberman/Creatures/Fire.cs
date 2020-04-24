@@ -1,7 +1,20 @@
 ﻿namespace Bomberman
 {
-    public class Fire
+    public class Fire : ICreature
     {
-        
+        public string GetImageFileName()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -51,6 +51,7 @@
         <Compile Include="Creatures\Bomb.cs" />
         <Compile Include="Creatures\BreakableWall.cs" />
         <Compile Include="Creatures\Fire.cs" />
+        <Compile Include="Creatures\Monster.cs" />
         <Compile Include="Creatures\Player.cs" />
         <Compile Include="Creatures\UnbreakableWall.cs" />
         <Compile Include="GameState.cs" />

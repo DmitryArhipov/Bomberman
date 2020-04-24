@@ -1,6 +1,6 @@
 ﻿namespace Bomberman
 {
-    public class Bomb : ICreature
+    public class Monster : ICreature
     {
         public string GetImageFileName()
         {
