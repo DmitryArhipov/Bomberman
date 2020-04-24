@@ -12,9 +12,8 @@ namespace Bomberman
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new Window()); 
-            Console.WriteLine("Привет");
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Window());
         }
     }
 }
