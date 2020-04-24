@@ -11,11 +11,10 @@ namespace Bomberman
         [STAThread]
         static void Main()
         {
-            //hay
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Window()); 
-            Console.WriteLine("Пока");
+            Console.WriteLine("Привет");
         }
     }
 }
