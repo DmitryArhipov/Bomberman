@@ -54,13 +54,14 @@
         <Compile Include="Creatures\Monster.cs" />
         <Compile Include="Creatures\Player.cs" />
         <Compile Include="Creatures\UnbreakableWall.cs" />
+        <Compile Include="Drawing\Sprites.cs" />
+        <Compile Include="Drawing\Window.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Drawing\Window.Designer.cs">
+          <DependentUpon>Window.cs</DependentUpon>
+        </Compile>
         <Compile Include="GameState.cs" />
-        <Compile Include="Window.cs">
-            <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="Window.Designer.cs">
-            <DependentUpon>Window.cs</DependentUpon>
-        </Compile>
         <Compile Include="ICreature.cs" />
         <Compile Include="MapParser.cs" />
         <Compile Include="Program.cs" />
@@ -86,6 +87,17 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Drawing\Images\Bomb.png" />
+      <Content Include="Drawing\Images\BreakableWall.png" />
+      <Content Include="Drawing\Images\Fire.png" />
+      <Content Include="Drawing\Images\Monster.png" />
+      <Content Include="Drawing\Images\running-left-1.png" />
+      <Content Include="Drawing\Images\running-left-2.png" />
+      <Content Include="Drawing\Images\running-right-1.png" />
+      <Content Include="Drawing\Images\running-right-2.png" />
+      <Content Include="Drawing\Images\UnbreakableWall.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

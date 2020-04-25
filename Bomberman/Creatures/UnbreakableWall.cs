@@ -4,7 +4,7 @@
     {
         public string GetImageFileName()
         {
-            throw new System.NotImplementedException();
+            return "UnbreakableWall.png";
         }
 
         public CreatureCommand Act(int x, int y)
