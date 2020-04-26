@@ -81,6 +81,7 @@
     <Content Include="Drawing\Images\running-right-1.png" />
     <Content Include="Drawing\Images\running-right-2.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
+    <Content Include="Maps\TestMap.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
