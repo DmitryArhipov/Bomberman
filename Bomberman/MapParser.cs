@@ -23,7 +23,7 @@ namespace Bomberman
                     case 'W':
                         map[x, y] = new BreakableWall();
                         break;
-                    case 'U':
+                    case '#':
                         map[x, y] = new UnbreakableWall();
                         break;
                     case 'M':
