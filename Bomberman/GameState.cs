@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,8 +7,8 @@ namespace Bomberman
 {
     public class GameState
     {
-        public const int ElementSize = 32;
-        public List<CreatureAnimation> Animations = new List<CreatureAnimation>();
+        private const int ElementSize = 32;
+        private List<CreatureAnimation> Animations = new List<CreatureAnimation>();
 
         public void BeginAct()
         {
@@ -49,7 +48,7 @@ namespace Bomberman
         private static ICreature SelectWinnerCandidatePerLocation(List<ICreature>[,] creatures, int x, int y)
         {
             var candidates = creatures[x, y];
-            var aliveCandidates = candidates.ToList<ICreature>();
+            var aliveCandidates = candidates.ToList();
             foreach (var candidate in candidates)
                 foreach (var rival in candidates)
                     if (rival != candidate && candidate.DeadInConflict(rival))
