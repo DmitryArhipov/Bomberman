@@ -9,12 +9,12 @@
 
         public CreatureCommand Act(int x, int y)
         {
-            throw new System.NotImplementedException();
+            return new CreatureCommand();
         }
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            throw new System.NotImplementedException();
+            return false;
         }
     }
 }
