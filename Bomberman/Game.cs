@@ -1,11 +1,22 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.IO;
+using System.IO.MemoryMappedFiles;
+using System.Windows.Forms;
 
 namespace Bomberman
 {
     public static class Game
     {
-        private const string MapExample = "P"; // убрать
-
+        private const string MapExample = @"
+###########
+#    B    #
+#  M      #
+#P       W#
+###########"; // убрать
+        
+        public static readonly DirectoryInfo Maps = new DirectoryInfo(
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Maps"));
+        
         public static ICreature[,] Map;
         public static bool IsOver;
 
