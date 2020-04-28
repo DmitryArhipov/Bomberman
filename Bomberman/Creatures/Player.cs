@@ -7,18 +7,30 @@ namespace Bomberman
     public class Player : ICreature
     {
         public int BombsLimit = 1;
-        public int CurrentBombs = 0;
+        public int CurrentBombs;
+        private string ImageName = "running-right-2.png";
+        
+        private void ChangeImageName(Keys keys)
+        {
+            if(keys == Keys.None)
+                return;
+            var current = ImageName.Split('-');
+            var i= int.Parse(current[2][0].ToString());
+            var direction = (keys == Keys.Right || keys == Keys.Down)
+                ? "right" : "left";
+            var j = (i + 1) % 2 + 1;
+            ImageName = $"running-{direction}-{j}.png";
+        } 
+        
         public string GetImageFileName()
         {
-            return "running-right-2.png";
+            return ImageName;
         }
 
         public CreatureCommand Act(int x, int y)
         {
             var result = new CreatureCommand();
-
-            var map = Game.Map;
-            
+            ChangeImageName(Game.KeyPressed);
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
