@@ -17,23 +17,23 @@ namespace Bomberman
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)
                 {
-                    var creature = Game.Map[x, y];
-                    if (creature == null)
-                        continue;
-                    var command = creature.Act(x, y);
-
-                    if (x + command.DeltaX < 0 || x + command.DeltaX >= Game.MapWidth || y + command.DeltaY < 0 ||
-                        y + command.DeltaY >= Game.MapHeight)
-                        throw new Exception($"The object {creature.GetType()} falls out of the game field");
-
-                    Animations.Add(
-                        new CreatureAnimation
-                        {
-                            Command = command,
-                            Creature = creature,
-                            Location = new Point(x * ElementSize, y * ElementSize),
-                            TargetLogicalLocation = new Point(x + command.DeltaX, y + command.DeltaY)
-                        });
+                    foreach (var creature in Game.Map[x,y])
+                    {
+                        if (creature == null)
+                            continue;
+                        var command = creature.Act(x, y);
+                        if (x + command.DeltaX < 0 || x + command.DeltaX >= Game.MapWidth || y + command.DeltaY < 0 ||
+                            y + command.DeltaY >= Game.MapHeight)
+                            throw new Exception($"The object {creature.GetType()} falls out of the game field");
+                        Animations.Add(
+                            new CreatureAnimation
+                            {
+                                Command = command,
+                                Creature = creature,
+                                Location = new Point(x * ElementSize, y * ElementSize),
+                                TargetLogicalLocation = new Point(x + command.DeltaX, y + command.DeltaY)
+                            });
+                    }
                 }
         }
 
@@ -45,7 +45,7 @@ namespace Bomberman
                     Game.Map[x, y] = SelectWinnerCandidatePerLocation(creaturesPerLocation, x, y);
         }
 
-        private static ICreature SelectWinnerCandidatePerLocation(List<ICreature>[,] creatures, int x, int y)
+        private static ICreature[] SelectWinnerCandidatePerLocation(List<ICreature>[,] creatures, int x, int y)
         {
             var candidates = creatures[x, y];
             var aliveCandidates = candidates.ToList();
@@ -53,11 +53,17 @@ namespace Bomberman
                 foreach (var rival in candidates)
                     if (rival != candidate && candidate.DeadInConflict(rival))
                         aliveCandidates.Remove(candidate);
-            if (aliveCandidates.Count > 1)
+            if (aliveCandidates.Count > 1 && !IsBombAndPlayer(aliveCandidates))
                 throw new Exception(
                     $"Creatures {aliveCandidates[0].GetType().Name} and {aliveCandidates[1].GetType().Name} claimed the same map cell");
 
-            return aliveCandidates.FirstOrDefault();
+            return aliveCandidates.ToArray();
+        }
+
+        private static bool IsBombAndPlayer(List<ICreature> aliveCandidates)
+        {
+            return aliveCandidates[0] is Player && aliveCandidates[1] is Bomb ||
+                   aliveCandidates[1] is Player && aliveCandidates[0] is Bomb;
         }
 
         private List<ICreature>[,] GetCandidatesPerLocation()

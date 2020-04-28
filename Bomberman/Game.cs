@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace Bomberman
         public static readonly DirectoryInfo Maps = new DirectoryInfo(
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Maps"));
         
-        public static ICreature[,] Map;
+        public static IEnumerable<ICreature>[,] Map;
         public static bool IsOver;
 
         public static Keys KeyPressed;

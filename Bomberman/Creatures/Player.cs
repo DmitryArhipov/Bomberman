@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 
 namespace Bomberman
 {
@@ -15,20 +16,23 @@ namespace Bomberman
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
-                    if (x + 1 < Game.MapWidth && !UsefulFeatures.IsWallOrBomb(Game.Map[x + 1, y]))
+                    if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].IsWallOrBomb())
                         result.DeltaX = 1;
                     break;
                 case Keys.Left:
-                    if (x > 0 && !UsefulFeatures.IsWallOrBomb(Game.Map[x - 1, y]))
+                    if (x > 0 && !Game.Map[x - 1, y].IsWallOrBomb())
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
-                    if (y + 1 < Game.MapHeight && !UsefulFeatures.IsWallOrBomb(Game.Map[x, y + 1]))
+                    if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].IsWallOrBomb())
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
-                    if (y > 0 && !UsefulFeatures.IsWallOrBomb(Game.Map[x, y - 1]))
+                    if (y > 0 && !Game.Map[x, y - 1].IsWallOrBomb())
                         result.DeltaY = -1;
+                    break;
+                case Keys.Space:
+                    Game.Map[x, y] = Game.Map[x, y].Append(new Bomb());
                     break;
             }
             return result;
