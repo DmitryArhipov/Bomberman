@@ -64,6 +64,7 @@
     <Compile Include="ICreature.cs" />
     <Compile Include="MapParser.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="UsefulFeatures.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

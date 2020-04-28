@@ -15,19 +15,19 @@ namespace Bomberman
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
-                    if (x + 1 < Game.MapWidth)
+                    if (x + 1 < Game.MapWidth && !UsefulFeatures.IsWallOrBomb(Game.Map[x + 1, y]))
                         result.DeltaX = 1;
                     break;
                 case Keys.Left:
-                    if (x - 1 >= 0)
+                    if (x > 0 && !UsefulFeatures.IsWallOrBomb(Game.Map[x - 1, y]))
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
-                    if (y + 1 < Game.MapHeight)
+                    if (y + 1 < Game.MapHeight && !UsefulFeatures.IsWallOrBomb(Game.Map[x, y + 1]))
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
-                    if (y - 1 >= 0)
+                    if (y > 0 && !UsefulFeatures.IsWallOrBomb(Game.Map[x, y - 1]))
                         result.DeltaY = -1;
                     break;
             }
@@ -36,7 +36,7 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            return false;
+            return conflictedObject is Fire || conflictedObject is Monster;
         }
     }
 }
