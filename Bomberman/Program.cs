@@ -12,8 +12,12 @@ namespace Bomberman
         [STAThread]
         static void Main()
         {
+            var path = Directory.GetCurrentDirectory();
+            var projectPath = Path.Combine(path, "..", "..");
+            var imagesPath = Path.Combine(projectPath, "Drawing", "Images");
+            
             Game.CreateMap();
-            Application.Run(new Window(new DirectoryInfo(@"C:\Users\dasha\RiderProjects\BombermanNew\Bomberman\Drawing\Images")));
+            Application.Run(new Window(new DirectoryInfo(imagesPath)));
         }
     }
 }

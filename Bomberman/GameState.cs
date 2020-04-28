@@ -76,8 +76,8 @@ namespace Bomberman
             {
                 var x = e.TargetLogicalLocation.X;
                 var y = e.TargetLogicalLocation.Y;
-                var nextCreature = e.Command.TransformTo ?? e.Creature;
-                creatures[x, y].Add(nextCreature);
+                var nextCreature = e.Command.TransformTo ?? new[] {e.Creature};
+                creatures[x, y].AddRange(nextCreature);
             }
 
             return creatures;

@@ -10,7 +10,7 @@ namespace Bomberman
     {
         private const string MapExample = @"
 ###########
-#    B    #
+#         #
 #  M      #
 #P       W#
 ###########"; // убрать

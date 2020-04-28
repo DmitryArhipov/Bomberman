@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bomberman
@@ -13,6 +14,9 @@ namespace Bomberman
         public CreatureCommand Act(int x, int y)
         {
             var result = new CreatureCommand();
+
+            var map = Game.Map;
+            
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
@@ -32,7 +36,7 @@ namespace Bomberman
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:
-                    Game.Map[x, y] = Game.Map[x, y].Append(new Bomb());
+                    result.TransformTo = new ICreature[] {this, new Bomb()};
                     break;
             }
             return result;

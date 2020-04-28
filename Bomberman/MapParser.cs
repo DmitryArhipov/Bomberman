@@ -33,6 +33,7 @@ namespace Bomberman
                         map[x,y] = new ICreature[]{ new Fire() };
                         break;
                     case ' ':
+                        map[x,y] = new ICreature[]{};
                         break;
                     default:
                         throw new Exception($"wrong character for map {lines[y][x]}");
