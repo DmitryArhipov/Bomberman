@@ -6,6 +6,8 @@ namespace Bomberman
 {
     public class Player : ICreature
     {
+        public int BombsLimit = 1;
+        public int CurrentBombs = 0;
         public string GetImageFileName()
         {
             return "running-right-2.png";
@@ -36,7 +38,11 @@ namespace Bomberman
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:
-                    result.TransformTo = new ICreature[] {this, new Bomb()};
+                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].IsWallOrBomb())
+                    {
+                        result.TransformTo = new ICreature[] {this, new Bomb(this)};
+                        CurrentBombs++; // ToDo: при взрыве в классе бомбы говорить Player.CurrentBombs--
+                    }
                     break;
             }
             return result;

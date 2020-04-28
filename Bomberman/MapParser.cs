@@ -17,9 +17,6 @@ namespace Bomberman
                     case 'P':
                         map[x,y] = new ICreature[]{ new Player() };
                         break;
-                    case 'B':
-                        map[x,y] = new ICreature[]{ new Bomb() };
-                        break;
                     case 'W':
                         map[x,y] = new ICreature[]{ new BreakableWall() };
                         break;

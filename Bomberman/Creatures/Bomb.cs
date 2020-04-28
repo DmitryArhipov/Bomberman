@@ -2,6 +2,12 @@
 {
     public class Bomb : ICreature
     {
+        private readonly Player player;
+
+        public Bomb(Player player)
+        {
+            this.player = player;
+        }
         public string GetImageFileName()
         {
             return "Bomb.png";
