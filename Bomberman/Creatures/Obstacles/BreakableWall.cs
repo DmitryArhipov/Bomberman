@@ -14,7 +14,7 @@
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            return true;
+            return conflictedObject is Fire;
         }
     }
 }

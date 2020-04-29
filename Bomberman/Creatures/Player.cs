@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Bomberman
 {
@@ -20,7 +18,7 @@ namespace Bomberman
                 ? "right" : "left";
             var j = (i + 1) % 2 + 1;
             ImageName = $"running-{direction}-{j}.png";
-        } 
+        }
         
         public string GetImageFileName()
         {
