@@ -16,5 +16,10 @@
         {
             return conflictedObject is Fire;
         }
+        
+        public int GetDrawingPriority()
+        {
+            return 100;
+        }
     }
 }

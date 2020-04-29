@@ -62,5 +62,10 @@ namespace Bomberman
         {
             return conflictedObject is Fire || conflictedObject is Monster;
         }
+        
+        public int GetDrawingPriority()
+        {
+            return 100;
+        }
     }
 }

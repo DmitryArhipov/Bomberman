@@ -35,6 +35,8 @@ namespace Bomberman
                             });
                     }
                 }
+            
+            Animations = Animations.OrderByDescending(z => z.Creature.GetDrawingPriority()).ToList();
         }
 
         public void EndAct()

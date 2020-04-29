@@ -16,5 +16,10 @@
         {
             return false;
         }
+        
+        public int GetDrawingPriority()
+        {
+            return 100;
+        }
     }
 }
