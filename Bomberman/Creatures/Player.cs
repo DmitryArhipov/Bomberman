@@ -5,6 +5,7 @@ namespace Bomberman
     public class Player : ICreature
     {
         public int BombsLimit = 1;
+        public int SplashLimit = 1;
         public int CurrentBombs;
         private string ImageName = "running-right-2.png";
         
@@ -51,7 +52,7 @@ namespace Bomberman
                     if (CurrentBombs < BombsLimit && !Game.Map[x,y].IsWallOrBomb())
                     {
                         result.TransformTo = new ICreature[] {this, new Bomb(this)};
-                        CurrentBombs++; // ToDo: при взрыве в классе бомбы говорить Player.CurrentBombs--
+                        CurrentBombs++;
                     }
                     break;
             }

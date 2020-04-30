@@ -55,11 +55,17 @@ namespace Bomberman
                 foreach (var rival in candidates)
                     if (rival != candidate && candidate.DeadInConflict(rival))
                         aliveCandidates.Remove(candidate);
-            if (aliveCandidates.Count > 1 && !IsBombAndPlayer(aliveCandidates))
+            if (aliveCandidates.Count > 1 && !IsBombAndPlayer(aliveCandidates) && !IsFire(aliveCandidates))
                 throw new Exception(
                     $"Creatures {aliveCandidates[0].GetType().Name} and {aliveCandidates[1].GetType().Name} claimed the same map cell");
 
             return aliveCandidates.ToArray();
+        }
+
+        private static bool IsFire(List<ICreature> aliveCandidates)
+        {
+            
+            return aliveCandidates[0] is Fire && aliveCandidates[1] is Fire && aliveCandidates[2] is Fire && aliveCandidates[3] is Fire;
         }
 
         private static bool IsBombAndPlayer(List<ICreature> aliveCandidates)
