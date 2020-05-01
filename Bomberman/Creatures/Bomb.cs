@@ -7,7 +7,7 @@ namespace Bomberman
     {
         private readonly Player player;
         private readonly Stopwatch timer;
-        private bool inFire;
+        private bool shouldExplode;
 
         public Bomb(Player player)
         {
@@ -22,10 +22,12 @@ namespace Bomberman
 
         public CreatureCommand Act(int x, int y)
         {
-            if (timer.Elapsed >= TimeSpan.FromSeconds(2) || inFire)
+            if (timer.Elapsed >= TimeSpan.FromSeconds(2) || shouldExplode)
             {
                 player.CurrentBombs--;
-                return new CreatureCommand(){ TransformTo = new[] { new Fire() , new Fire(), new Fire(), new Fire() } };
+                return new CreatureCommand(){ TransformTo = new[] { new Fire(player, Fire.Direction.Up),
+                    new Fire(player, Fire.Direction.Down), new Fire(player, Fire.Direction.Right),
+                    new Fire(player, Fire.Direction.Left) } };
             }
             return new CreatureCommand();
         }
@@ -33,7 +35,7 @@ namespace Bomberman
         public bool DeadInConflict(ICreature conflictedObject)
         {
             if (conflictedObject is Fire)
-                inFire = true;
+                shouldExplode = true;
             return false;
         }
         

@@ -10,9 +10,9 @@ namespace Bomberman
             return cell.Any(creature => creature is Bomb || creature is BreakableWall || creature is UnbreakableWall);
         }
 
-        public static bool IsFire(this IEnumerable<ICreature> cell)
+        public static bool IsUnbreakableWall(this IEnumerable<ICreature> cell)
         {
-            return cell.OfType<Fire>().Any();
+            return cell.OfType<UnbreakableWall>().Any();
         }
         
         public static bool IsMonster(this IEnumerable<ICreature> cell)

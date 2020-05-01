@@ -64,8 +64,11 @@ namespace Bomberman
 
         private static bool IsFire(List<ICreature> aliveCandidates)
         {
-            
-            return aliveCandidates[0] is Fire && aliveCandidates[1] is Fire && aliveCandidates[2] is Fire && aliveCandidates[3] is Fire;
+            var fires = 0;
+            foreach (var candidate in aliveCandidates)
+                if (candidate is Fire)
+                    fires++;
+            return fires == aliveCandidates.Count;
         }
 
         private static bool IsBombAndPlayer(List<ICreature> aliveCandidates)

@@ -26,9 +26,6 @@ namespace Bomberman
                     case 'M':
                         map[x,y] = new ICreature[]{ new Monster() };
                         break;
-                    case 'F':
-                        map[x,y] = new ICreature[]{ new Fire() };
-                        break;
                     case ' ':
                         map[x,y] = new ICreature[]{};
                         break;
