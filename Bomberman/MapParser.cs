@@ -24,7 +24,7 @@ namespace Bomberman
                         map[x,y] = new ICreature[]{ new UnbreakableWall() };
                         break;
                     case 'M':
-                        map[x,y] = new ICreature[]{ new Monster() };
+                        map[x,y] = new ICreature[]{ new PredictableMonster() };
                         break;
                     case ' ':
                         map[x,y] = new ICreature[]{};

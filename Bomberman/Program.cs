@@ -15,8 +15,9 @@ namespace Bomberman
             var path = Directory.GetCurrentDirectory();
             var projectPath = Path.Combine(path, "..", "..");
             var imagesPath = Path.Combine(projectPath, "Drawing", "Images");
+            var mapsPath = Path.Combine(projectPath, "Maps");
             
-            Game.CreateMap();
+            Game.CreateMap(Game.MapExample);
             Application.Run(new Window(new DirectoryInfo(imagesPath)));
         }
     }

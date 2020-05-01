@@ -2,24 +2,12 @@
 {
     public class UnbreakableWall : ICreature
     {
-        public string GetImageFileName()
-        {
-            return "UnbreakableWall.png";
-        }
+        public string GetImageFileName() => "UnbreakableWall.png";
 
-        public CreatureCommand Act(int x, int y)
-        {
-            return new CreatureCommand();
-        }
+        public CreatureCommand Act(int x, int y) => new CreatureCommand();
 
-        public bool DeadInConflict(ICreature conflictedObject)
-        {
-            return false;
-        }
-        
-        public int GetDrawingPriority()
-        {
-            return 10;
-        }
+        public bool DeadInConflict(ICreature conflictedObject) => false;
+
+        public int GetDrawingPriority() => 10;
     }
 }

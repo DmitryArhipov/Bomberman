@@ -14,18 +14,15 @@ namespace Bomberman
             this.player = player;
             timer = Stopwatch.StartNew();
         }
-        
-        public string GetImageFileName()
-        {
-            return "Bomb.png";
-        }
+
+        public string GetImageFileName() => "Bomb.png";
 
         public CreatureCommand Act(int x, int y)
         {
             if (timer.Elapsed >= TimeSpan.FromSeconds(2) || shouldExplode)
             {
                 player.CurrentBombs--;
-                return new CreatureCommand(){ TransformTo = new[] { new Fire(player, Fire.Direction.Up),
+                return new CreatureCommand() { TransformTo = new[] { new Fire(player, Fire.Direction.Up),
                     new Fire(player, Fire.Direction.Down), new Fire(player, Fire.Direction.Right),
                     new Fire(player, Fire.Direction.Left) } };
             }
@@ -38,10 +35,7 @@ namespace Bomberman
                 shouldExplode = true;
             return false;
         }
-        
-        public int GetDrawingPriority()
-        {
-            return 500;
-        }
+
+        public int GetDrawingPriority() => 500;
     }
 }

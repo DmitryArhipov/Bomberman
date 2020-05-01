@@ -17,7 +17,7 @@ namespace Bomberman
         
         public static bool IsMonster(this IEnumerable<ICreature> cell)
         {
-            return cell.OfType<Monster>().Any();
+            return cell.OfType<PredictableMonster>().Any();
         }
     }
 }

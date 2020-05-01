@@ -20,11 +20,8 @@ namespace Bomberman
             var j = (i + 1) % 2 + 1;
             ImageName = $"running-{direction}-{j}.png";
         }
-        
-        public string GetImageFileName()
-        {
-            return ImageName;
-        }
+
+        public string GetImageFileName() => ImageName;
 
         public CreatureCommand Act(int x, int y)
         {
@@ -59,14 +56,9 @@ namespace Bomberman
             return result;
         }
 
-        public bool DeadInConflict(ICreature conflictedObject)
-        {
-            return conflictedObject is Fire || conflictedObject is Monster;
-        }
-        
-        public int GetDrawingPriority()
-        {
-            return 300;
-        }
+        public bool DeadInConflict(ICreature conflictedObject) => conflictedObject is Fire 
+                                                                  || conflictedObject is PredictableMonster;
+
+        public int GetDrawingPriority() => 300;
     }
 }
