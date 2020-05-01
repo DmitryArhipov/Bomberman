@@ -35,7 +35,7 @@ namespace Bomberman
             var result = new CreatureCommand();
             if (direction == Direction.Up)
             {
-                if (timer.Elapsed >= TimeSpan.FromSeconds(0.3))
+                if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
                 {
                     if (splashNow == player.SplashLimit)
                         return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -46,7 +46,7 @@ namespace Bomberman
             }
             else if (direction == Direction.Down)
             {
-                if (timer.Elapsed >= TimeSpan.FromSeconds(0.3))
+                if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
                 {
                     if (splashNow == player.SplashLimit)
                         return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -57,7 +57,7 @@ namespace Bomberman
             }
             else if (direction == Direction.Right)
             {
-                if (timer.Elapsed >= TimeSpan.FromSeconds(0.3))
+                if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
                 {
                     if (splashNow == player.SplashLimit)
                         return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -68,7 +68,7 @@ namespace Bomberman
             }
             else
             {
-                if (timer.Elapsed >= TimeSpan.FromSeconds(0.3))
+                if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
                 {
                     if(splashNow == player.SplashLimit)
                         return new CreatureCommand(){ TransformTo = new ICreature[] { } };
@@ -87,7 +87,7 @@ namespace Bomberman
         
         public int GetDrawingPriority()
         {
-            return 10;
+            return 100;
         }
     }
 }

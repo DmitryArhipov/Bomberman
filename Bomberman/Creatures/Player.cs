@@ -66,7 +66,7 @@ namespace Bomberman
         
         public int GetDrawingPriority()
         {
-            return 100;
+            return 300;
         }
     }
 }
