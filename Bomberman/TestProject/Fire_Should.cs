@@ -4,17 +4,22 @@ using System.Linq;
 using Bomberman;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace TestProject
 {
     [TestFixture]
     public class Fire_Should
     {
+        private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
+        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
+        private const double TimeGap = 0.05;
+        
         [Test]
         public void Fire_GetImageFileName_RightImageName()
         {
             var fire = new Fire(new Player(), Fire.Direction.Down);
-            fire.GetImageFileName().Should().BeEquivalentTo("Fire.png");
+            fire.GetImageFileName().Should().Be("Fire.png");
         }
 
         [Test]
@@ -28,15 +33,16 @@ namespace TestProject
             Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = SecondsBeforeFly * 2 + TimeGap;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(0.3))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[1, 1].Count().Should().Be(0);
-            Game.Map[2, 1].Count().Should().Be(0);
+            Game.Map[1, 1].Should().BeEmpty();
+            Game.Map[2, 1].Should().BeEmpty();
         }
 
         [Test]
@@ -50,14 +56,15 @@ namespace TestProject
             Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Down) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = TimeGap + SecondsBeforeFly;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(0.15))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[1, 1].Count().Should().Be(0);
+            Game.Map[1, 1].Should().BeEmpty();
         }
 
         [TestCase("####\r\n#  #\r\n####", 1, 1, Fire.Direction.Right, 2, 1)]
@@ -71,14 +78,15 @@ namespace TestProject
             Game.Map[x, y] = new ICreature[] { new Fire(new Player(), direction) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = TimeGap + SecondsBeforeFly;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(0.11))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[expX, expY].Count().Should().Be(1);
+            Game.Map[expX, expY].Length.Should().Be(1);
             Game.Map[expX, expY].Should().ContainItemsAssignableTo<Fire>();
         }
         
@@ -93,14 +101,15 @@ namespace TestProject
             Game.Map[2, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = SecondsBeforeFly * 2;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(0.2))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[2, 2].Count().Should().Be(1);
+            Game.Map[2, 2].Length.Should().Be(1);
             Game.Map[2, 2].Should().ContainItemsAssignableTo<UnbreakableWall>();
         }
     }

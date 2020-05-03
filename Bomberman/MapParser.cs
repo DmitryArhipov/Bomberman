@@ -11,27 +11,17 @@ namespace Bomberman
             var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var map = new ICreature[lines[0].Length, lines.Length][];
             for (var y = 0; y < lines.Length; y++)
-                for (var x = 0; x < lines[0].Length; x++)
-                switch (lines[y][x])
+            for (var x = 0; x < lines[0].Length; x++)
+                map[x, y] = lines[y][x] switch
                 {
-                    case 'P':
-                        map[x,y] = new ICreature[]{ new Player() };
-                        break;
-                    case 'W':
-                        map[x,y] = new ICreature[]{ new BreakableWall() };
-                        break;
-                    case '#':
-                        map[x,y] = new ICreature[]{ new UnbreakableWall() };
-                        break;
-                    case 'M':
-                        map[x,y] = new ICreature[]{ new PredictableMonster() };
-                        break;
-                    case ' ':
-                        map[x,y] = new ICreature[]{};
-                        break;
-                    default:
-                        throw new Exception($"wrong character for map {lines[y][x]}");
-                }
+                    'P' => Helpers.Array<Player>(),
+                    'W' => Helpers.Array<BreakableWall>(),
+                    '#' => Helpers.Array<UnbreakableWall>(),
+                    'M' => Helpers.Array<PredictableMonster>(),
+                    'B' => new ICreature[] {new Bomb(null)},
+                    ' ' => new ICreature[] { },
+                    _ => throw new Exception($"wrong character for map {lines[y][x]}")
+                };
             return map;
         }
     }

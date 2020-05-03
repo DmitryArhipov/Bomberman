@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using Bomberman;
+﻿using Bomberman;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,7 +11,7 @@ namespace TestProject
         public void UnbreakableWall_GetImageFileName_RightImageName()
         {
             var wall = new UnbreakableWall();
-            wall.GetImageFileName().Should().BeEquivalentTo("UnbreakableWall.png");
+            wall.GetImageFileName().Should().Be("UnbreakableWall.png");
         }
     }
 }

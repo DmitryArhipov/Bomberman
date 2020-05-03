@@ -8,6 +8,7 @@ namespace Bomberman
         private readonly Player player;
         private readonly Stopwatch timer;
         private bool shouldExplode;
+        public const double secondsBeforeExplosion = 2;
 
         public Bomb(Player player)
         {
@@ -19,10 +20,13 @@ namespace Bomberman
 
         public CreatureCommand Act(int x, int y)
         {
-            if (timer.Elapsed >= TimeSpan.FromSeconds(2) || shouldExplode)
+            if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeExplosion))
+                shouldExplode = true;
+            if (shouldExplode)
             {
                 player.CurrentBombs--;
-                return new CreatureCommand() { TransformTo = new[] { new Fire(player, Fire.Direction.Up),
+                return 
+                    new CreatureCommand() { TransformTo = new[] { new Fire(player, Fire.Direction.Up),
                     new Fire(player, Fire.Direction.Down), new Fire(player, Fire.Direction.Right),
                     new Fire(player, Fire.Direction.Left) } };
             }
@@ -36,6 +40,6 @@ namespace Bomberman
             return false;
         }
 
-        public int GetDrawingPriority() => 500;
+        public int GetDrawingPriority() => 6;
     }
 }

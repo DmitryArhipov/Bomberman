@@ -5,10 +5,11 @@ namespace Bomberman
 {
     public class Fire : ICreature
     {
+        private readonly Direction direction;
         private readonly Player player;
         private Stopwatch timer;
-        private readonly Direction direction;
         private int splashNow;
+        public const double secondsBeforeFly = 0.1;
 
         public Fire(Player player, Direction direction)
         {
@@ -34,7 +35,7 @@ namespace Bomberman
             {
                 case Direction.Up:
                 {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
+                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
                     {
                         if (splashNow == player.SplashLimit)
                             return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -46,7 +47,7 @@ namespace Bomberman
                 }
                 case Direction.Down:
                 {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
+                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
                     {
                         if (splashNow == player.SplashLimit)
                             return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -58,7 +59,7 @@ namespace Bomberman
                 }
                 case Direction.Right:
                 {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
+                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
                     {
                         if (splashNow == player.SplashLimit)
                             return new CreatureCommand() {TransformTo = new ICreature[] { }};
@@ -70,7 +71,7 @@ namespace Bomberman
                 }
                 default:
                 {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(0.1))
+                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
                     {
                         if(splashNow == player.SplashLimit)
                             return new CreatureCommand(){ TransformTo = new ICreature[] { } };
@@ -84,10 +85,12 @@ namespace Bomberman
             return result;
         }
 
-        public bool DeadInConflict(ICreature conflictedObject) => conflictedObject is Bomb 
-                                                                  || conflictedObject is BreakableWall 
-                                                                  || conflictedObject is UnbreakableWall;
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return conflictedObject is Bomb || conflictedObject is BreakableWall
+                                            || conflictedObject is UnbreakableWall;
+        }
 
-        public int GetDrawingPriority() => 100;
+        public int GetDrawingPriority() => 2;
     }
 }

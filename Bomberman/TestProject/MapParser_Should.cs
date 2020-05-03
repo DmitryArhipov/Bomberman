@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows.Forms;
-using Bomberman;
+﻿using Bomberman;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -31,7 +26,7 @@ namespace TestProject
             map[2, 1].Should().ContainItemsAssignableTo<BreakableWall>();
             map[3, 1].Length.Should().Be(1);
             map[3, 1].Should().ContainItemsAssignableTo<PredictableMonster>();
-            map[4, 1].Length.Should().Be(0);
+            map[4, 1].Should().BeEmpty();
         }
     }
 }

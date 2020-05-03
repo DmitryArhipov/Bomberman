@@ -14,7 +14,7 @@ namespace Bomberman
             var result = new CreatureCommand();
             switch (direction)
             {
-                case 0 when x + 1 < Game.MapWidth && !Game.Map[x + 1, y].IsWallOrBomb() && !Game.Map[x + 1, y].IsMonster():
+                case 0 when x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsWallOrBomb() && !Game.Map[x + 1, y].ContainsMonster():
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(1))
                     {
@@ -23,7 +23,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 1 when y + 1 < Game.MapHeight && !Game.Map[x, y + 1].IsWallOrBomb() && !Game.Map[x, y + 1].IsMonster():
+                case 1 when y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsWallOrBomb() && !Game.Map[x, y + 1].ContainsMonster():
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(1))
                     {
@@ -32,7 +32,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 2 when x > 0 && !Game.Map[x - 1, y].IsWallOrBomb() && !Game.Map[x - 1, y].IsMonster():
+                case 2 when x > 0 && !Game.Map[x - 1, y].ContainsWallOrBomb() && !Game.Map[x - 1, y].ContainsMonster():
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(1))
                     {
@@ -41,7 +41,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 3 when y > 0 && !Game.Map[x, y - 1].IsWallOrBomb() && !Game.Map[x, y - 1].IsMonster():
+                case 3 when y > 0 && !Game.Map[x, y - 1].ContainsWallOrBomb() && !Game.Map[x, y - 1].ContainsMonster():
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(1))
                     {
@@ -59,6 +59,6 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject) => conflictedObject is Fire;
 
-        public int GetDrawingPriority() => 200;
+        public int GetDrawingPriority() => 3;
     }
 }

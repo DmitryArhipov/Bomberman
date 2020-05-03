@@ -10,11 +10,12 @@ namespace TestProject
     [TestFixture]
     public class BreakableWall_Should
     {
+        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         [Test]
         public void BreakableWall_GetImageFileName_RightImageName()
         {
             var wall = new BreakableWall();
-            wall.GetImageFileName().Should().BeEquivalentTo("BreakableWall.png");
+            wall.GetImageFileName().Should().Be("BreakableWall.png");
         }
         
         [Test]
@@ -28,14 +29,15 @@ namespace TestProject
             Game.Map[2, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Left) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = SecondsBeforeFly * 2;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(0.2))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[1, 1].Count().Should().Be(0);
+            Game.Map[1, 1].Should().BeEmpty();
         }
     }
 }

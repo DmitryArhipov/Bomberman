@@ -16,14 +16,13 @@ namespace Bomberman
 
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)
-                {
                     foreach (var creature in Game.Map[x,y])
                     {
                         if (creature == null)
                             continue;
                         var command = creature.Act(x, y);
-                        if (x + command.DeltaX < 0 || x + command.DeltaX >= Game.MapWidth || y + command.DeltaY < 0 ||
-                            y + command.DeltaY >= Game.MapHeight)
+                        if (x + command.DeltaX < 0 || x + command.DeltaX >= Game.MapWidth 
+                                                   || y + command.DeltaY < 0 || y + command.DeltaY >= Game.MapHeight)
                             throw new Exception($"The object {creature.GetType()} falls out of the game field");
                         Animations.Add(
                             new CreatureAnimation
@@ -34,7 +33,6 @@ namespace Bomberman
                                 TargetLogicalLocation = new Point(x + command.DeltaX, y + command.DeltaY)
                             });
                     }
-                }
             
             Animations = Animations.OrderByDescending(z => z.Creature.GetDrawingPriority()).ToList();
         }

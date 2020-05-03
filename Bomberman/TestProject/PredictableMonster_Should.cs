@@ -10,11 +10,16 @@ namespace TestProject
     [TestFixture]
     public class PredictableMonster_Should
     {
+        private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
+        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
+        private const double MonsterThinkingTime = 1;
+        private const double TimeGap = 0.05;
+        
         [Test]
         public void PredictableMonster_GetImageFileName_RightImageName()
         {
             var monster = new PredictableMonster();
-            monster.GetImageFileName().Should().BeEquivalentTo("PredictableMonster.png");
+            monster.GetImageFileName().Should().Be("PredictableMonster.png");
         }
         
         [TestCase("####\r\n#M #\r\n####", 1, 1, 2, 1)]
@@ -28,15 +33,16 @@ namespace TestProject
             Game.CreateMap(testMap);
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = MonsterThinkingTime + TimeGap;
 
-            while (timer.Elapsed <= TimeSpan.FromSeconds(1.1))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[xWas, yWas].Count().Should().Be(0);
-            Game.Map[x, y].Count().Should().Be(1);
+            Game.Map[xWas, yWas].Should().BeEmpty();
+            Game.Map[x, y].Length.Should().Be(1);
             Game.Map[x, y].First().Should().BeAssignableTo<PredictableMonster>();
         }
 
@@ -48,19 +54,20 @@ namespace TestProject
 # M #
 #####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Bomb(new Player()) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = SecondsBeforeFly * 2 + TimeGap;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(2.3))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[1, 1].Count().Should().Be(0);
-            Game.Map[2, 1].Count().Should().Be(0);
-            Game.Map[3, 1].Count().Should().Be(0);
+            Game.Map[1, 1].Should().BeEmpty();
+            Game.Map[2, 1].Should().BeEmpty();
+            Game.Map[3, 1].Should().BeEmpty();
         }
         
         [TestCase("###\r\n#M#\r\n###")]
@@ -70,14 +77,15 @@ namespace TestProject
             Game.CreateMap(testMap);
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = MonsterThinkingTime * 2 + TimeGap;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(2.2))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[1, 1].Count().Should().Be(1);
+            Game.Map[1, 1].Length.Should().Be(1);
             Game.Map[1, 1].First().Should().BeAssignableTo<PredictableMonster>();
         }
     }

@@ -26,8 +26,7 @@ namespace Bomberman
                 GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight + GameState.ElementSize);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            if (imagesDirectory == null)
-                imagesDirectory = new DirectoryInfo("Images");
+            imagesDirectory ??= new DirectoryInfo("Images");
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap) Image.FromFile(e.FullName);
             var timer = new Timer {Interval = 15};

@@ -15,7 +15,7 @@ namespace Bomberman
 #P       W#
 ###########"; // убрать
 
-        public static IEnumerable<ICreature>[,] Map;
+        public static ICreature[,][] Map;
         public static bool IsOver;
 
         public static Keys KeyPressed;

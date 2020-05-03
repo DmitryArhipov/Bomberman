@@ -12,11 +12,16 @@ namespace TestProject
     [TestFixture]
     public class Player_Should
     {
+        private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
+        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
+        private const double MonsterThinkingTime = 1;
+        private const double TimeGap = 0.05;
+        
         [Test]
         public void Player_GetImageFileName_CorrectImageName()
         {
             var player = new Player();
-            player.GetImageFileName().Should().BeEquivalentTo("running-right-2.png");
+            player.GetImageFileName().Should().Be("running-right-2.png");
         }
 
         [Test]
@@ -33,7 +38,7 @@ namespace TestProject
             gameState.BeginAct();
             gameState.EndAct();
 
-            Game.Map[1, 1].First().GetImageFileName().Should().BeEquivalentTo("running-left-2.png");
+            Game.Map[1, 1].First().GetImageFileName().Should().Be("running-left-2.png");
         }
 
         [TestCase(new[] {Keys.Right}, 6, 2)]
@@ -60,16 +65,16 @@ namespace TestProject
                 gameState.EndAct();
             }
 
-            Game.Map[expX, expY].Count().Should().Be(1);
+            Game.Map[expX, expY].Length.Should().Be(1);
             Game.Map[expX, expY].First().Should().BeAssignableTo<Player>();
         }
 
-        [TestCase(new[] {Keys.Down}, 1, 1, 1, 2, "UnbreakableWall")]
-        [TestCase(new[] {Keys.Up}, 1, 1, 1, 0, "UnbreakableWall")]
-        [TestCase(new[] {Keys.Left}, 1, 1, 0, 1, "UnbreakableWall")]
-        [TestCase(new[] {Keys.Right, Keys.Right}, 2, 1, 3, 1, "BreakableWall")]
+        [TestCase(new[] {Keys.Down}, 1, 1, 1, 2, typeof(UnbreakableWall))]
+        [TestCase(new[] {Keys.Up}, 1, 1, 1, 0, typeof(UnbreakableWall))]
+        [TestCase(new[] {Keys.Left}, 1, 1, 0, 1, typeof(UnbreakableWall))]
+        [TestCase(new[] {Keys.Right, Keys.Right}, 2, 1, 3, 1, typeof(BreakableWall))]
         public void Player_CantWalkThroughWalls(IEnumerable<Keys> keys, int expX, int expY,
-            int expWallX, int expWallY, string wallType)
+            int expWallX, int expWallY, Type wallType)
         {
             var testMap = @"
 #####
@@ -85,13 +90,10 @@ namespace TestProject
                 gameState.EndAct();
             }
 
-            Game.Map[expWallX, expWallY].Count().Should().Be(1);
-            Game.Map[expX, expY].Count().Should().Be(1);
+            Game.Map[expWallX, expWallY].Length.Should().Be(1);
+            Game.Map[expX, expY].Length.Should().Be(1);
             Game.Map[expX, expY].First().Should().BeAssignableTo<Player>();
-            if (wallType.Equals("BreakableWall"))
-                Game.Map[expWallX, expWallY].First().Should().BeAssignableTo<BreakableWall>();
-            else
-                Game.Map[expWallX, expWallY].First().Should().BeAssignableTo<UnbreakableWall>();
+            Game.Map[expWallX, expWallY].First().Should().BeAssignableTo(wallType);
         }
 
         [Test]
@@ -108,7 +110,7 @@ namespace TestProject
             gameState.BeginAct();
             gameState.EndAct();
 
-            Game.Map[3, 1].Count().Should().Be(2);
+            Game.Map[3, 1].Length.Should().Be(2);
             Game.Map[3, 1].Select(n => n.GetType().Name).Should().Contain("Bomb");
             Game.Map[3, 1].Select(n => n.GetType().Name).Should().Contain("Player");
         }
@@ -131,9 +133,9 @@ namespace TestProject
                 gameState.EndAct();
             }
 
-            Game.Map[3, 1].Count().Should().Be(1);
+            Game.Map[3, 1].Length.Should().Be(1);
             Game.Map[3, 1].First().Should().BeAssignableTo<Bomb>();
-            Game.Map[2, 1].Count().Should().NotBe(2);
+            Game.Map[2, 1].Length.Should().NotBe(2);
             Game.Map[2, 1].Should().ContainItemsAssignableTo<Player>();
         }
         
@@ -147,14 +149,15 @@ namespace TestProject
             Game.CreateMap(testMap);
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = TimeGap + MonsterThinkingTime;
 
-            while (timer.Elapsed <= TimeSpan.FromSeconds(1.1))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[2, 1].Count().Should().Be(1);
+            Game.Map[2, 1].Length.Should().Be(1);
             Game.Map[2, 1].Select(c => c.GetType().Name).Should().NotContain("Player");
             Game.Map[2, 1].Should().ContainItemsAssignableTo<PredictableMonster>();
         }
@@ -167,18 +170,20 @@ namespace TestProject
 # P #
 #####";
             Game.CreateMap(testMap);
-            Game.Map[3, 1] = new ICreature[] { new Bomb(new Player()) };
+            var player = new Player();
+            Game.Map[3, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Left) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = SecondsBeforeFly * 2 + TimeGap;
 
-            while (timer.Elapsed <= TimeSpan.FromSeconds(2.3))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[2, 1].Count().Should().Be(0);
-            Game.Map[2, 1].Select(c => c.GetType().Name).Should().NotContain("Player");
+            Game.Map[2, 1].Should().BeEmpty();
+            Game.Map[2, 1].Should().NotContain(player);
         }
 
         [Test]
@@ -191,17 +196,18 @@ namespace TestProject
             Game.CreateMap(testMap);
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
+            var testTime = TimeGap + SecondsBeforeExplosion;
 
             Game.KeyPressed = Keys.Space;
-            while (timer.Elapsed <= TimeSpan.FromSeconds(2.05))
+            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
                 gameState.BeginAct();
                 gameState.EndAct();
             }
 
-            Game.Map[2, 1].Count().Should().Be(4);
+            Game.Map[2, 1].Length.Should().Be(4);
             Game.Map[2, 1].Should().ContainItemsAssignableTo<Fire>();
-            Game.Map[2, 1].Select(c => c.GetType().Name).Should().NotContain("Player");
+            Game.Map[2, 1].Should().NotContain(new Player());
         }
     }
 }

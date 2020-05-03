@@ -8,6 +8,6 @@
 
         public bool DeadInConflict(ICreature conflictedObject) => false;
 
-        public int GetDrawingPriority() => 10;
+        public int GetDrawingPriority() => 1;
     }
 }

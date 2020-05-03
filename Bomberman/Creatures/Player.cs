@@ -30,23 +30,23 @@ namespace Bomberman
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
-                    if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].IsWallOrBomb())
+                    if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsWallOrBomb())
                         result.DeltaX = 1;
                     break;
                 case Keys.Left:
-                    if (x > 0 && !Game.Map[x - 1, y].IsWallOrBomb())
+                    if (x > 0 && !Game.Map[x - 1, y].ContainsWallOrBomb())
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
-                    if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].IsWallOrBomb())
+                    if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsWallOrBomb())
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
-                    if (y > 0 && !Game.Map[x, y - 1].IsWallOrBomb())
+                    if (y > 0 && !Game.Map[x, y - 1].ContainsWallOrBomb())
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:
-                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].IsWallOrBomb())
+                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsWallOrBomb())
                     {
                         result.TransformTo = new ICreature[] {this, new Bomb(this)};
                         CurrentBombs++;
@@ -56,9 +56,11 @@ namespace Bomberman
             return result;
         }
 
-        public bool DeadInConflict(ICreature conflictedObject) => conflictedObject is Fire 
-                                                                  || conflictedObject is PredictableMonster;
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return conflictedObject is Fire || conflictedObject is PredictableMonster;
+        }
 
-        public int GetDrawingPriority() => 300;
+        public int GetDrawingPriority() => 4;
     }
 }
