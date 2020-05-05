@@ -9,11 +9,15 @@ namespace Bomberman
     public static class Game
     {
         public const string MapExample = @"
-###########
-#         #
-#  M      #
-#P       W#
-###########"; // убрать
+############
+#P         #
+# #WWWWWW W#
+# #WW#WWW W#
+# #WW   M W#
+# #WW W#WWW#
+# #WW WWM#W#
+#         M#
+############"; // убрать
 
         public static ICreature[,][] Map;
         public static bool IsOver;
