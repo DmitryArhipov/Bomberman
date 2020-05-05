@@ -30,6 +30,7 @@ namespace Bomberman
                                 Command = command,
                                 Creature = creature,
                                 Location = new Point(x * ElementSize, y * ElementSize),
+                                InitialLogicalLocation = new Point(x, y),
                                 TargetLogicalLocation = new Point(x + command.DeltaX, y + command.DeltaY)
                             });
                     }
@@ -39,25 +40,45 @@ namespace Bomberman
 
         public void EndAct()
         {
-            var creaturesPerLocation = GetCandidatesPerLocation();
+            var candidates = GetCandidatesPerLocation();
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)
-                    Game.Map[x, y] = SelectWinnerCandidatePerLocation(creaturesPerLocation, x, y);
+                    Game.Map[x, y] = SelectWinnerCandidatePerLocation(candidates, x, y);
         }
 
-        private static ICreature[] SelectWinnerCandidatePerLocation(List<ICreature>[,] creatures, int x, int y)
+        private static ICreature[] SelectWinnerCandidatePerLocation(List<Candidate>[,] creatures, int x, int y)
         {
+            var point = new Point(x, y);
             var candidates = creatures[x, y];
             var aliveCandidates = candidates.ToList();
+            
             foreach (var candidate in candidates)
                 foreach (var rival in candidates)
-                    if (rival != candidate && candidate.DeadInConflict(rival))
+                {
+                    if (candidate.To != point)
                         aliveCandidates.Remove(candidate);
-            if (aliveCandidates.Count > 1 && !IsBombAndPlayer(aliveCandidates) && !IsFire(aliveCandidates))
-                throw new Exception(
-                    $"Creatures {aliveCandidates[0].GetType().Name} and {aliveCandidates[1].GetType().Name} claimed the same map cell");
 
-            return aliveCandidates.ToArray();
+                    if (rival.Creature != candidate.Creature && Conflict(candidate, rival) && candidate.Creature.DeadInConflict(rival.Creature))
+                        aliveCandidates.Remove(candidate);
+                }
+
+            var aliveCreatures = aliveCandidates.Select(c => c.Creature).ToList();
+            
+            if (aliveCreatures.Count > 1 && !IsBombAndPlayer(aliveCreatures) && !IsFire(aliveCreatures))
+                throw new Exception(
+                    $"Creatures {aliveCreatures[0].GetType().Name} and {aliveCreatures[1].GetType().Name} claimed the same map cell");
+
+            return aliveCreatures.ToArray();
+        }
+
+        private static bool Conflict(Candidate candidate1, Candidate candidate2)
+        {
+            return candidate1.To == candidate2.To || Cross(candidate1, candidate2);
+        }
+
+        private static bool Cross(Candidate candidate1, Candidate candidate2)
+        {
+            return candidate1.From == candidate2.To && candidate1.To == candidate2.From;
         }
 
         private static bool IsFire(List<ICreature> aliveCandidates)
@@ -75,21 +96,50 @@ namespace Bomberman
                    aliveCandidates[1] is Player && aliveCandidates[0] is Bomb;
         }
 
-        private List<ICreature>[,] GetCandidatesPerLocation()
+        private List<Candidate>[,] GetCandidatesPerLocation()
         {
-            var creatures = new List<ICreature>[Game.MapWidth, Game.MapHeight];
+            var candidates = new List<Candidate>[Game.MapWidth, Game.MapHeight];
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)
-                    creatures[x, y] = new List<ICreature>();
+                    candidates[x, y] = new List<Candidate>();
+
             foreach (var e in Animations)
             {
-                var x = e.TargetLogicalLocation.X;
-                var y = e.TargetLogicalLocation.Y;
-                var nextCreature = e.Command.TransformTo ?? new[] {e.Creature};
-                creatures[x, y].AddRange(nextCreature);
+                var creatures = e.Command.TransformTo ?? new[] {e.Creature};
+                
+                foreach (var creature in creatures)
+                {
+                    var candidate = new Candidate
+                    {
+                        Creature = creature,
+                        From = e.InitialLogicalLocation,
+                        To = e.TargetLogicalLocation
+                    };
+                
+                    var x = e.InitialLogicalLocation.X;
+                    var y = e.InitialLogicalLocation.Y;
+                
+                    candidates[x, y].Add(candidate);
+
+                    if (e.InitialLogicalLocation != e.TargetLogicalLocation)
+                    {
+                        var x1 = e.TargetLogicalLocation.X;
+                        var y1 = e.TargetLogicalLocation.Y;
+
+                        candidates[x1, y1].Add(candidate);
+                    } 
+                }
+                
             }
 
-            return creatures;
+            return candidates;
+        }
+
+        public class Candidate
+        {
+            public Point From;
+            public Point To;
+            public ICreature Creature;
         }
     }
 }

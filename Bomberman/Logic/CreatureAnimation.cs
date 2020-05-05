@@ -7,6 +7,7 @@ namespace Bomberman
         public CreatureCommand Command;
         public ICreature Creature;
         public Point Location;
+        public Point InitialLogicalLocation;
         public Point TargetLogicalLocation;
     }
 }
