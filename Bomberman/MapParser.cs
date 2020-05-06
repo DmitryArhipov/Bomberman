@@ -21,6 +21,7 @@ namespace Bomberman
                     'W' => Helpers.Array<BreakableWall>(),
                     '#' => Helpers.Array<UnbreakableWall>(),
                     'M' => Helpers.Array<PredictableMonster>(),
+                    'C' => Helpers.Array<CleverMonster>(),
                     ' ' => new ICreature[] { },
                     _ => throw new Exception($"wrong character for map {lines[y][x]}")
                 };

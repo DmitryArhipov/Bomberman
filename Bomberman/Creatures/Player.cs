@@ -28,23 +28,23 @@ namespace Bomberman
             switch (Game.KeyPressed)
             {
                 case Keys.Right:
-                    if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsWallOrBomb())
+                    if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb())
                         result.DeltaX = 1;
                     break;
                 case Keys.Left:
-                    if (x > 0 && !Game.Map[x - 1, y].ContainsWallOrBomb())
+                    if (x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb())
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
-                    if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsWallOrBomb())
+                    if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb())
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
-                    if (y > 0 && !Game.Map[x, y - 1].ContainsWallOrBomb())
+                    if (y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb())
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:
-                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsWallOrBomb())
+                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsObstaclesOrBomb())
                     {
                         result.TransformTo = new ICreature[] {this, new Bomb(this)};
                         CurrentBombs++;
@@ -56,7 +56,7 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            return conflictedObject is Fire || conflictedObject is PredictableMonster;
+            return conflictedObject is Fire || conflictedObject is PredictableMonster || conflictedObject is CleverMonster;
         }
 
         public int GetDrawingPriority() => 4;

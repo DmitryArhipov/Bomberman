@@ -6,7 +6,7 @@ namespace Bomberman
 {
     public static class Helpers
     {
-        public static bool ContainsWallOrBomb(this IEnumerable<ICreature> cell)
+        public static bool ContainsObstaclesOrBomb(this IEnumerable<ICreature> cell)
         {
             return cell.Any(creature => creature is Bomb || creature is BreakableWall || creature is UnbreakableWall);
         }
@@ -18,7 +18,7 @@ namespace Bomberman
         
         public static bool ContainsMonster(this IEnumerable<ICreature> cell)
         {
-            return cell.OfType<PredictableMonster>().Any();
+            return cell.Any(creature => creature is PredictableMonster || creature is CleverMonster);
         }
 
         public static ICreature[] Array<T>() where T : ICreature, new() => new ICreature[] { new T() };

@@ -18,7 +18,7 @@ namespace Bomberman
             monsterCell = new Point(x, y);
             switch (direction)
             {
-                case 0 when x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsWallOrBomb()
+                case 0 when x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb()
                                                   && !Game.Map[x + 1, y].ContainsMonster() && Game.WantToMoveMonster[x + 1, y] == false:
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
@@ -31,7 +31,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 1 when y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsWallOrBomb()
+                case 1 when y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
                                                    && !Game.Map[x, y + 1].ContainsMonster() && Game.WantToMoveMonster[x, y + 1] == false:
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
@@ -44,7 +44,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 2 when x > 0 && !Game.Map[x - 1, y].ContainsWallOrBomb()
+                case 2 when x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
                                   && !Game.Map[x - 1, y].ContainsMonster() && Game.WantToMoveMonster[x - 1, y] == false:
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
@@ -57,7 +57,7 @@ namespace Bomberman
                     }
                     break;
                 }
-                case 3 when y > 0 && !Game.Map[x, y - 1].ContainsWallOrBomb()
+                case 3 when y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
                                   && !Game.Map[x, y - 1].ContainsMonster() && Game.WantToMoveMonster[x, y - 1] == false:
                 {
                     if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
