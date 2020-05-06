@@ -47,7 +47,7 @@ namespace TestProject
             }
 
             Game.Map[2, 2].Should().BeEmpty();
-            Game.Map[2,2].Should().NotContain(bomb);
+            Game.Map[2, 2].Should().NotContain(bomb);
         }
         
         [Test]
@@ -117,11 +117,11 @@ namespace TestProject
 #   #
 #####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
             Game.Map[2, 1] = new ICreature[] { new Bomb(new Player()) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2;
+            var testTime = SecondsBeforeFly * 2 + TimeGap;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {

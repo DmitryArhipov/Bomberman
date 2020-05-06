@@ -21,7 +21,7 @@ namespace TestProject
         public void Player_GetImageFileName_CorrectImageName()
         {
             var player = new Player();
-            player.GetImageFileName().Should().Be("running-right-2.png");
+            player.GetImageFileName().Should().Be("running-right.png");
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace TestProject
             gameState.BeginAct();
             gameState.EndAct();
 
-            Game.Map[1, 1].First().GetImageFileName().Should().Be("running-left-2.png");
+            Game.Map[1, 1].First().GetImageFileName().Should().Be("running-left.png");
         }
 
         [TestCase(new[] {Keys.Right}, 6, 2)]
@@ -171,7 +171,7 @@ namespace TestProject
 #####";
             Game.CreateMap(testMap);
             var player = new Player();
-            Game.Map[3, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Left) };
+            Game.Map[3, 1] = new ICreature[] { new Fire(new Player(), Direction.Left) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2 + TimeGap;

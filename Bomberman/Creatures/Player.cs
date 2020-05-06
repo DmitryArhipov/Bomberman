@@ -7,18 +7,16 @@ namespace Bomberman
         public int BombsLimit = 1;
         public int SplashLimit = 1;
         public int CurrentBombs;
-        private string ImageName = "running-right-2.png";
+        private string ImageName = "running-right.png";
         
         private void ChangeImageName(Keys keys)
         {
-            if(keys == Keys.None)
+            if (keys == Keys.None)
                 return;
-            var current = ImageName.Split('-');
-            var i= int.Parse(current[2][0].ToString());
             var direction = (keys == Keys.Right || keys == Keys.Down)
-                ? "right" : "left";
-            var j = (i + 1) % 2 + 1;
-            ImageName = $"running-{direction}-{j}.png";
+                ? "right" 
+                : "left";
+            ImageName = $"running-{direction}.png";
         }
 
         public string GetImageFileName() => ImageName;

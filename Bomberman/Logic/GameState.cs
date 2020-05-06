@@ -7,7 +7,7 @@ namespace Bomberman
 {
     public class GameState
     {
-        public const int ElementSize = 80;
+        public const int ElementSize = 50;
         public List<CreatureAnimation> Animations = new List<CreatureAnimation>();
 
         public void BeginAct()

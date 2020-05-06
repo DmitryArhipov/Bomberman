@@ -9,7 +9,7 @@ namespace Bomberman
         private readonly Stopwatch timer;
         private bool shouldExplode;
         public const double secondsBeforeExplosion = 2;
-
+        
         public Bomb(Player player)
         {
             this.player = player;
@@ -26,9 +26,9 @@ namespace Bomberman
             {
                 player.CurrentBombs--;
                 return 
-                    new CreatureCommand() { TransformTo = new[] { new Fire(player, Fire.Direction.Up),
-                    new Fire(player, Fire.Direction.Down), new Fire(player, Fire.Direction.Right),
-                    new Fire(player, Fire.Direction.Left) } };
+                    new CreatureCommand() { TransformTo = new[] { new Fire(player, Direction.Up),
+                    new Fire(player, Direction.Down), new Fire(player, Direction.Right),
+                    new Fire(player, Direction.Left) } };
             }
             return new CreatureCommand();
         }

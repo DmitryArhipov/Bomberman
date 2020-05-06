@@ -10,7 +10,6 @@ namespace TestProject
     [TestFixture]
     public class PredictableMonster_Should
     {
-        private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
         private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         private const double MonsterThinkingTime = 1;
         private const double TimeGap = 0.05;
@@ -54,7 +53,7 @@ namespace TestProject
 # M #
 #####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2 + TimeGap;

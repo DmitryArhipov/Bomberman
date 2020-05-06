@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using Bomberman;
 using FluentAssertions;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace TestProject
 {
@@ -18,7 +16,7 @@ namespace TestProject
         [Test]
         public void Fire_GetImageFileName_RightImageName()
         {
-            var fire = new Fire(new Player(), Fire.Direction.Down);
+            var fire = new Fire(new Player(), Direction.Down);
             fire.GetImageFileName().Should().Be("Fire.png");
         }
 
@@ -30,7 +28,7 @@ namespace TestProject
 #  #
 ####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2 + TimeGap;
@@ -53,7 +51,7 @@ namespace TestProject
 # #
 ###";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Down) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Down) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = TimeGap + SecondsBeforeFly;
@@ -67,11 +65,11 @@ namespace TestProject
             Game.Map[1, 1].Should().BeEmpty();
         }
 
-        [TestCase("####\r\n#  #\r\n####", 1, 1, Fire.Direction.Right, 2, 1)]
-        [TestCase("####\r\n#  #\r\n####", 2, 1, Fire.Direction.Left, 1, 1)]
-        [TestCase("###\r\n# #\r\n# #\r\n###", 1, 1, Fire.Direction.Down, 1, 2)]
-        [TestCase("###\r\n# #\r\n# #\r\n###", 1, 2, Fire.Direction.Up, 1, 1)]
-        public void Fire_FireFlyByDirection_FlyCorrectly(string testMap, int x, int y, Fire.Direction direction,
+        [TestCase("####\r\n#  #\r\n####", 1, 1, Direction.Right, 2, 1)]
+        [TestCase("####\r\n#  #\r\n####", 2, 1, Direction.Left, 1, 1)]
+        [TestCase("###\r\n# #\r\n# #\r\n###", 1, 1, Direction.Down, 1, 2)]
+        [TestCase("###\r\n# #\r\n# #\r\n###", 1, 2, Direction.Up, 1, 1)]
+        public void Fire_FireFlyByDirection_FlyCorrectly(string testMap, int x, int y, Direction direction,
             int expX, int expY)
         {
             Game.CreateMap(testMap);
@@ -98,7 +96,7 @@ namespace TestProject
 #  #
 ####";
             Game.CreateMap(testMap);
-            Game.Map[2, 1] = new ICreature[] { new Fire(new Player(), Fire.Direction.Right) };
+            Game.Map[2, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2;

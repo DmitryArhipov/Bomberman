@@ -17,15 +17,7 @@ namespace Bomberman
             this.direction = direction;
             timer = Stopwatch.StartNew();
         }
-        
-        public enum Direction
-        {
-            Right,
-            Left,
-            Up,
-            Down
-        }
-        
+
         public string GetImageFileName() => "Fire.png";
         
         public CreatureCommand Act(int x, int y)

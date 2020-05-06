@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Logic\CreatureAnimation.cs" />
     <Compile Include="Logic\CreatureCommand.cs" />
+    <Compile Include="Logic\Direction.cs" />
     <Compile Include="Logic\Game.cs" />
     <Compile Include="Logic\GameState.cs" />
     <Compile Include="MapParser.cs" />
@@ -71,14 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Drawing\Images\Bomb.png" />
+    <Content Include="Drawing\Images\BreakableWall.png" />
     <Content Include="Drawing\Images\Fire.png" />
     <Content Include="Drawing\Images\PredictableMonster.png" />
-    <Content Include="Drawing\Images\running-left-1.png" />
-    <Content Include="Drawing\Images\running-left-2.png" />
-    <Content Include="Drawing\Images\running-right-1.png" />
-    <Content Include="Drawing\Images\running-right-2.png" />
+    <Content Include="Drawing\Images\running-left.png" />
+    <Content Include="Drawing\Images\running-right.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
-    <Content Include="Drawing\Images\BreakableWall.png" />
     <Content Include="Maps\TestMap.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

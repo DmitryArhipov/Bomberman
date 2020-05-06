@@ -24,8 +24,9 @@ namespace Bomberman
             gameState = new GameState();
             ClientSize = new Size(
                 GameState.ElementSize * Game.MapWidth,
-                GameState.ElementSize * Game.MapHeight + GameState.ElementSize);
+                GameState.ElementSize * Game.MapHeight);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterScreen;
             imagesDirectory ??= new DirectoryInfo("Images");
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap) Image.FromFile(e.FullName);
@@ -55,13 +56,11 @@ namespace Bomberman
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.TranslateTransform(0, GameState.ElementSize);
             e.Graphics.FillRectangle(
-                Brushes.DarkGreen, 0, 0, GameState.ElementSize * Game.MapWidth,
+                Brushes.ForestGreen, 0, 0, GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight);
             foreach (var a in gameState.Animations)
                 e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
-            e.Graphics.ResetTransform();
         }
 
         private void TimerTick(object sender, EventArgs args)
