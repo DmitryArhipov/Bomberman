@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Bomberman
 {
-    public static class Game
+    public class Game
     {
         public const string MapExample = @"
 ############
@@ -18,7 +18,6 @@ namespace Bomberman
 # #WW WWM#W#
 #         M#
 ############"; // убрать
-
         public static ICreature[,][] Map;
         public static bool IsOver;
 
@@ -27,7 +26,7 @@ namespace Bomberman
         public static int MapHeight => Map.GetLength(1);
         public static bool[,] WantToMoveMonster;
         public static int MonstersCount;
-
+        
         public static void CreateMap(string map)
         {
             Map = MapParser.GetMapFromText(map);

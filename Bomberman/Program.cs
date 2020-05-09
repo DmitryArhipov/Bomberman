@@ -9,17 +9,17 @@ namespace Bomberman
 {
     static class Program
     {
-        private static readonly string SlnPath = Directory.GetCurrentDirectory();
-        private static readonly string ProjectPath = Path.Combine(SlnPath, "..", "..");
-        private static readonly string ImagesPath = Path.Combine(ProjectPath, "Drawing", "Images");
-        private static readonly string MapsPath = Path.Combine(ProjectPath, "Maps");
-        
-        
+        public static readonly string SlnPath = Directory.GetCurrentDirectory();
+        public static readonly string ProjectPath = Path.Combine(SlnPath, "..", "..");
+        //private static readonly string MapsPath = Path.Combine(ProjectPath, "Maps");
+
         [STAThread]
         static void Main()
         {
             Game.CreateMap(Game.MapExample);
-            Application.Run(new Window(new DirectoryInfo(ImagesPath)));
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new StartWindow());
         }
     }
 }

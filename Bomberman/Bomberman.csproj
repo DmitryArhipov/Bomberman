@@ -56,6 +56,12 @@
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
     <Compile Include="Creatures\Player.cs" />
+    <Compile Include="Drawing\StartWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\StartWindow.Designer.cs">
+      <DependentUpon>StartWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,14 @@
     <Content Include="Drawing\Images\running-right.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
     <Content Include="Maps\TestMap.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Drawing\StartWindow.resx">
+      <DependentUpon>StartWindow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
