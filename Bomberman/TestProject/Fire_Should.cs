@@ -16,7 +16,7 @@ namespace TestProject
         [Test]
         public void Fire_GetImageFileName_RightImageName()
         {
-            var fire = new Fire(new Player(), Direction.Down);
+            var fire = new Fire(1, Direction.Down);
             fire.GetImageFileName().Should().Be("Fire.png");
         }
 
@@ -28,7 +28,7 @@ namespace TestProject
 #  #
 ####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(1, Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2 + TimeGap;
@@ -51,7 +51,7 @@ namespace TestProject
 # #
 ###";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Down) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(1, Direction.Down) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = TimeGap + SecondsBeforeFly;
@@ -73,7 +73,7 @@ namespace TestProject
             int expX, int expY)
         {
             Game.CreateMap(testMap);
-            Game.Map[x, y] = new ICreature[] { new Fire(new Player(), direction) };
+            Game.Map[x, y] = new ICreature[] { new Fire(1, direction) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = TimeGap + SecondsBeforeFly;
@@ -96,7 +96,7 @@ namespace TestProject
 #  #
 ####";
             Game.CreateMap(testMap);
-            Game.Map[2, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
+            Game.Map[2, 1] = new ICreature[] { new Fire(1, Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2;

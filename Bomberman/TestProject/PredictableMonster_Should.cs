@@ -53,7 +53,7 @@ namespace TestProject
 # M #
 #####";
             Game.CreateMap(testMap);
-            Game.Map[1, 1] = new ICreature[] { new Fire(new Player(), Direction.Right) };
+            Game.Map[1, 1] = new ICreature[] { new Fire(1, Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
             var testTime = SecondsBeforeFly * 2 + TimeGap;
