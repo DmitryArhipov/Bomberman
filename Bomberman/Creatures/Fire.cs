@@ -8,7 +8,7 @@ namespace Bomberman
         private readonly Direction direction;
         private readonly int splashLimit;
         private Stopwatch timer;
-        private int splashNow;
+        private int splashLengthNow;
         public const double secondsBeforeFly = 0.1;
 
         public Fire(int splashLimit, Direction direction)
@@ -23,57 +23,37 @@ namespace Bomberman
         public CreatureCommand Act(int x, int y)
         {
             var result = new CreatureCommand();
-            switch (direction)
+            if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
             {
-                case Direction.Up:
+                if (splashLengthNow == splashLimit)
+                    return new CreatureCommand() {TransformTo = new ICreature[] { }};
+                timer = Stopwatch.StartNew();
+                splashLengthNow++;
+                switch (direction)
                 {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
+                    case Direction.Up:
                     {
-                        if (splashNow == splashLimit)
-                            return new CreatureCommand() {TransformTo = new ICreature[] { }};
-                        timer = Stopwatch.StartNew();
-                        splashNow++;
                         result.DeltaY = -1;
+                        break;
                     }
-                    break;
-                }
-                case Direction.Down:
-                {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
+                    case Direction.Down:
                     {
-                        if (splashNow == splashLimit)
-                            return new CreatureCommand() {TransformTo = new ICreature[] { }};
-                        timer = Stopwatch.StartNew();
-                        splashNow++;
                         result.DeltaY = 1;
+                        break;
                     }
-                    break;
-                }
-                case Direction.Right:
-                {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
+                    case Direction.Right:
                     {
-                        if (splashNow == splashLimit)
-                            return new CreatureCommand() {TransformTo = new ICreature[] { }};
-                        timer = Stopwatch.StartNew();
-                        splashNow++;
                         result.DeltaX = 1;
+                        break;
                     }
-                    break;
-                }
-                default:
-                {
-                    if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
+                    default:
                     {
-                        if(splashNow == splashLimit)
-                            return new CreatureCommand(){ TransformTo = new ICreature[] { } };
-                        timer = Stopwatch.StartNew();
-                        splashNow++;
                         result.DeltaX = -1;
+                        break;
                     }
-                    break;
                 }
             }
+
             return result;
         }
 

@@ -26,9 +26,12 @@ namespace Bomberman
             {
                 player.CurrentBombs--;
                 return 
-                    new CreatureCommand() { TransformTo = new[] { new Fire(player.SplashLimit, Direction.Up),
-                    new Fire(player.SplashLimit, Direction.Down), new Fire(player.SplashLimit, Direction.Right),
-                    new Fire(player.SplashLimit, Direction.Left) } };
+                    new CreatureCommand() { TransformTo =
+                        new[] {
+                        new Fire(player.SplashLimit, Direction.Up),
+                        new Fire(player.SplashLimit, Direction.Down),
+                        new Fire(player.SplashLimit, Direction.Right), 
+                        new Fire(player.SplashLimit, Direction.Left) } };
             }
             return new CreatureCommand();
         }

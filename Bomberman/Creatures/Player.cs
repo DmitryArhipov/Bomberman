@@ -44,7 +44,7 @@ namespace Bomberman
                         result.DeltaY = -1;
                     break;
                 case Keys.Q:
-                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsObstaclesOrBomb())
+                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsObstaclesOrBomb() && Game.WantToMoveMonster[x, y] == false)
                     {
                         result.TransformTo = new ICreature[] {this, new Bomb(this)};
                         CurrentBombs++;
