@@ -5,7 +5,7 @@ namespace Bomberman
 {
     public class Fire : ICreature
     {
-        private readonly Direction direction;
+        public readonly Direction direction;
         private readonly int splashLimit;
         private Stopwatch timer;
         private int splashLengthNow;
@@ -60,7 +60,7 @@ namespace Bomberman
         public bool DeadInConflict(ICreature conflictedObject)
         {
             return conflictedObject is Bomb || conflictedObject is Dynamite || conflictedObject is BreakableWall
-                                            || conflictedObject is UnbreakableWall;
+                                            || conflictedObject is UnbreakableWall || conflictedObject is Block;
         }
 
         public int GetDrawingPriority() => 2;

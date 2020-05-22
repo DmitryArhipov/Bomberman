@@ -17,8 +17,7 @@ namespace Bomberman
             var result = new CreatureCommand();
             monsterCell = new Point(x, y);
             if (direction == 0 && x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb()
-                                                         && !Game.Map[x + 1, y].ContainsMonster() &&
-                                                         Game.WantToMoveMonster[x + 1, y] == false)
+                && !Game.Map[x + 1, y].ContainsMonster() && Game.WantToMoveMonster[x + 1, y] == false)
             {
                 if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
                 {
@@ -30,8 +29,7 @@ namespace Bomberman
                 }
             }
             else if (direction == 1 && y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
-                                                               && !Game.Map[x, y + 1].ContainsMonster() &&
-                                                               Game.WantToMoveMonster[x, y + 1] == false)
+                     && !Game.Map[x, y + 1].ContainsMonster() && Game.WantToMoveMonster[x, y + 1] == false)
             {
                 if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
                 {
@@ -43,8 +41,7 @@ namespace Bomberman
                 }
             }
             else if (direction == 2 && x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
-                                              && !Game.Map[x - 1, y].ContainsMonster() &&
-                                              Game.WantToMoveMonster[x - 1, y] == false)
+                     && !Game.Map[x - 1, y].ContainsMonster() && Game.WantToMoveMonster[x - 1, y] == false)
             {
                 if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
                 {
@@ -56,8 +53,7 @@ namespace Bomberman
                 }
             }
             else if (direction == 3 && y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
-                                              && !Game.Map[x, y - 1].ContainsMonster() &&
-                                              Game.WantToMoveMonster[x, y - 1] == false)
+                     && !Game.Map[x, y - 1].ContainsMonster() && Game.WantToMoveMonster[x, y - 1] == false)
             {
                 if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeGo))
                 {
@@ -75,8 +71,13 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            Game.WantToMoveMonster[monsterCell.X, monsterCell.Y] = false;
-            return conflictedObject is Fire;
+            var result = conflictedObject is Fire || conflictedObject is Block;
+            if (result)
+            {
+                Game.WantToMoveMonster[monsterCell.X, monsterCell.Y] = false;
+                Game.MonstersCount--;
+            }
+            return result;
         }
 
         public int GetDrawingPriority() => 3;

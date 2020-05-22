@@ -16,8 +16,13 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            Game.WantToMoveMonster[monsterCell.X, monsterCell.Y] = false;
-            return conflictedObject is Fire;
+            var result = conflictedObject is Fire || conflictedObject is Block;
+            if (result)
+            {
+                Game.WantToMoveMonster[monsterCell.X, monsterCell.Y] = false;
+                Game.MonstersCount--;
+            }
+            return result;
         }
         
         public int GetDrawingPriority() => 3;

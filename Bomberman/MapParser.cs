@@ -25,6 +25,7 @@ namespace Bomberman
                     'M' => Helpers.Array<PredictableMonster>(),
                     'S' => Helpers.Array<SmartMonster>(),
                     'D' => Helpers.Array<Dynamite>(),
+                    'B' => Helpers.Array<Block>(),
                     'C' => Helpers.Array<CloseDoor>(),
                     'b' => Helpers.Array<PlusBomb>(),
                     's' => Helpers.Array<PlusSplash>(),
