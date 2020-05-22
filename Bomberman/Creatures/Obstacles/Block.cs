@@ -3,7 +3,7 @@
     public class Block : ICreature
     {
         private Direction direction;
-        private bool hit;
+        private bool fireHit;
         
         public string GetImageFileName()
         {
@@ -13,9 +13,9 @@
         public CreatureCommand Act(int x, int y)
         {
             var result = new CreatureCommand();
-            if (hit)
+            if (fireHit)
             {
-                hit = false;
+                fireHit = false;
                 switch (direction)
                 {
                     case Direction.Up:
@@ -53,7 +53,7 @@
             if (conflictedObject is Fire)
             {
                 direction = (conflictedObject as Fire).direction;
-                hit = true;
+                fireHit = true;
             }
             return false;
         }
