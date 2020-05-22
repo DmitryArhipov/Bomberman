@@ -26,7 +26,7 @@ namespace Bomberman
             if (timer.Elapsed >= TimeSpan.FromSeconds(secondsBeforeFly))
             {
                 if (splashLengthNow == splashLimit)
-                    return new CreatureCommand() {TransformTo = new ICreature[] { }};
+                    return new CreatureCommand() { TransformTo = new ICreature[] { } };
                 timer = Stopwatch.StartNew();
                 splashLengthNow++;
                 switch (direction)
