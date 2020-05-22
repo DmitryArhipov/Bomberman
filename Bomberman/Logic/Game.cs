@@ -26,6 +26,7 @@ namespace Bomberman
         public static int MapHeight => Map.GetLength(1);
         public static bool[,] WantToMoveMonster;
         public static int MonstersCount;
+        public static bool PlayerIsDead;
         
         public static void CreateMap(string map)
         {
