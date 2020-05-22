@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Creatures\Bonuses\PlusBomb.cs" />
+    <Compile Include="Creatures\Bonuses\PlusSplash.cs" />
     <Compile Include="Creatures\Doors\CloseDoor.cs" />
     <Compile Include="Creatures\Doors\OpenDoor.cs" />
     <Compile Include="Creatures\Fire\Fire.cs" />
@@ -91,7 +93,6 @@
     <Content Include="Maps\TestMap.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Creatures\Bonuses" />
     <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>

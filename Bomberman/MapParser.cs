@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bomberman.Bonuses;
 using Bomberman.Doors;
 
 namespace Bomberman
@@ -25,6 +26,8 @@ namespace Bomberman
                     'S' => Helpers.Array<SmartMonster>(),
                     'D' => Helpers.Array<Dynamite>(),
                     'C' => Helpers.Array<CloseDoor>(),
+                    'b' => Helpers.Array<PlusBomb>(),
+                    's' => Helpers.Array<PlusSplash>(),
                     ' ' => new ICreature[] { },
                     _ => throw new Exception($"wrong character for map {lines[y][x]}")
                 };
