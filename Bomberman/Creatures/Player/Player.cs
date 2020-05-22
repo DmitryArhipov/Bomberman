@@ -56,7 +56,7 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            return conflictedObject is Fire || conflictedObject is PredictableMonster || conflictedObject is CleverMonster;
+            return conflictedObject is Fire || conflictedObject is PredictableMonster || conflictedObject is SmartMonster;
         }
 
         public int GetDrawingPriority() => 4;

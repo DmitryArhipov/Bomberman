@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using Bomberman.Doors;
 
 namespace Bomberman
 {
@@ -63,8 +64,9 @@ namespace Bomberman
                 }
 
             var aliveCreatures = aliveCandidates.Select(c => c.Creature).ToList();
-            
-            if (aliveCreatures.Count > 1 && !IsBombAndPlayer(aliveCreatures) && !IsFire(aliveCreatures))
+            var aliveCreaturesWithoutDoors = aliveCreatures.Where(creatures => !(creatures is CloseDoor
+                                                                                 || creatures is OpenDoor)).ToList();
+            if (aliveCreaturesWithoutDoors.Count > 1 && !IsBombAndPlayer(aliveCreaturesWithoutDoors) && !IsFire(aliveCreaturesWithoutDoors))
                 throw new Exception(
                     $"Creatures {aliveCreatures[0].GetType().Name} and {aliveCreatures[1].GetType().Name} claimed the same map cell");
 

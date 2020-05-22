@@ -14,9 +14,12 @@
             if (shouldExplode)
             {
                 return 
-                    new CreatureCommand() { TransformTo = new[] { new Fire(100, Direction.Up),
-                        new Fire(100, Direction.Down), new Fire(100, Direction.Right),
-                        new Fire(100, Direction.Left) } };
+                    new CreatureCommand() { TransformTo =
+                        new[] {
+                            new Fire(100, Direction.Up), 
+                            new Fire(100, Direction.Down),
+                            new Fire(100, Direction.Right), 
+                            new Fire(100, Direction.Left) } };
             }
             return new CreatureCommand();
         }

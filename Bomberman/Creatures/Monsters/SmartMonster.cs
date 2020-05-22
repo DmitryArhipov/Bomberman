@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Bomberman
 {
-    public class CleverMonster : ICreature
+    public class SmartMonster : ICreature
     {
         private Stopwatch timer = Stopwatch.StartNew();
         private Point monsterCell;

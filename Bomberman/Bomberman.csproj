@@ -48,15 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Creatures\Bomb.cs" />
-    <Compile Include="Creatures\Fire.cs" />
+    <Compile Include="Creatures\Doors\CloseDoor.cs" />
+    <Compile Include="Creatures\Doors\OpenDoor.cs" />
+    <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
-    <Compile Include="Creatures\Monsters\CleverMonster.cs" />
+    <Compile Include="Creatures\Monsters\SmartMonster.cs" />
     <Compile Include="Creatures\Monsters\PredictableMonster.cs" />
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\Dynamite.cs" />
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
-    <Compile Include="Creatures\Player.cs" />
+    <Compile Include="Creatures\Player\Bomb.cs" />
+    <Compile Include="Creatures\Player\Player.cs" />
     <Compile Include="Drawing\StartWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +91,7 @@
     <Content Include="Maps\TestMap.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Creatures\Bonuses" />
     <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>
