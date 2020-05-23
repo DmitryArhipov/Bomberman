@@ -55,6 +55,9 @@
                 direction = (conflictedObject as Fire).direction;
                 fireHit = true;
             }
+
+            if (conflictedObject is Block)
+                return true;
             return false;
         }
         
