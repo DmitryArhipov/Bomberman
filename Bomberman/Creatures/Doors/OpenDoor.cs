@@ -17,7 +17,7 @@
                 return
                     new CreatureCommand() { TransformTo =
                         new ICreature[] {
-                            new CloseDoor(),
+                            new ClosedDoor(),
                             new PredictableMonster() } };
             }
             return new CreatureCommand();
