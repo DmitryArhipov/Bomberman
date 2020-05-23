@@ -3,11 +3,8 @@
     public class OpenDoor : ICreature
     {
         private bool fireHit;
-        
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+
+        public string GetImageFileName() => "OpenDoor.png";
         
         public CreatureCommand Act(int x, int y)
         {
@@ -15,7 +12,7 @@
             {
                 fireHit = false;
                 return
-                    new CreatureCommand() { TransformTo =
+                    new CreatureCommand { TransformTo =
                         new ICreature[] {
                             new ClosedDoor(),
                             new PredictableMonster() } };

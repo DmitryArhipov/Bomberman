@@ -11,7 +11,7 @@
             if (shouldExplode)
             {
                 return 
-                    new CreatureCommand() { TransformTo =
+                    new CreatureCommand { TransformTo =
                         new[] {
                             new Fire(100, Direction.Up), 
                             new Fire(100, Direction.Down),
