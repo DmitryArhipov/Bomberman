@@ -9,17 +9,32 @@ namespace Bomberman
 {
     static class Program
     {
+        public static Queue<string> levels = new Queue<string>();
         public static readonly string SlnPath = Directory.GetCurrentDirectory();
         public static readonly string ProjectPath = Path.Combine(SlnPath, "..", "..");
-        //private static readonly string MapsPath = Path.Combine(ProjectPath, "Maps");
+        private static readonly string MapsPath = Path.Combine(ProjectPath, "Maps");
+        private static readonly DirectoryInfo Maps = new DirectoryInfo(MapsPath);
 
         [STAThread]
         static void Main()
         {
-            Game.CreateMap(Game.MapExample);
+            //var levels = new Queue<string>();
+            foreach (var level in Maps.GetFiles("*txt"))
+            {
+                using StreamReader sr = level.OpenText();
+                levels.Enqueue(sr.ReadToEnd());
+            }
+            
+            /*if (Game.CanGoToNextLevel)
+            {
+                Game.CreateMap(levels.Dequeue());
+                Game.CanGoToNextLevel = false;
+            }*/
+            Game.CreateMap(levels.Dequeue());
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartWindow());
+            Application.Run(new StartWindow()); 
         }
     }
 }

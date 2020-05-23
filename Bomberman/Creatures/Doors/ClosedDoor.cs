@@ -1,10 +1,10 @@
 ﻿namespace Bomberman.Doors
 {
-    public class OpenDoor : ICreature
+    public class ClosedDoor : ICreature
     {
         private bool fireHit;
-        public string GetImageFileName() => "OpenDoor.png";
-        
+        public string GetImageFileName() => "ClosedDoor.png";
+
         public CreatureCommand Act(int x, int y)
         {
             if (fireHit)
@@ -16,15 +16,12 @@
                             new ClosedDoor(),
                             new PredictableMonster() } };
             }
-            return new CreatureCommand();
+            return Game.MonstersCount == 0 
+                ? new CreatureCommand { TransformTo = new[] { new OpenDoor() } } 
+                : new CreatureCommand();
         }
 
-        public bool DeadInConflict(ICreature conflictedObject)
-        {
-            if (conflictedObject is Player)
-                Game.CanGoToNextLevel = true;
-            return false;
-        }
+        public bool DeadInConflict(ICreature conflictedObject) => false;
         
         public int GetDrawingPriority() => 100;
     }

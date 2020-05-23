@@ -7,7 +7,7 @@ namespace Bomberman
     {
         private Stopwatch timer = Stopwatch.StartNew();
         private Point monsterCell;
-        public string GetImageFileName() => "PredictableMonster.png"; // заменить картинку
+        public string GetImageFileName() => "SmartMonster.png";
 
         public CreatureCommand Act(int x, int y)
         {

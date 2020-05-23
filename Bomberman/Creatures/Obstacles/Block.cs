@@ -4,11 +4,8 @@
     {
         private Direction direction;
         private bool fireHit;
-        
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+
+        public string GetImageFileName() => "Block.png";
 
         public CreatureCommand Act(int x, int y)
         {

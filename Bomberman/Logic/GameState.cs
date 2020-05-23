@@ -15,6 +15,16 @@ namespace Bomberman
         {
             Animations.Clear();
 
+            if (Game.CanGoToNextLevel)
+                if (Program.levels.Count != 0)
+                {
+                    Game.CreateMap(Program.levels.Dequeue());
+                    Game.Level++;
+                    Game.CanGoToNextLevel = false;
+                }
+                else
+                    Game.IsOver = true;
+
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)
                     foreach (var creature in Game.Map[x,y])
@@ -64,7 +74,7 @@ namespace Bomberman
                 }
 
             var aliveCreatures = aliveCandidates.Select(c => c.Creature).ToList();
-            var aliveCreaturesWithoutDoors = aliveCreatures.Where(creatures => !(creatures is CloseDoor
+            var aliveCreaturesWithoutDoors = aliveCreatures.Where(creatures => !(creatures is ClosedDoor
                                                                                  || creatures is OpenDoor)).ToList();
             if (aliveCreaturesWithoutDoors.Count > 1 && !IsBombAndPlayer(aliveCreaturesWithoutDoors) && !IsFire(aliveCreaturesWithoutDoors))
                 throw new Exception(

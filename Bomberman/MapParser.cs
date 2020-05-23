@@ -15,7 +15,7 @@ namespace Bomberman
             for (var y = 0; y < lines.Length; y++)
             for (var x = 0; x < lines[0].Length; x++)
             {
-                if (lines[y][x] == 'M' || lines[y][x] == 'C') 
+                if (lines[y][x] == 'M' || lines[y][x] == 'S') 
                     Game.MonstersCount++;
                 map[x, y] = lines[y][x] switch
                 {
@@ -25,8 +25,9 @@ namespace Bomberman
                     'M' => Helpers.Array<PredictableMonster>(),
                     'S' => Helpers.Array<SmartMonster>(),
                     'D' => Helpers.Array<Dynamite>(),
-                    'B' => Helpers.Array<Block>(),
-                    'C' => Helpers.Array<CloseDoor>(),
+                    'C' => Helpers.Array<ClosedDoor>(),
+                    'V' => Helpers.Array<Block>(),
+                    'Q' => new ICreature[] { new BreakableWall(), new ClosedDoor() },
                     'b' => Helpers.Array<PlusBomb>(),
                     's' => Helpers.Array<PlusSplash>(),
                     ' ' => new ICreature[] { },

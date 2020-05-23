@@ -2,10 +2,7 @@
 {
     public class PlusBomb : ICreature
     {
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "PlusBombIcon.png";
         
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 

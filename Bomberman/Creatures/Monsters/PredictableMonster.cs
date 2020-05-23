@@ -65,8 +65,7 @@ namespace Bomberman
                 }
             }
             else direction = (direction + 1) % 4;
-
-                return result;
+            return result;
         }
 
         public bool DeadInConflict(ICreature conflictedObject)

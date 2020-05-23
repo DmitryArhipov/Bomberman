@@ -3,11 +3,8 @@
     public class Dynamite : ICreature
     {
         private bool shouldExplode;
-        
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+
+        public string GetImageFileName() => "Dynamite.png";
 
         public CreatureCommand Act(int x, int y)
         {
