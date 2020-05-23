@@ -2,28 +2,14 @@
 {
     public class OpenDoor : ICreature
     {
-        private bool fireHit;
-
         public string GetImageFileName() => "OpenDoor.png";
         
-        public CreatureCommand Act(int x, int y)
-        {
-            if (fireHit)
-            {
-                fireHit = false;
-                return
-                    new CreatureCommand { TransformTo =
-                        new ICreature[] {
-                            new ClosedDoor(),
-                            new PredictableMonster() } };
-            }
-            return new CreatureCommand();
-        }
+        public CreatureCommand Act(int x, int y) => new CreatureCommand();
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            if (conflictedObject is Fire)
-                fireHit = true;
+            if (conflictedObject is Player)
+                Game.CanGoToNextLevel = true;
             return false;
         }
 
