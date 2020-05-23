@@ -9,8 +9,8 @@ namespace Bomberman
     public class Game
     {
         public static ICreature[,][] Map;
-        public static bool IsOver = false;
-        public static bool CanGoToNextLevel = false;
+        public static bool IsOver;
+        public static bool CanGoToNextLevel;
 
         public static Keys KeyPressed;
         public static int MapWidth => Map.GetLength(0);

@@ -90,11 +90,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Drawing\Images\Bomb.png" />
     <Content Include="Drawing\Images\PlusBombIcon.png" />
     <Content Include="Drawing\Images\PlusSplashIcon.png" />
     <Content Include="Drawing\Images\Block.png" />
-    <Content Include="Drawing\Images\Bomb.png" />
-    <Content Include="Drawing\Images\Bomb.png" />
     <Content Include="Drawing\Images\ClosedDoor.png" />
     <Content Include="Drawing\Images\BreakableWall.png" />
     <Content Include="Drawing\Images\Dynamite.png" />
