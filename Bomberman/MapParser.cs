@@ -19,14 +19,14 @@ namespace Bomberman
                     Game.MonstersCount++;
                 map[x, y] = lines[y][x] switch
                 {
+                    'B' => Helpers.Array<Block>(),
                     'P' => Helpers.Array<Player>(),
+                    'D' => Helpers.Array<Dynamite>(),
+                    'C' => Helpers.Array<ClosedDoor>(),
+                    'S' => Helpers.Array<SmartMonster>(),
                     'W' => Helpers.Array<BreakableWall>(),
                     '#' => Helpers.Array<UnbreakableWall>(),
                     'M' => Helpers.Array<PredictableMonster>(),
-                    'S' => Helpers.Array<SmartMonster>(),
-                    'D' => Helpers.Array<Dynamite>(),
-                    'C' => Helpers.Array<ClosedDoor>(),
-                    'V' => Helpers.Array<Block>(),
                     'Q' => new ICreature[] { new BreakableWall(), new ClosedDoor() },
                     'b' => Helpers.Array<PlusBomb>(),
                     's' => Helpers.Array<PlusSplash>(),
