@@ -3,7 +3,11 @@
     public class OpenDoor : ICreature
     {
         private bool fireHit;
-        public string GetImageFileName() => "OpenDoor.png";
+        
+        public string GetImageFileName()
+        {
+            throw new System.NotImplementedException();
+        }
         
         public CreatureCommand Act(int x, int y)
         {
@@ -11,9 +15,9 @@
             {
                 fireHit = false;
                 return
-                    new CreatureCommand { TransformTo =
+                    new CreatureCommand() { TransformTo =
                         new ICreature[] {
-                            new ClosedDoor(),
+                            new CloseDoor(),
                             new PredictableMonster() } };
             }
             return new CreatureCommand();
@@ -21,11 +25,11 @@
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            if (conflictedObject is Player)
-                Game.CanGoToNextLevel = true;
+            if (conflictedObject is Fire)
+                fireHit = true;
             return false;
         }
-        
+
         public int GetDrawingPriority() => 100;
     }
 }
