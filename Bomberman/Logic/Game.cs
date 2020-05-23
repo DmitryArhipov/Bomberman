@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.MemoryMappedFiles;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Bomberman
 {
@@ -18,7 +14,7 @@ namespace Bomberman
         public static bool[,] WantToMoveMonster;
         public static int MonstersCount;
         public static int Level = 1;
-        public static bool PlayerIsDead;
+        public static bool IsPlayerDead;
         
         public static void CreateMap(string map)
         {

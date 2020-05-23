@@ -18,12 +18,19 @@ namespace Bomberman
             if (Game.CanGoToNextLevel)
                 if (Program.levels.Count != 0)
                 {
-                    Game.CreateMap(Program.levels.Dequeue());
+                    Program.currentLevel = Program.levels.Dequeue();
+                    Game.CreateMap(Program.currentLevel);
                     Game.Level++;
                     Game.CanGoToNextLevel = false;
                 }
                 else
                     Game.IsOver = true;
+
+            if (Game.IsPlayerDead)
+            {
+                Game.CreateMap(Program.currentLevel);
+                Game.IsPlayerDead = false;
+            }
 
             for (var x = 0; x < Game.MapWidth; x++)
                 for (var y = 0; y < Game.MapHeight; y++)

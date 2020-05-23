@@ -9,6 +9,7 @@ namespace Bomberman
 {
     static class Program
     {
+        public static string currentLevel;
         public static Queue<string> levels = new Queue<string>();
         public static readonly string SlnPath = Directory.GetCurrentDirectory();
         public static readonly string ProjectPath = Path.Combine(SlnPath, "..", "..");
@@ -18,19 +19,14 @@ namespace Bomberman
         [STAThread]
         static void Main()
         {
-            //var levels = new Queue<string>();
             foreach (var level in Maps.GetFiles("*txt"))
             {
                 using StreamReader sr = level.OpenText();
                 levels.Enqueue(sr.ReadToEnd());
             }
-            
-            /*if (Game.CanGoToNextLevel)
-            {
-                Game.CreateMap(levels.Dequeue());
-                Game.CanGoToNextLevel = false;
-            }*/
-            Game.CreateMap(levels.Dequeue());
+
+            currentLevel = levels.Dequeue();
+            Game.CreateMap(currentLevel);
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
