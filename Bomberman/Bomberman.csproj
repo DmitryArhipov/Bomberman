@@ -55,6 +55,7 @@
     <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
     <Compile Include="Creatures\Monsters\Monster.cs" />
+    <Compile Include="Creatures\Monsters\RandomMonster.cs" />
     <Compile Include="Creatures\Monsters\SmartMonster.cs" />
     <Compile Include="Creatures\Monsters\PredictableMonster.cs" />
     <Compile Include="Creatures\Monsters\WideSearchMonster.cs" />
