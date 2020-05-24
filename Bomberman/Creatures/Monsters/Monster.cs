@@ -5,12 +5,11 @@ namespace Bomberman
     public abstract class Monster : ICreature
     {
         protected Point Position { get; set; }
+        public bool Alive = true;
 
         public abstract string GetImageFileName();
         public abstract CreatureCommand Act(int x, int y);
         public int GetDrawingPriority() => 3;
-
-        public bool Alive = true;
         
         public bool DeadInConflict(ICreature conflictedObject)
         {

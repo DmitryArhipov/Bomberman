@@ -13,9 +13,9 @@ namespace Bomberman
                                         || creature is Dynamite || creature is Block);
         }
 
-        public static bool ContainsUnbreakableWall(this IEnumerable<ICreature> cell)
+        public static bool ContainsHole(this IEnumerable<ICreature> cell)
         {
-            return cell.OfType<UnbreakableWall>().Any();
+            return cell.OfType<Hole>().Any();
         }
 
         public static bool ContainsDoor(this IEnumerable<ICreature> cell)

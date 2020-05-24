@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -82,6 +81,7 @@ namespace Bomberman
         {
             return CanMove(point) &&
                    !Game.Map[point.X, point.Y].ContainsMonster() &&
+                   !Game.Map[point.X, point.Y].ContainsHole() &&
                    !Game.WantToMoveMonster[point.X, point.Y];
         }
 

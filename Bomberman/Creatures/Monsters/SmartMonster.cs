@@ -66,6 +66,7 @@ namespace Bomberman
                    point.Y >= 0 && point.Y < Game.MapHeight &&
                    !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb() &&
                    !Game.Map[point.X, point.Y].ContainsMonster() &&
+                   !Game.Map[point.X, point.Y].ContainsHole() &&
                    !Game.WantToMoveMonster[point.X, point.Y];
         }
 

@@ -63,6 +63,7 @@
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\Dynamite.cs" />
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
+    <Compile Include="Creatures\Obstacles\Hole.cs" />
     <Compile Include="Creatures\Player\Bomb.cs" />
     <Compile Include="Creatures\Player\Player.cs" />
     <Compile Include="Drawing\PauseBackground.cs">
@@ -121,9 +122,17 @@
     <Content Include="Drawing\Images\running-left.png" />
     <Content Include="Drawing\Images\running-right.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
-    <Content Include="Maps\Level1.txt" />
-    <Content Include="Maps\Level2.txt" />
-    <Content Include="Maps\Level3.txt" />
+    <Content Include="Maps\Level01.txt" />
+    <Content Include="Maps\Level02.txt" />
+    <Content Include="Maps\Level03.txt" />
+    <Content Include="Maps\Level04.txt" />
+    <Content Include="Maps\Level06.txt" />
+    <Content Include="Maps\Level08.txt" />
+    <Content Include="Maps\Level07.txt" />
+    <Content Include="Maps\Level09.txt" />
+    <Content Include="Maps\Level10.txt" />
+    <Content Include="Maps\Level23.txt" />
+    <Content Include="Maps\Level05.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />

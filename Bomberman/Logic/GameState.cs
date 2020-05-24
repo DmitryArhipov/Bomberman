@@ -88,9 +88,8 @@ namespace Bomberman
                 }
 
             var aliveCreatures = aliveCandidates.Select(c => c.Creature).ToList();
-            var aliveCreaturesWithoutDoors = aliveCreatures.Where(creatures => !(creatures is ClosedDoor
-                                                                                 || creatures is OpenDoor)).ToList();
-            if (aliveCreaturesWithoutDoors.Count > 1 && !IsBombAndPlayer(aliveCreaturesWithoutDoors) && !IsFire(aliveCreaturesWithoutDoors))
+            var aliveCreaturesWithoutDoors = aliveCreatures.Where(c => !(c is ClosedDoor || c is OpenDoor)).ToList();
+            if (aliveCreaturesWithoutDoors.Count > 1 && !IsBombAndPlayer(aliveCreaturesWithoutDoors) && !IsFireOrHole(aliveCreaturesWithoutDoors))
                 throw new Exception(
                     $"Creatures {aliveCreatures[0].GetType().Name} and {aliveCreatures[1].GetType().Name} claimed the same map cell");
 
@@ -107,9 +106,10 @@ namespace Bomberman
             return candidate1.From == candidate2.To && candidate1.To == candidate2.From;
         }
 
-        private static bool IsFire(List<ICreature> aliveCandidates)
+        private static bool IsFireOrHole(List<ICreature> aliveCandidates)
         {
-            return aliveCandidates.OfType<Fire>().Count() == aliveCandidates.Count;
+            var aliveCandidatesWithoutHole = aliveCandidates.Where(c => !(c is Hole)).ToList();
+            return aliveCandidatesWithoutHole.OfType<Fire>().Count() == aliveCandidates.Count;
         }
 
         private static bool IsBombAndPlayer(List<ICreature> aliveCandidates)
