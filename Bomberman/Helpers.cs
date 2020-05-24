@@ -25,7 +25,7 @@ namespace Bomberman
         
         public static bool ContainsMonster(this IEnumerable<ICreature> cell)
         {
-            return cell.Any(creature => creature is PredictableMonster || creature is SmartMonster);
+            return cell.Any(creature => creature is Monster);
         }
 
         public static ICreature[] Array<T>() where T : ICreature, new() => new ICreature[] { new T() };

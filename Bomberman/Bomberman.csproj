@@ -57,6 +57,7 @@
     <Compile Include="Creatures\Monsters\Monster.cs" />
     <Compile Include="Creatures\Monsters\SmartMonster.cs" />
     <Compile Include="Creatures\Monsters\PredictableMonster.cs" />
+    <Compile Include="Creatures\Monsters\WideSearchMonster.cs" />
     <Compile Include="Creatures\Obstacles\Block.cs" />
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\Dynamite.cs" />

@@ -24,6 +24,7 @@ namespace Bomberman
                 shouldExplode = true;
             if (shouldExplode)
             {
+                Game.WantToMoveMonster[x, y] = false;
                 player.CurrentBombs--;
                 return 
                     new CreatureCommand { TransformTo =
