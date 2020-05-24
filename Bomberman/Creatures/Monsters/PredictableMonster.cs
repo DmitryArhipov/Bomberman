@@ -9,6 +9,7 @@ namespace Bomberman
         private int direction;
         private Stopwatch timer = Stopwatch.StartNew();
         private const double msToGo = 500;
+        
         public override string GetImageFileName() => "PredictableMonster.png";
 
         public override CreatureCommand Act(int x, int y)
@@ -16,6 +17,7 @@ namespace Bomberman
             var result = new CreatureCommand();
             Position = new Point(x, y);
             var newPosition = Position;
+            
             if (direction == 0 && x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb()
                 && !Game.Map[x + 1, y].ContainsMonster() && Game.WantToMoveMonster[x + 1, y] == false)
             {
@@ -28,6 +30,7 @@ namespace Bomberman
                     result.DeltaX = 1;
                 }
             }
+            
             else if (direction == 1 && y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
                      && !Game.Map[x, y + 1].ContainsMonster() && Game.WantToMoveMonster[x, y + 1] == false)
             {
@@ -40,6 +43,7 @@ namespace Bomberman
                     result.DeltaY = 1;
                 }
             }
+            
             else if (direction == 2 && x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
                      && !Game.Map[x - 1, y].ContainsMonster() && Game.WantToMoveMonster[x - 1, y] == false)
             {
@@ -52,6 +56,7 @@ namespace Bomberman
                     result.DeltaX = -1;
                 }
             }
+            
             else if (direction == 3 && y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
                      && !Game.Map[x, y - 1].ContainsMonster() && Game.WantToMoveMonster[x, y - 1] == false)
             {

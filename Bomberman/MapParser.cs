@@ -7,7 +7,7 @@ namespace Bomberman
 {
     public static class MapParser
     {
-        private static readonly HashSet<char> MonstersAsLetters = new HashSet<char>{'M', 'S'};
+        private static readonly HashSet<char> MonstersAsLetters = new HashSet<char>{'0', '1', '2', '3'};
     
         public static ICreature[,][] GetMapFromText(string text)
         {
