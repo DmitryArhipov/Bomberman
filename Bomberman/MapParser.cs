@@ -23,9 +23,11 @@ namespace Bomberman
                     
                     map[x, y] = lines[y][x] switch
                     {
+                        'H' => Helpers.Array<Hole>(),
                         'B' => Helpers.Array<Block>(),
                         'P' => Helpers.Array<Player>(),
                         'D' => Helpers.Array<Dynamite>(),
+                        'O' => Helpers.Array<OpenDoor>(),
                         'C' => Helpers.Array<ClosedDoor>(),
                         'W' => Helpers.Array<BreakableWall>(),
                         '#' => Helpers.Array<UnbreakableWall>(),
