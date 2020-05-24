@@ -11,6 +11,13 @@ namespace Bomberman
         public const int ElementSize = 50;
         public List<CreatureAnimation> Animations = new List<CreatureAnimation>();
 
+        public GameState()
+        {
+            Program.currentLevel = Program.levels.Dequeue();
+            Game.CreateMap(Program.currentLevel);
+            Game.Level++;
+        }
+
         public void BeginAct()
         {
             Animations.Clear();

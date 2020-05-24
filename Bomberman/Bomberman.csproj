@@ -65,6 +65,18 @@
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
     <Compile Include="Creatures\Player\Bomb.cs" />
     <Compile Include="Creatures\Player\Player.cs" />
+    <Compile Include="Drawing\PauseBackground.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\PauseBackground.Designer.cs">
+      <DependentUpon>PauseBackground.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drawing\Pause.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\Pause.Designer.cs">
+      <DependentUpon>Pause.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\StartWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Drawing\Images\SmartMonster.png" />
+    <Content Include="Drawing\Images\PredictableMonster.png" />
+    <Content Include="Drawing\Images\WideSearchMonster.png" />
+    <Content Include="Drawing\Images\RandomMonster.png" />
     <Content Include="Drawing\Images\Bomb.png" />
     <Content Include="Drawing\Images\PlusBombIcon.png" />
     <Content Include="Drawing\Images\PlusSplashIcon.png" />
@@ -102,10 +118,8 @@
     <Content Include="Drawing\Images\Dynamite.png" />
     <Content Include="Drawing\Images\Fire.png" />
     <Content Include="Drawing\Images\OpenDoor.png" />
-    <Content Include="Drawing\Images\PredictableMonster.png" />
     <Content Include="Drawing\Images\running-left.png" />
     <Content Include="Drawing\Images\running-right.png" />
-    <Content Include="Drawing\Images\SmartMonster.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
     <Content Include="Maps\Level1.txt" />
     <Content Include="Maps\Level2.txt" />
@@ -115,6 +129,12 @@
     <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Drawing\PauseBackground.resx">
+      <DependentUpon>PauseBackground.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drawing\Pause.resx">
+      <DependentUpon>Pause.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Drawing\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </EmbeddedResource>

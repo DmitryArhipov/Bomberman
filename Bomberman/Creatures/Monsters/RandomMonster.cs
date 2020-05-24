@@ -8,7 +8,7 @@ namespace Bomberman
 {
     public class RandomMonster : Monster
     {
-        public override string GetImageFileName() => "PredictableMonster.png";
+        public override string GetImageFileName() => "RandomMonster.png";
         private Point? direction;
         private Stopwatch timer = Stopwatch.StartNew();
         private const double msBeforeGo = 500;

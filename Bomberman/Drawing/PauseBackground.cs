@@ -3,19 +3,20 @@ using System.Windows.Forms;
 
 namespace Bomberman
 {
-    public partial class WinWindow : Form
+    public partial class PauseBackground : Form
     {
-        public WinWindow()
+        private Pause pause; 
+        
+        public PauseBackground()
         {
             InitializeComponent();
         }
-        
-        private void CloseButton_Click(object sender, EventArgs e) => Application.Exit();
-        
-        protected override void OnShown(EventArgs e)
+
+        public PauseBackground(Pause pause)
         {
-            base.OnShown(e);
-            ActiveControl = null;
+            this.pause = pause;
+            InitializeComponent();
+            ClientSize = this.pause.ClientSize;
         }
         
         protected override CreateParams CreateParams 

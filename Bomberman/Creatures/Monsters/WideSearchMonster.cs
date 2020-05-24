@@ -9,7 +9,7 @@ namespace Bomberman
 {
     public class WideSearchMonster : Monster
     {
-        public override string GetImageFileName() => "SmartMonster.png";
+        public override string GetImageFileName() => "WideSearchMonster.png";
         private const double msBeforeGo = 200;
         private Stopwatch timer = Stopwatch.StartNew();
         private static readonly Random random = new Random();

@@ -19,8 +19,18 @@ namespace Bomberman
         private void NewGame_Click(object sender, EventArgs e)
         {
             Hide();
-            var gameWindow = new Window(new DirectoryInfo(ImagesPath));
+            var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
             gameWindow.Show();
+        }
+
+        protected override CreateParams CreateParams 
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            } 
         }
 
         private void Saving_Click(object sender, EventArgs e)

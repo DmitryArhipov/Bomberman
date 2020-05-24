@@ -34,7 +34,7 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            WinText = new TextBox();
             CloseButton = new Button();
             SuspendLayout();
             //
@@ -53,21 +53,21 @@ namespace Bomberman
             CloseButton.FlatAppearance.BorderColor = Color.Brown;
             CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // textBox1
+            // WinText
             // 
-            textBox1.BackColor = Color.ForestGreen;
-            textBox1.Font = new Font("Showcard Gothic", 48F, FontStyle.Bold,
+            WinText.BackColor = Color.ForestGreen;
+            WinText.Font = new Font("Showcard Gothic", 48F, FontStyle.Bold,
                 GraphicsUnit.Point, ((byte) (0)));
-            textBox1.Location = new Point(125, 135);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(550, 130);
-            textBox1.TabStop = false;
-            //textBox1.TabIndex = 0;
-            textBox1.Text = "YOU WIN";
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.TextAlign = HorizontalAlignment.Center;
-            textBox1.Multiline = true;
-            textBox1.ReadOnly = true;
+            WinText.Location = new Point(125, 135);
+            WinText.Name = "WinText";
+            WinText.Size = new Size(550, 130);
+            WinText.TabStop = true;
+            WinText.Text = "YOU WIN";
+            WinText.BorderStyle = BorderStyle.None;
+            WinText.TextAlign = HorizontalAlignment.Center;
+            WinText.Multiline = true;
+            WinText.ReadOnly = true;
+            WinText.Cursor = DefaultCursor;
             // 
             // WinWindow
             // 
@@ -76,7 +76,7 @@ namespace Bomberman
             BackColor = Color.ForestGreen;
             ClientSize = new Size(800, 400);
             ControlBox = false;
-            Controls.Add(this.textBox1);
+            Controls.Add(this.WinText);
             Controls.Add(CloseButton);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
@@ -91,7 +91,7 @@ namespace Bomberman
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox WinText;
         private Button CloseButton;
     }
 }

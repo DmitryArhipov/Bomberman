@@ -9,9 +9,11 @@ namespace Bomberman
 {
     static class Program
     {
+        private static readonly string SlnPath = Directory.GetCurrentDirectory();
+        
         public static string currentLevel;
+        public static List<string> Levels = new List<string>();
         public static Queue<string> levels = new Queue<string>();
-        public static readonly string SlnPath = Directory.GetCurrentDirectory();
         public static readonly string ProjectPath = Path.Combine(SlnPath, "..", "..");
         private static readonly string MapsPath = Path.Combine(ProjectPath, "Maps");
         private static readonly DirectoryInfo Maps = new DirectoryInfo(MapsPath);
@@ -22,11 +24,11 @@ namespace Bomberman
             foreach (var level in Maps.GetFiles("*txt"))
             {
                 using StreamReader sr = level.OpenText();
-                levels.Enqueue(sr.ReadToEnd());
+                Levels.Add(sr.ReadToEnd());
             }
 
-            currentLevel = levels.Dequeue();
-            Game.CreateMap(currentLevel);
+            foreach (var level in Levels)
+                levels.Enqueue(level);
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

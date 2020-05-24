@@ -13,10 +13,13 @@ namespace Bomberman
         private readonly GameState gameState;
         private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
         private int tickCount;
-        private Timer timer = new Timer {Interval = 15};
+        public Timer timer = new Timer {Interval = 15};
+        private StartWindow mainMenu;
+        private Pause pause;
 
-        public Window(DirectoryInfo imagesDirectory = null)
+        public Window(StartWindow startWindow, DirectoryInfo imagesDirectory = null)
         {
+            mainMenu = startWindow;
             gameState = new GameState();
             ClientSize = new Size(
                 GameState.ElementSize * Game.MapWidth,
@@ -28,6 +31,7 @@ namespace Bomberman
                 bitmaps[e.Name] = (Bitmap) Image.FromFile(e.FullName);
             timer.Tick += TimerTick;
             timer.Start();
+            pause = new Pause(mainMenu, this);
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -39,11 +43,21 @@ namespace Bomberman
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                Application.Exit(); // Чтобы можно было выйти из игры, потом уберу
-            pressedKeys.Add(e.KeyCode);
-            Game.KeyPressed = e.KeyCode;
+            {
+                timer.Stop();
+                tickCount = 0;
+                pause.background.Show();
+                pause.Show();
+                Game.IsGamePaused = true;
+                pressedKeys.Remove(e.KeyCode);
+            }
+            else
+            {
+                pressedKeys.Add(e.KeyCode);
+                Game.KeyPressed = e.KeyCode;
+            }
         }
-
+        
         protected override void OnKeyUp(KeyEventArgs e)
         {
             pressedKeys.Remove(e.KeyCode);
@@ -79,6 +93,16 @@ namespace Bomberman
             tickCount++;
             if (tickCount == 8) tickCount = 0;
             Invalidate();
+        }
+        
+        protected override CreateParams CreateParams 
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            } 
         }
     }
 }
