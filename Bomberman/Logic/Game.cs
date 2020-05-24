@@ -2,7 +2,7 @@
 
 namespace Bomberman
 {
-    public class Game
+    public static class Game
     {
         public static ICreature[,][] Map;
         public static bool IsOver;
@@ -18,6 +18,7 @@ namespace Bomberman
         
         public static void CreateMap(string map)
         {
+            MonstersCount = 0;
             Map = MapParser.GetMapFromText(map);
             WantToMoveMonster = new bool[MapWidth, MapHeight];
         }

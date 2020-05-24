@@ -56,8 +56,9 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            Game.IsPlayerDead = conflictedObject is Fire || conflictedObject is PredictableMonster
-                                                         || conflictedObject is SmartMonster || conflictedObject is Block;
+            Game.IsPlayerDead = conflictedObject is Fire ||
+                                conflictedObject is Monster || 
+                                conflictedObject is Block;
             return Game.IsPlayerDead;
         }
 

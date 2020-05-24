@@ -4,18 +4,18 @@ using System.Drawing;
 
 namespace Bomberman
 {
-    public class PredictableMonster : ICreature
+    public class PredictableMonster : Monster
     {
         private int direction;
         private Stopwatch timer = Stopwatch.StartNew();
-        private Point monsterCell;
         private const double SecondsBeforeGo = 1;
-        public string GetImageFileName() => "PredictableMonster.png";
+        public override string GetImageFileName() => "PredictableMonster.png";
 
-        public CreatureCommand Act(int x, int y)
+        public override CreatureCommand Act(int x, int y)
         {
             var result = new CreatureCommand();
-            monsterCell = new Point(x, y);
+            Position = new Point(x, y);
+            var newPosition = Position;
             if (direction == 0 && x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb()
                 && !Game.Map[x + 1, y].ContainsMonster() && Game.WantToMoveMonster[x + 1, y] == false)
             {
@@ -23,7 +23,7 @@ namespace Bomberman
                 {
                     timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
-                    monsterCell.X++;
+                    newPosition.X++;
                     Game.WantToMoveMonster[x + 1, y] = true;
                     result.DeltaX = 1;
                 }
@@ -35,7 +35,7 @@ namespace Bomberman
                 {
                     timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
-                    monsterCell.Y++;
+                    newPosition.Y++;
                     Game.WantToMoveMonster[x, y + 1] = true;
                     result.DeltaY = 1;
                 }
@@ -47,7 +47,7 @@ namespace Bomberman
                 {
                     timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
-                    monsterCell.X--;
+                    newPosition.X--;
                     Game.WantToMoveMonster[x - 1, y] = true;
                     result.DeltaX = -1;
                 }
@@ -59,26 +59,16 @@ namespace Bomberman
                 {
                     timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
-                    monsterCell.Y--;
+                    newPosition.Y--;
                     Game.WantToMoveMonster[x, y - 1] = true;
                     result.DeltaY = -1;
                 }
             }
+
             else direction = (direction + 1) % 4;
+            
+            Position = newPosition;
             return result;
         }
-
-        public bool DeadInConflict(ICreature conflictedObject)
-        {
-            var result = conflictedObject is Fire || conflictedObject is Block;
-            if (result)
-            {
-                Game.WantToMoveMonster[monsterCell.X, monsterCell.Y] = false;
-                Game.MonstersCount--;
-            }
-            return result;
-        }
-
-        public int GetDrawingPriority() => 3;
     }
 }
