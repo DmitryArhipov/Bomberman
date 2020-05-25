@@ -2,10 +2,7 @@
 {
     public class Hole : ICreature
     {
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "Hole.png";
 
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 
