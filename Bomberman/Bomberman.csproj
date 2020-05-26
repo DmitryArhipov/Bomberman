@@ -62,6 +62,7 @@
     <Compile Include="Creatures\Monsters\WideSearchMonster.cs" />
     <Compile Include="Creatures\Obstacles\Block.cs" />
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
+    <Compile Include="Creatures\Obstacles\Plate.cs" />
     <Compile Include="Creatures\Obstacles\Dynamite.cs" />
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\Hole.cs" />

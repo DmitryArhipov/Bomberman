@@ -1,4 +1,7 @@
-﻿namespace Bomberman
+﻿using System.IO;
+using System.Media;
+
+namespace Bomberman
 {
     public class Block : ICreature
     {
@@ -6,6 +9,7 @@
         private bool fireHit;
 
         public string GetImageFileName() => "Block.png";
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "wall.wav");
 
         public CreatureCommand Act(int x, int y)
         {
@@ -55,6 +59,11 @@
             {
                 direction = (conflictedObject as Fire).direction;
                 fireHit = true;
+            }
+            
+            if (conflictedObject is Block && Program.EnableSound && File.Exists(soundFile))
+            {
+                new SoundPlayer(soundFile).Play();
             }
             
             return conflictedObject is Block;

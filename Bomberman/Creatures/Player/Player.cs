@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.IO;
+using System.Media;
+using System.Windows.Forms;
 
 namespace Bomberman
 {
@@ -8,6 +10,7 @@ namespace Bomberman
         public int SplashLimit = 1;
         public int CurrentBombs;
         private string ImageName = "running-right.png";
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "death.wav");
         
         private void ChangeImageName(Keys keys)
         {
@@ -64,6 +67,12 @@ namespace Bomberman
             Game.IsPlayerDead = conflictedObject is Fire ||
                                 conflictedObject is Monster || 
                                 conflictedObject is Block;
+
+            if (Game.IsPlayerDead && Program.EnableSound && File.Exists(soundFile))
+            {
+                new SoundPlayer(soundFile).Play();
+            }
+            
             return Game.IsPlayerDead;
         }
 

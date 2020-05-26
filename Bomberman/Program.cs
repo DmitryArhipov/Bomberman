@@ -17,6 +17,8 @@ namespace Bomberman
         private static readonly string MapsPath = Path.Combine(SlnPath, "Maps");
         private static readonly DirectoryInfo Maps = new DirectoryInfo(MapsPath);
         public static readonly string SavePath = Path.Combine(SlnPath, "Save");
+        public static readonly string SoundsPath = Path.Combine(SlnPath, "Sounds");
+        public static bool EnableSound = true;
 
         [STAThread]
         static void Main()

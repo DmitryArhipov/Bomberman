@@ -1,11 +1,14 @@
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Media;
 
 namespace Bomberman
 {
     public abstract class Monster : ICreatureWithTimer
     {
         protected Point Position { get; set; }
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "monster.wav");
         
         protected Stopwatch Timer = Stopwatch.StartNew();
         private bool alive = true;
@@ -20,6 +23,10 @@ namespace Bomberman
             
             if (alive && result)
             {
+                if (Program.EnableSound && File.Exists(soundFile))
+                {
+                    new SoundPlayer(soundFile).Play();
+                }
                 Game.WantToMoveMonster[Position.X, Position.Y] = false;
                 alive = false;
                 Game.MonstersCount--;

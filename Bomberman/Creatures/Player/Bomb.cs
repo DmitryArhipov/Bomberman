@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Media;
 
 namespace Bomberman
 {
@@ -9,6 +11,7 @@ namespace Bomberman
         private readonly Stopwatch timer;
         private bool shouldExplode;
         public const double secondsBeforeExplosion = 2;
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "bomb.wav");
         
         public Bomb(Player player)
         {
@@ -24,6 +27,11 @@ namespace Bomberman
                 shouldExplode = true;
             if (shouldExplode)
             {
+                if (Program.EnableSound && File.Exists(soundFile))
+                {
+                    new SoundPlayer(soundFile).Play();
+                }
+                
                 Game.WantToMoveMonster[x, y] = false;
                 player.CurrentBombs--;
                 return 
