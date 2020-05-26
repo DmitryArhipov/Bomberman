@@ -9,7 +9,10 @@
         public bool DeadInConflict(ICreature conflictedObject)
         {
             if (conflictedObject is Player)
+            {
                 (conflictedObject as Player).BombsLimit++;
+                Window.Bombs++;
+            }
             return true;
         }
         

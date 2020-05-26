@@ -28,6 +28,8 @@ namespace Bomberman
                     Game.CreateMap(Program.currentLevel);
                     Game.Level++;
                     Game.CanGoToNextLevel = false;
+                    Window.Bombs = 1;
+                    Window.Splash = 1;
                 }
                 else
                     Game.IsOver = true;
@@ -35,6 +37,8 @@ namespace Bomberman
             if (Game.IsPlayerDead)
             {
                 Game.CreateMap(Program.currentLevel);
+                Window.Bombs = 1;
+                Window.Splash = 1;
                 Game.IsPlayerDead = false;
             }
 

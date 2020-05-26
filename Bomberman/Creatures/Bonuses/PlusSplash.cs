@@ -9,7 +9,10 @@
         public bool DeadInConflict(ICreature conflictedObject)
         {
             if (conflictedObject is Player)
-                (conflictedObject as Player).SplashLimit++; 
+            {
+                (conflictedObject as Player).SplashLimit++;
+                Window.Splash++;
+            }
             return true;
         }
         
