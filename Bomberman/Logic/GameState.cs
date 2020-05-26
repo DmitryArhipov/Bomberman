@@ -105,7 +105,8 @@ namespace Bomberman
                 }
 
             var aliveCreatures = aliveCandidates.Select(c => c.Creature).ToList();
-            var aliveCreaturesWithoutDoors = aliveCreatures.Where(c => !(c is ClosedDoor || c is OpenDoor)).ToList();
+            var aliveCreaturesWithoutDoors = aliveCreatures
+                .Where(c => !(c is ClosedDoor || c is OpenDoor || c is Plate || c is PressedPlate)).ToList();
             if (aliveCreaturesWithoutDoors.Count > 1 && !IsBombAndPlayer(aliveCreaturesWithoutDoors) && !IsFireOrHole(aliveCreaturesWithoutDoors))
                 throw new Exception(
                     $"Creatures {aliveCreatures[0].GetType().Name} and {aliveCreatures[1].GetType().Name} claimed the same map cell");

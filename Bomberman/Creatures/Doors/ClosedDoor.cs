@@ -6,7 +6,7 @@
 
         public CreatureCommand Act(int x, int y)
         {
-            return Game.MonstersCount == 0 
+            return Game.MonstersCount == 0 && Game.MonstersCount == 0 
                 ? new CreatureCommand { TransformTo = new[] { new OpenDoor() } } 
                 : new CreatureCommand();
         }
