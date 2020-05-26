@@ -13,7 +13,6 @@ namespace TestProject
     public class Player_Should
     {
         private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
-        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         private const double MonsterThinkingTime = 1;
         private const double TimeGap = 0.05;
         
@@ -174,7 +173,7 @@ namespace TestProject
             Game.Map[3, 1] = new ICreature[] { new Fire(1, Direction.Left) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2 + TimeGap;
+            var testTime = TimeGap;
 
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {

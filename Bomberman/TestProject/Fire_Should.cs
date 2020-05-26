@@ -10,7 +10,6 @@ namespace TestProject
     public class Fire_Should
     {
         private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
-        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         private const double TimeGap = 0.05;
         
         [Test]
@@ -31,7 +30,7 @@ namespace TestProject
             Game.Map[1, 1] = new ICreature[] { new Fire(1, Direction.Right) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2 + TimeGap;
+            var testTime = TimeGap;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
@@ -54,7 +53,7 @@ namespace TestProject
             Game.Map[1, 1] = new ICreature[] { new Fire(1, Direction.Down) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = TimeGap + SecondsBeforeFly;
+            var testTime = TimeGap;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
@@ -76,7 +75,7 @@ namespace TestProject
             Game.Map[x, y] = new ICreature[] { new Fire(1, direction) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = TimeGap + SecondsBeforeFly;
+            var testTime = TimeGap;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
@@ -98,14 +97,9 @@ namespace TestProject
             Game.CreateMap(testMap);
             Game.Map[2, 1] = new ICreature[] { new Fire(1, Direction.Right) };
             var gameState = new GameState();
-            var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
-            {
-                gameState.BeginAct();
-                gameState.EndAct();
-            }
+            gameState.BeginAct();
+            gameState.EndAct();
 
             Game.Map[2, 2].Length.Should().Be(1);
             Game.Map[2, 2].Should().ContainItemsAssignableTo<UnbreakableWall>();
