@@ -49,7 +49,8 @@ namespace Bomberman
                 pause.background.Show();
                 pause.Show();
                 Game.IsGamePaused = true;
-                pressedKeys.Remove(e.KeyCode);
+                Game.KeyPressed = Keys.None;
+                pressedKeys.Clear();
             }
             else
             {
