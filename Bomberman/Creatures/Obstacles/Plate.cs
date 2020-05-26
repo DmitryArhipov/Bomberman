@@ -5,20 +5,19 @@ namespace Bomberman
 {
     public class Plate : ICreature
     {
+        private bool pressing;
         private static readonly string soundFile = Path.Combine(Program.SoundsPath, "button.wav");
+        
         public string GetImageFileName()
         {
             throw new System.NotImplementedException();
         }
-
-        public int GetDrawingPriority()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public CreatureCommand Act(int x, int y)
         {
-            throw new System.NotImplementedException();
+            if(pressing)
+                return new CreatureCommand { TransformTo = new[] { new PressedPlate() } };
+            return new CreatureCommand();
         }
 
         public bool DeadInConflict(ICreature conflictedObject)
@@ -26,9 +25,13 @@ namespace Bomberman
             if (conflictedObject is Block && Program.EnableSound && File.Exists(soundFile))
             {
                 new SoundPlayer(soundFile).Play();
+                Game.PlatesCount--;
+                pressing = true;
             }
 
-            return conflictedObject is Block;
+            return false;
         }
+        
+        public int GetDrawingPriority() => 100;
     }
 }

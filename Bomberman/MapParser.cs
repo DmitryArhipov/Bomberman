@@ -20,10 +20,13 @@ namespace Bomberman
                 {
                     if (MonstersAsLetters.Contains(lines[y][x]))
                         Game.MonstersCount++;
+                    if (lines[y][x] == 'X')
+                        Game.PlatesCount++;
                     
                     map[x, y] = lines[y][x] switch
                     {
                         'H' => Helpers.Array<Hole>(),
+                        'X' => Helpers.Array<Plate>(),
                         'B' => Helpers.Array<Block>(),
                         'P' => Helpers.Array<Player>(),
                         'D' => Helpers.Array<Dynamite>(),

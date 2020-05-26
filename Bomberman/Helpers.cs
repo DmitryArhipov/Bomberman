@@ -17,11 +17,6 @@ namespace Bomberman
         {
             return cell.OfType<Hole>().Any();
         }
-
-        public static bool ContainsDoor(this IEnumerable<ICreature> cell)
-        {
-            return cell.Any(creature => creature is ClosedDoor || creature is OpenDoor);
-        }
         
         public static bool ContainsMonster(this IEnumerable<ICreature> cell)
         {

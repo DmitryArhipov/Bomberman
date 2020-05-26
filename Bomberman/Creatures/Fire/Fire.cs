@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace Bomberman
+﻿namespace Bomberman
 {
     public class Fire : ICreature
     {
