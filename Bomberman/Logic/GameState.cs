@@ -109,7 +109,7 @@ namespace Bomberman
         private static bool IsFireOrHole(List<ICreature> aliveCandidates)
         {
             var aliveCandidatesWithoutHole = aliveCandidates.Where(c => !(c is Hole)).ToList();
-            return aliveCandidatesWithoutHole.OfType<Fire>().Count() == aliveCandidates.Count;
+            return aliveCandidatesWithoutHole.OfType<Fire>().Count() == aliveCandidatesWithoutHole.Count;
         }
 
         private static bool IsBombAndPlayer(List<ICreature> aliveCandidates)

@@ -33,7 +33,7 @@ namespace Bomberman
             
             else if (direction == 1 && y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
                      && !Game.Map[x, y + 1].ContainsMonster() && !Game.WantToMoveMonster[x, y + 1]
-                     && !Game.Map[x + 1, y].ContainsHole())
+                     && !Game.Map[x, y + 1].ContainsHole())
             {
                 if (timer.ElapsedMilliseconds >= msToGo)
                 {
@@ -47,7 +47,7 @@ namespace Bomberman
             
             else if (direction == 2 && x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
                      && !Game.Map[x - 1, y].ContainsMonster() && !Game.WantToMoveMonster[x - 1, y]
-                     && !Game.Map[x + 1, y].ContainsHole())
+                     && !Game.Map[x - 1, y].ContainsHole())
             {
                 if (timer.ElapsedMilliseconds >= msToGo)
                 {
@@ -61,7 +61,7 @@ namespace Bomberman
             
             else if (direction == 3 && y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
                      && !Game.Map[x, y - 1].ContainsMonster() && !Game.WantToMoveMonster[x, y - 1]
-                     && !Game.Map[x + 1, y].ContainsHole())
+                     && !Game.Map[x, y - 1].ContainsHole())
             {
                 if (timer.ElapsedMilliseconds >= msToGo)
                 {

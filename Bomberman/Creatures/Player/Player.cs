@@ -34,17 +34,17 @@ namespace Bomberman
                     break;
                 case Keys.Left:
                     if (x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
-                              && !Game.Map[x + 1, y].ContainsHole())
+                              && !Game.Map[x - 1, y].ContainsHole())
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
                     if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
-                                               && !Game.Map[x + 1, y].ContainsHole())
+                                               && !Game.Map[x, y + 1].ContainsHole())
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
                     if (y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
-                              && !Game.Map[x + 1, y].ContainsHole())
+                              && !Game.Map[x, y - 1].ContainsHole())
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:

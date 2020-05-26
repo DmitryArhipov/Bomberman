@@ -123,6 +123,18 @@
     <Content Include="Drawing\Images\running-left.png" />
     <Content Include="Drawing\Images\running-right.png" />
     <Content Include="Drawing\Images\UnbreakableWall.png" />
+    <Content Include="Maps\Level19.txt" />
+    <Content Include="Maps\Level23.txt" />
+    <Content Include="Maps\Level21.txt" />
+    <Content Include="Maps\Level16.txt" />
+    <Content Include="Maps\Level13.txt" />
+    <Content Include="Maps\Level25.txt" />
+    <Content Include="Maps\Level00test.txt" />
+    <Content Include="Maps\Level15.txt" />
+    <Content Include="Maps\Level12.txt" />
+    <Content Include="Maps\Level22.txt" />
+    <Content Include="Maps\Level17.txt" />
+    <Content Include="Maps\Level18.txt" />
     <Content Include="Maps\Level01.txt" />
     <Content Include="Maps\Level02.txt" />
     <Content Include="Maps\Level03.txt" />
@@ -132,8 +144,11 @@
     <Content Include="Maps\Level07.txt" />
     <Content Include="Maps\Level09.txt" />
     <Content Include="Maps\Level10.txt" />
-    <Content Include="Maps\Level23.txt" />
+    <Content Include="Maps\Level11.txt" />
+    <Content Include="Maps\Level14.txt" />
+    <Content Include="Maps\Level24.txt" />
     <Content Include="Maps\Level05.txt" />
+    <Content Include="Maps\Level20.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources" />
