@@ -38,7 +38,7 @@ namespace Bomberman
             if (random.NextDouble() > 0.5 && CanMoveFinal(GetNewPosition(new Point(x, y), direction.Value)))
                 return new CreatureCommand {DeltaX = direction.Value.X, DeltaY = direction.Value.Y};
 
-            var possibleMoves = new List<Point>();
+            var possibleMoves = new List<Point>{ new Point(0, 0) };
 
             foreach (var newDirection in AllDirections)
             {
