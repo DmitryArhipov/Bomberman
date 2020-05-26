@@ -34,6 +34,7 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
+            this.TopMost = true;
             PauseText = new TextBox();
             BackInGame = new Button();
             InMainMenu = new Button();

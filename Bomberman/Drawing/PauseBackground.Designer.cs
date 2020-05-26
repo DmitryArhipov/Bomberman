@@ -34,6 +34,7 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
+            this.TopMost = true;
             this.SuspendLayout();
             // 
             // HalfTransparentPause
