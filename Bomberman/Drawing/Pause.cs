@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bomberman
@@ -30,16 +31,21 @@ namespace Bomberman
             Hide();
         }
 
+        private void Save_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(Program.SavePath, Game.Level.ToString());
+        }
+
         private void InMainMenu_Click(object sender, EventArgs e)
         {
             game.Close();
             background.Close();
             Close();
             Game.Level = 0;
-            Program.levels.Clear();
-            foreach (var level in Program.Levels)
+            Program.LevelsToPlay.Clear();
+            foreach (var level in Program.AllLevels)
             {
-                Program.levels.Enqueue(level);
+                Program.LevelsToPlay.Enqueue(level);
             }
             mainMenu.Show();
         }

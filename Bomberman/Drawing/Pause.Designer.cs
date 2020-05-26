@@ -37,6 +37,7 @@ namespace Bomberman
             this.TopMost = true;
             PauseText = new TextBox();
             BackInGame = new Button();
+            Save = new Button();
             InMainMenu = new Button();
             Exit = new Button();
             SuspendLayout();
@@ -64,11 +65,24 @@ namespace Bomberman
             BackInGame.Size = new Size(350, 70);
             BackInGame.TabIndex = 0;
             BackInGame.Font = new Font("Snowcard Gotic", 15F);
-            BackInGame.Text = "В игру";
+            BackInGame.Text = "Продолжить";
             BackInGame.BackColor = Color.Cyan;
             BackInGame.FlatAppearance.BorderColor = Color.DarkCyan;
             BackInGame.UseVisualStyleBackColor = true;
             BackInGame.Click += new System.EventHandler(this.BackInGame_Click);
+            //
+            // Save
+            //
+            Save.FlatStyle = FlatStyle.Flat;
+            Save.Name = "Save";
+            Save.Size = new Size(350, 70);
+            Save.TabIndex = 0;
+            Save.Font = new Font("Snowcard Gotic", 15F);
+            Save.Text = "Сохранить";
+            Save.BackColor = Color.Cyan;
+            Save.FlatAppearance.BorderColor = Color.DarkCyan;
+            Save.UseVisualStyleBackColor = true;
+            Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // InMainMenu
             // 
@@ -103,7 +117,7 @@ namespace Bomberman
             TransparencyKey = Color.SlateGray;
             BackColor = Color.SlateGray;
             ClientSize = new Size(3 * game.Width / 4, 
-                PauseText.Height + BackInGame.Height + InMainMenu.Height + Exit.Height + 110);
+                PauseText.Height + BackInGame.Height + InMainMenu.Height + Exit.Height + Save.Height + 110);
             StartPosition = FormStartPosition.CenterScreen;
             ControlBox = false;
             FormBorderStyle = FormBorderStyle.None;
@@ -112,13 +126,15 @@ namespace Bomberman
             Text = "Pause";
             Controls.Add(InMainMenu);
             Controls.Add(BackInGame);
+            Controls.Add(Save);
             Controls.Add(Exit);
             Controls.Add(PauseText);
             ResumeLayout(false);
             
             PauseText.Location = new Point((Width - PauseText.Width) / 2, PauseText.Height / 5);
             BackInGame.Location = new Point((Width - BackInGame.Width) / 2, PauseText.Height);
-            InMainMenu.Location = new Point((Width - InMainMenu.Width) / 2, BackInGame.Location.Y + 50);
+            Save.Location = new Point((Width - InMainMenu.Width) / 2, BackInGame.Location.Y + 50);
+            InMainMenu.Location = new Point((Width - Exit.Width) / 2, Save.Location.Y + 50);
             Exit.Location = new Point((Width - Exit.Width) / 2, InMainMenu.Location.Y + 50);
         }
 
@@ -126,6 +142,7 @@ namespace Bomberman
 
         private TextBox PauseText;
         private Button InMainMenu;
+        private Button Save;
         private Button BackInGame;
         private Button Exit;
     }

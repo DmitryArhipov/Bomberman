@@ -13,9 +13,8 @@ namespace Bomberman
 
         public GameState()
         {
-            Program.currentLevel = Program.levels.Dequeue();
+            Program.currentLevel = Program.LevelsToPlay.Dequeue();
             Game.CreateMap(Program.currentLevel);
-            Game.Level++;
         }
 
         public void BeginAct()
@@ -23,9 +22,9 @@ namespace Bomberman
             Animations.Clear();
 
             if (Game.CanGoToNextLevel)
-                if (Program.levels.Count != 0)
+                if (Program.LevelsToPlay.Count != 0)
                 {
-                    Program.currentLevel = Program.levels.Dequeue();
+                    Program.currentLevel = Program.LevelsToPlay.Dequeue();
                     Game.CreateMap(Program.currentLevel);
                     Game.Level++;
                     Game.CanGoToNextLevel = false;
