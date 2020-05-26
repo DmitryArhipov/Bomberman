@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using Bomberman;
+﻿using Bomberman;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -9,7 +7,6 @@ namespace TestProject
     [TestFixture]
     public class BreakableWall_Should
     {
-        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         [Test]
         public void BreakableWall_GetImageFileName_RightImageName()
         {
@@ -27,14 +24,9 @@ namespace TestProject
             Game.CreateMap(testMap);
             Game.Map[2, 1] = new ICreature[] { new Fire(1, Direction.Left) };
             var gameState = new GameState();
-            var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2;
             
-            while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
-            {
-                gameState.BeginAct();
-                gameState.EndAct();
-            }
+            gameState.BeginAct();
+            gameState.EndAct();
 
             Game.Map[1, 1].Should().BeEmpty();
         }

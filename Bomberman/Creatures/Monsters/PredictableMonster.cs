@@ -6,7 +6,6 @@ namespace Bomberman
     public class PredictableMonster : Monster
     {
         private int direction;
-        private Stopwatch timer = Stopwatch.StartNew();
         private const double msToGo = 500;
         
         public override string GetImageFileName() => "PredictableMonster.png";
@@ -21,9 +20,9 @@ namespace Bomberman
                 && !Game.Map[x + 1, y].ContainsMonster() && !Game.WantToMoveMonster[x + 1, y]
                 && !Game.Map[x + 1, y].ContainsHole())
             {
-                if (timer.ElapsedMilliseconds >= msToGo)
+                if (Timer.ElapsedMilliseconds >= msToGo)
                 {
-                    timer = Stopwatch.StartNew();
+                    Timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
                     newPosition.X++;
                     Game.WantToMoveMonster[x + 1, y] = true;
@@ -35,9 +34,9 @@ namespace Bomberman
                      && !Game.Map[x, y + 1].ContainsMonster() && !Game.WantToMoveMonster[x, y + 1]
                      && !Game.Map[x, y + 1].ContainsHole())
             {
-                if (timer.ElapsedMilliseconds >= msToGo)
+                if (Timer.ElapsedMilliseconds >= msToGo)
                 {
-                    timer = Stopwatch.StartNew();
+                    Timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
                     newPosition.Y++;
                     Game.WantToMoveMonster[x, y + 1] = true;
@@ -49,9 +48,9 @@ namespace Bomberman
                      && !Game.Map[x - 1, y].ContainsMonster() && !Game.WantToMoveMonster[x - 1, y]
                      && !Game.Map[x - 1, y].ContainsHole())
             {
-                if (timer.ElapsedMilliseconds >= msToGo)
+                if (Timer.ElapsedMilliseconds >= msToGo)
                 {
-                    timer = Stopwatch.StartNew();
+                    Timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
                     newPosition.X--;
                     Game.WantToMoveMonster[x - 1, y] = true;
@@ -63,9 +62,9 @@ namespace Bomberman
                      && !Game.Map[x, y - 1].ContainsMonster() && !Game.WantToMoveMonster[x, y - 1]
                      && !Game.Map[x, y - 1].ContainsHole())
             {
-                if (timer.ElapsedMilliseconds >= msToGo)
+                if (Timer.ElapsedMilliseconds >= msToGo)
                 {
-                    timer = Stopwatch.StartNew();
+                    Timer = Stopwatch.StartNew();
                     Game.WantToMoveMonster[x, y] = false;
                     newPosition.Y--;
                     Game.WantToMoveMonster[x, y - 1] = true;

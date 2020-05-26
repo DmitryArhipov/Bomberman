@@ -11,7 +11,6 @@ namespace TestProject
     public class Bomb_Should
     {
         private const double SecondsBeforeExplosion = Bomb.secondsBeforeExplosion;
-        private const double SecondsBeforeFly = Fire.secondsBeforeFly;
         private const double TimeGap = 0.05;
         [Test]
         public void Bomb_GetImageFileName_RightImageName()
@@ -38,7 +37,7 @@ namespace TestProject
             
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = TimeGap + SecondsBeforeExplosion + SecondsBeforeFly;
+            var testTime = TimeGap + SecondsBeforeExplosion;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
@@ -90,7 +89,7 @@ namespace TestProject
             Game.Map[2, 2] = new ICreature[] { new Bomb(new Player()) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = TimeGap + SecondsBeforeExplosion + SecondsBeforeFly;
+            var testTime = TimeGap + SecondsBeforeExplosion;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {
@@ -121,7 +120,7 @@ namespace TestProject
             Game.Map[2, 1] = new ICreature[] { new Bomb(new Player()) };
             var gameState = new GameState();
             var timer = Stopwatch.StartNew();
-            var testTime = SecondsBeforeFly * 2 + TimeGap;
+            var testTime = TimeGap;
             
             while (timer.Elapsed <= TimeSpan.FromSeconds(testTime))
             {

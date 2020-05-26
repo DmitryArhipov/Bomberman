@@ -63,6 +63,24 @@ namespace Bomberman
             Animations = Animations.OrderByDescending(z => z.Creature.GetDrawingPriority()).ToList();
         }
 
+        public void Pause()
+        {
+            for (var x = 0; x < Game.MapWidth; x++)
+                for (var y = 0; y < Game.MapHeight; y++)
+                    foreach (var creature in Game.Map[x,y])
+                        if (creature is ICreatureWithTimer timer)
+                            timer.Pause();
+        }
+
+        public void Unpause()
+        {
+            for (var x = 0; x < Game.MapWidth; x++)
+                for (var y = 0; y < Game.MapHeight; y++)
+                    foreach (var creature in Game.Map[x,y])
+                        if (creature is ICreatureWithTimer timer)
+                            timer.Unpause();
+        }
+
         public void EndAct()
         {
             var candidates = GetCandidatesPerLocation();

@@ -10,7 +10,7 @@ namespace Bomberman
     public class Window : Form
     {
         private readonly Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>();
-        private readonly GameState gameState;
+        public readonly GameState gameState;
         private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
         private int tickCount;
         public Timer timer = new Timer {Interval = 15};
@@ -48,7 +48,7 @@ namespace Bomberman
                 tickCount = 0;
                 pause.background.Show();
                 pause.Show();
-                Game.IsGamePaused = true;
+                gameState.Pause();
                 Game.KeyPressed = Keys.None;
                 pressedKeys.Clear();
             }

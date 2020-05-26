@@ -54,6 +54,7 @@
     <Compile Include="Creatures\Doors\OpenDoor.cs" />
     <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
+    <Compile Include="Creatures\ICreatureWithTimer.cs" />
     <Compile Include="Creatures\Monsters\Monster.cs" />
     <Compile Include="Creatures\Monsters\RandomMonster.cs" />
     <Compile Include="Creatures\Monsters\SmartMonster.cs" />

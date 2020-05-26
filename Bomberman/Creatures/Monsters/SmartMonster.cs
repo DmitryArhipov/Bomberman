@@ -10,19 +10,18 @@ namespace Bomberman
         public override string GetImageFileName() => "SmartMonster.png";
         
         private const double msBeforeGo = 150;
-        private Stopwatch timer = Stopwatch.StartNew();
         private readonly Random random = new Random();
 
         public override CreatureCommand Act(int x, int y)
         {
             Position = new Point(x, y);
-            if (timer.ElapsedMilliseconds < msBeforeGo)
+            if (Timer.ElapsedMilliseconds < msBeforeGo)
             {
                 Game.WantToMoveMonster[x, y] = true;
                 return new CreatureCommand();
             }
 
-            timer = Stopwatch.StartNew();
+            Timer = Stopwatch.StartNew();
             Game.WantToMoveMonster[x, y] = false;
             var command = GetOptimalMove(x, y);
             Game.WantToMoveMonster[x + command.DeltaX, y + command.DeltaY] = true;

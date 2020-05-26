@@ -24,6 +24,7 @@ namespace Bomberman
 
         private void BackInGame_Click(object sender, EventArgs e)
         {
+            game.gameState.Unpause();
             game.timer.Start();
             background.Hide();
             Hide();

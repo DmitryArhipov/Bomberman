@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Bomberman
 {
-    public class Bomb : ICreature
+    public class Bomb : ICreatureWithTimer
     {
         private readonly Player player;
         private readonly Stopwatch timer;
@@ -43,6 +43,10 @@ namespace Bomberman
                 shouldExplode = true;
             return false;
         }
+
+        public void Pause() => timer.Stop();
+
+        public void Unpause() => timer.Start();
 
         public int GetDrawingPriority() => 6;
     }
