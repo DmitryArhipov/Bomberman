@@ -1,13 +1,13 @@
 ﻿#######################
-##D P# W1#  B B B  #  #
-##D  #B# ##  B B B WBB#
-##D  # #DD# B B B  #  #
-#D W #C#DD#  B B B ## #
-#D DD# #  W B B B  #WD#
-#D D################ ##
-#D D#D  D#W  B 22 #DBD#
-#DBD#   B  #####W##   #
-#D D#D  W###  0# s# 0 #
-#D      B  ## ## ##   #
-## ##D  D#W   b# W  D #
+#b#D D#s#0000000000000#
+# #  B# #BBBBBBBBBBBBB#
+#PWD  W WDDDDDDDDDDDDD#
+# #  B# #BBBBBBBBBBBBB#
+#s#D D#b#             #
+#########             #
+#WWWWW#b#2 2 2 2 2 2 2#
+#0W W # #WWWWWWWWWWWWQ#
+#W  W W W             #
+#0W W # # # # # # # # #
+#WWWWW#s#  1   1   1  #
 #######################

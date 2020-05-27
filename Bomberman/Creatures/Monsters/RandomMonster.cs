@@ -56,14 +56,14 @@ namespace Bomberman
         {
             return point.X >= 0 && point.X < Game.MapWidth &&
                    point.Y >= 0 && point.Y < Game.MapHeight &&
+                   !Game.Map[point.X, point.Y].ContainsHole() &&
                    !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb();
         }
         
         private static bool CanMoveFinal(Point point)
         {
             return CanMove(point) &&
-                   !Game.Map[point.X, point.Y].ContainsMonster() && 
-                   !Game.Map[point.X, point.Y].ContainsHole() &&
+                   !Game.Map[point.X, point.Y].ContainsMonster() &&
                    !Game.WantToMoveMonster[point.X, point.Y];
         }
 
