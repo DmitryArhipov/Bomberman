@@ -2,10 +2,7 @@
 {
     public class RemoteControl : ICreature
     {
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "RemoteControl.png";
         
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 

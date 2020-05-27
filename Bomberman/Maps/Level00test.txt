@@ -1,13 +1,13 @@
 ﻿#######################
 #P                   C#
 #                     #
+#bbbbbbbbbbbbbbbbbbbbb#
 #                     #
+# R                   #
 #                     #
-#                     #
-#                     #
-#                     #
-#                     #
-#                     #
-#                     #
-#                     #
+#                    B#
+#WWWWWWWW            X#
+#WWWWWWWW            X#
+#WWWWWWWW            X#
+#DDDDDDDD            X#
 #######################

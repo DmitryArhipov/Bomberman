@@ -8,10 +8,7 @@ namespace Bomberman
         private bool pressing;
         private static readonly string soundFile = Path.Combine(Program.SoundsPath, "button.wav");
         
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "Button.png";
         
         public CreatureCommand Act(int x, int y)
         {
@@ -22,7 +19,7 @@ namespace Bomberman
 
         public bool DeadInConflict(ICreature conflictedObject)
         {
-            if (conflictedObject is Block && Program.EnableSound && File.Exists(soundFile))
+            if (conflictedObject is Block && Program.EnableSound && File.Exists(soundFile) && !pressing)
             {
                 new SoundPlayer(soundFile).Play();
                 Game.PlatesCount--;

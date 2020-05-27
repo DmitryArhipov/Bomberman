@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Bomberman.Bonuses;
 using Bomberman.Doors;
+using Bomberman.FinalObjects;
 
 namespace Bomberman
 {
@@ -32,6 +33,7 @@ namespace Bomberman
                         'D' => Helpers.Array<Dynamite>(),
                         'O' => Helpers.Array<OpenDoor>(),
                         'C' => Helpers.Array<ClosedDoor>(),
+                        'R' => Helpers.Array<RemoteControl>(),
                         'W' => Helpers.Array<BreakableWall>(),
                         '#' => Helpers.Array<UnbreakableWall>(),
                         '0' => Helpers.Array<PredictableMonster>(),

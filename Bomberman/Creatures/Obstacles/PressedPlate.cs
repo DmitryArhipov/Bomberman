@@ -2,10 +2,7 @@
 {
     public class PressedPlate : ICreature
     {
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "ClickedButton.png";
         
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 
