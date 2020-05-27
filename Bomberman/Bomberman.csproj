@@ -52,6 +52,8 @@
     <Compile Include="Creatures\Bonuses\PlusSplash.cs" />
     <Compile Include="Creatures\Doors\ClosedDoor.cs" />
     <Compile Include="Creatures\Doors\OpenDoor.cs" />
+    <Compile Include="Creatures\FinalObjects\RemoteControl.cs" />
+    <Compile Include="Creatures\FinalObjects\SpecialWall.cs" />
     <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
     <Compile Include="Creatures\ICreatureWithTimer.cs" />
