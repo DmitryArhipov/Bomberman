@@ -15,6 +15,6 @@
             return result;
         }
         
-        public int GetDrawingPriority() => 5;
+        public int GetDrawingPriority() => 100;
     }
 }

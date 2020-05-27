@@ -33,6 +33,7 @@ namespace Bomberman
                         'D' => Helpers.Array<Dynamite>(),
                         'O' => Helpers.Array<OpenDoor>(),
                         'C' => Helpers.Array<ClosedDoor>(),
+                        'S' => Helpers.Array<SpecialWall>(),
                         'R' => Helpers.Array<RemoteControl>(),
                         'W' => Helpers.Array<BreakableWall>(),
                         '#' => Helpers.Array<UnbreakableWall>(),

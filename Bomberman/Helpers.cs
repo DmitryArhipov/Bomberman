@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Bomberman.Doors;
+using Bomberman.FinalObjects;
 
 namespace Bomberman
 {
@@ -10,7 +9,7 @@ namespace Bomberman
         public static bool ContainsObstaclesOrBomb(this IEnumerable<ICreature> cell)
         {
             return cell.Any(creature => creature is Bomb || creature is BreakableWall || creature is UnbreakableWall
-                                        || creature is Dynamite || creature is Block);
+                                        || creature is Dynamite || creature is Block || creature is SpecialWall);
         }
 
         public static bool ContainsHole(this IEnumerable<ICreature> cell)
