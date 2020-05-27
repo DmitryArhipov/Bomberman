@@ -34,7 +34,7 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
-            WinText = new TextBox();
+            WinText = new Label();
             CloseButton = new Button();
             SuspendLayout();
             //
@@ -64,9 +64,7 @@ namespace Bomberman
             WinText.TabStop = true;
             WinText.Text = "YOU WIN";
             WinText.BorderStyle = BorderStyle.None;
-            WinText.TextAlign = HorizontalAlignment.Center;
-            WinText.Multiline = true;
-            WinText.ReadOnly = true;
+            WinText.TextAlign = ContentAlignment.TopCenter;
             WinText.Cursor = DefaultCursor;
             // 
             // WinWindow
@@ -91,7 +89,7 @@ namespace Bomberman
 
         #endregion
 
-        private TextBox WinText;
+        private Label WinText;
         private Button CloseButton;
     }
 }

@@ -11,7 +11,7 @@ namespace Bomberman
     {
         private readonly Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>();
         private static readonly string IconsPath = Path.Combine(Program.SlnPath, "Resources");
-        private static readonly DirectoryInfo Icons = new DirectoryInfo(IconsPath);
+        public static readonly DirectoryInfo Icons = new DirectoryInfo(IconsPath);
         private static FileInfo bombIcon = Icons.GetFiles("BombIcon.png").First();
         private static FileInfo splashIcon = Icons.GetFiles("SplashIcon.png").First();
         public readonly GameState gameState;

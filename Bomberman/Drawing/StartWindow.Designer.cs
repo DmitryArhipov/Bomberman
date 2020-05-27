@@ -40,6 +40,7 @@ namespace Bomberman
             Saving = new Button();
             AboutGame = new Button();
             Rules = new Button();
+            VolumeButton = new Button();
             SuspendLayout();
             //
             // CloseButton
@@ -110,6 +111,20 @@ namespace Bomberman
             Rules.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             Rules.BackColor = Color.SlateBlue;
             Rules.Click += new System.EventHandler(this.Rules_Click);
+            //
+            // VolumeButton
+            //
+            VolumeButton.Size = new Size(70, 70);
+            if (Program.EnableSound)
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeIcon.FullName);
+            else
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeMuteIcon.FullName);
+            VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
+            VolumeButton.FlatStyle = FlatStyle.Popup;
+            VolumeButton.FlatAppearance.BorderColor = Color.DarkSlateGray;
+            VolumeButton.TabStop = true;
+            VolumeButton.Name = "VolumeButton";
+            VolumeButton.Click += new System.EventHandler(this.VolumeButton_Click);
             // 
             // StartWindow
             // 
@@ -123,6 +138,7 @@ namespace Bomberman
             Controls.Add(Saving);
             Controls.Add(AboutGame);
             Controls.Add(Rules);
+            Controls.Add(VolumeButton);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "StartWindow";
@@ -141,6 +157,7 @@ namespace Bomberman
                 AboutGame.Location.Y + 45);
             CloseButton.Location = new Point((Width - NewGame.Width) / 2,
                 Rules.Location.Y + 45);
+            VolumeButton.Location = new Point(Width - VolumeButton.Width, 0);
         }
 
         #endregion
@@ -150,6 +167,7 @@ namespace Bomberman
         private Button Saving;
         private Button AboutGame;
         private Button Rules;
+        public static Button VolumeButton;
     }
 }
 

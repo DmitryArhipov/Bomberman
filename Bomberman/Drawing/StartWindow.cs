@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bomberman
@@ -9,6 +10,8 @@ namespace Bomberman
     {
         private static readonly string ImagesPath = Path.Combine(Program.SlnPath, "Images");
         private static readonly Size ButtonSize = new Size(300, 70);
+        public static FileInfo volumeIcon = Window.Icons.GetFiles("Volume.png").First();
+        public static FileInfo volumeMuteIcon = Window.Icons.GetFiles("VolumeMute.png").First();
         public StartWindow()
         {
             InitializeComponent();
@@ -21,16 +24,6 @@ namespace Bomberman
             Hide();
             var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
             gameWindow.Show();
-        }
-
-        protected override CreateParams CreateParams 
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            } 
         }
 
         private void Saving_Click(object sender, EventArgs e)
@@ -49,9 +42,6 @@ namespace Bomberman
             var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
             gameWindow.Show();
         }
-        private void StartWindow_Load(object sender, EventArgs e)
-        {
-        }
 
         private void AboutGame_Click(object sender, EventArgs e)
         {
@@ -59,6 +49,36 @@ namespace Bomberman
 
         private void Rules_Click(object sender, EventArgs e)
         {
+        }
+
+        private void VolumeButton_Click(object sender, EventArgs e)
+        {
+            if (Program.EnableSound)
+            {
+                VolumeButton.BackgroundImage = Image.FromFile(volumeMuteIcon.FullName);
+                VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
+                Program.EnableSound = false;
+            }
+            else
+            {
+                VolumeButton.BackgroundImage = Image.FromFile(volumeIcon.FullName);
+                VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
+                Program.EnableSound = true;
+            }
+        }
+
+        private void StartWindow_Load(object sender, EventArgs e)
+        {
+        }
+        
+        protected override CreateParams CreateParams 
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            } 
         }
     }
 }

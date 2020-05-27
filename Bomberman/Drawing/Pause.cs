@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -40,7 +41,7 @@ namespace Bomberman
         {
             game.Close();
             background.Close();
-            Close();
+            Hide();
             Game.Level = 0;
             Program.LevelsToPlay.Clear();
             foreach (var level in Program.AllLevels)
@@ -54,15 +55,31 @@ namespace Bomberman
         {
             Application.Exit();
         }
+
+        private void VolumeButton_Click(object sender, EventArgs e)
+        {
+            if (Program.EnableSound)
+            {
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeMuteIcon.FullName);
+                StartWindow.VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeMuteIcon.FullName);
+                Program.EnableSound = false;
+            }
+            else
+            {
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeIcon.FullName);
+                StartWindow.VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeIcon.FullName);
+                Program.EnableSound = true;
+            }
+        }
         
-        protected override CreateParams CreateParams 
+        protected override CreateParams CreateParams
         {
             get
             {
                 CreateParams cp = base.CreateParams;
                 cp.ExStyle |= 0x02000000;
                 return cp;
-            } 
+            }
         }
     }
 }

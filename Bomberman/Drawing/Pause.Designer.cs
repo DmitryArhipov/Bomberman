@@ -34,12 +34,12 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
-            this.TopMost = true;
-            PauseText = new TextBox();
+            PauseText = new Label();
             BackInGame = new Button();
             Save = new Button();
             InMainMenu = new Button();
             Exit = new Button();
+            VolumeButton = new Button();
             SuspendLayout();
             // 
             // Pause
@@ -53,9 +53,8 @@ namespace Bomberman
             PauseText.TabStop = true;
             PauseText.Text = "ПАУЗА";
             PauseText.BorderStyle = BorderStyle.None;
-            PauseText.TextAlign = HorizontalAlignment.Center;
-            PauseText.Multiline = true;
-            PauseText.ReadOnly = true;
+            PauseText.TextAlign = ContentAlignment.TopCenter;
+            PauseText.AllowDrop = false;
             PauseText.Cursor = DefaultCursor;
             // 
             // BackInGame
@@ -109,6 +108,20 @@ namespace Bomberman
             Exit.FlatAppearance.BorderColor = Color.DarkCyan;
             Exit.UseVisualStyleBackColor = true;
             Exit.Click += new System.EventHandler(this.Exit_click);
+            //
+            // VolumeButton
+            //
+            VolumeButton.Size = new Size(70, 70);
+            if (Program.EnableSound)
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeIcon.FullName);
+            else
+                VolumeButton.BackgroundImage = Image.FromFile(StartWindow.volumeMuteIcon.FullName);
+            VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
+            VolumeButton.FlatStyle = FlatStyle.Popup;
+            VolumeButton.FlatAppearance.BorderColor = Color.DarkSlateGray;
+            VolumeButton.TabStop = true;
+            VolumeButton.Name = "VolumeButton";
+            VolumeButton.Click += new System.EventHandler(this.VolumeButton_Click);
             // 
             // Pause
             // 
@@ -124,11 +137,13 @@ namespace Bomberman
             Margin = new Padding(3, 4, 3, 4);
             Name = "Pause";
             Text = "Pause";
+            TopMost = true;
             Controls.Add(InMainMenu);
             Controls.Add(BackInGame);
             Controls.Add(Save);
             Controls.Add(Exit);
             Controls.Add(PauseText);
+            Controls.Add(VolumeButton);
             ResumeLayout(false);
             
             PauseText.Location = new Point((Width - PauseText.Width) / 2, PauseText.Height / 5);
@@ -136,14 +151,16 @@ namespace Bomberman
             Save.Location = new Point((Width - InMainMenu.Width) / 2, BackInGame.Location.Y + 50);
             InMainMenu.Location = new Point((Width - Exit.Width) / 2, Save.Location.Y + 50);
             Exit.Location = new Point((Width - Exit.Width) / 2, InMainMenu.Location.Y + 50);
+            VolumeButton.Location = new Point(Width - VolumeButton.Width, 0);
         }
 
         #endregion
 
-        private TextBox PauseText;
+        private Label PauseText;
         private Button InMainMenu;
         private Button Save;
         private Button BackInGame;
         private Button Exit;
+        private Button VolumeButton;
     }
 }
