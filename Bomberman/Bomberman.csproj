@@ -109,7 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Drawing\Images\Button.png" />
+    <Content Include="Drawing\Images\ClickedButton.png" />
     <Content Include="Drawing\Images\Hole.png" />
+    <Content Include="Drawing\Images\RemoteControl.png" />
     <Content Include="Drawing\Images\SmartMonster.png" />
     <Content Include="Drawing\Images\PredictableMonster.png" />
     <Content Include="Drawing\Images\WideSearchMonster.png" />
