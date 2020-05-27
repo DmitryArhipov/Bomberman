@@ -68,7 +68,6 @@ namespace Bomberman
         protected override void OnKeyUp(KeyEventArgs e)
         {
             pressedKeys.Remove(e.KeyCode);
-            Game.KeyPressed = pressedKeys.Any() ? pressedKeys.Min() : Keys.None;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -104,6 +103,8 @@ namespace Bomberman
             tickCount++;
             if (tickCount == 8) tickCount = 0;
             Invalidate();
+            
+            Game.KeyPressed = pressedKeys.Any() ? pressedKeys.Min() : Keys.None;
         }
         
         protected override CreateParams CreateParams 
