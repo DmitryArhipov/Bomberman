@@ -6,7 +6,7 @@
 #s#D D#b#             #
 #########             #
 #WWWWW#b#2 2 2 2 2 2 2#
-#0W W # #WWWWWWWWWWWWQ#
+#0W W # #QWWWWWWWWWWWW#
 #W  W W W             #
 #0W W # # # # # # # # #
 #WWWWW#s#  1   1   1  #

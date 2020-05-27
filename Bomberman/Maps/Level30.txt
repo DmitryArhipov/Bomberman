@@ -6,7 +6,7 @@
 ###W## DD#W# #0# HHDBX#
 #XB WW # #WW   # ######
 ###B## #0###W### HDBBX#
-##  #X D BX# Wb# ####W#
+##  #X D BX# Wb# ####B#
 # B #  #0### #B#  WWWs#
 ##X #B ###   #X#W######
 ###X#X  W  B #X#  WBCX#
