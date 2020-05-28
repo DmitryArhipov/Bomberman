@@ -1,4 +1,6 @@
-﻿namespace Bomberman
+﻿using System;
+
+namespace Bomberman
 {
     public class Fire : ICreature
     {
@@ -26,7 +28,8 @@
                 Direction.Right => new CreatureCommand{DeltaX = 1},
                 Direction.Left => new CreatureCommand{DeltaX = -1},
                 Direction.Up => new CreatureCommand{DeltaY = -1},
-                Direction.Down => new CreatureCommand{DeltaY = 1}
+                Direction.Down => new CreatureCommand{DeltaY = 1},
+                _ => throw new ArgumentException("Unknown direction")
             };
         }
 

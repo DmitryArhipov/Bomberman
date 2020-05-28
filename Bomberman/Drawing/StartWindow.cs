@@ -17,6 +17,11 @@ namespace Bomberman
             InitializeComponent();
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
         private void CloseButton_Click(object sender, EventArgs e) => Application.Exit();
 
         private void NewGame_Click(object sender, EventArgs e)

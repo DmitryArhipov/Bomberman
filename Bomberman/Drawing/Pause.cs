@@ -23,6 +23,11 @@ namespace Bomberman
             InitializeComponent();
             background = new PauseBackground(this);
         }
+        
+        protected override void OnClosed(EventArgs e)
+        {
+            BackInGame_Click(null, e);
+        }
 
         private void BackInGame_Click(object sender, EventArgs e)
         {
@@ -39,8 +44,8 @@ namespace Bomberman
 
         private void InMainMenu_Click(object sender, EventArgs e)
         {
-            game.Close();
-            background.Close();
+            game.Hide();
+            background.Hide();
             Hide();
             Game.Level = 0;
             Program.LevelsToPlay.Clear();

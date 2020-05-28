@@ -14,11 +14,14 @@ namespace Bomberman
         {
             var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var map = new ICreature[lines[0].Length, lines.Length][];
+            var playersCount = 0;
 
             for (var y = 0; y < lines.Length; y++)
             {
                 for (var x = 0; x < lines[0].Length; x++)
                 {
+                    if (lines[y][x] == 'P')
+                        playersCount++;
                     if (MonstersAsLetters.Contains(lines[y][x]))
                         Game.MonstersCount++;
                     if (lines[y][x] == 'X')
@@ -45,10 +48,13 @@ namespace Bomberman
                         'b' => Helpers.Array<PlusBomb>(),
                         's' => Helpers.Array<PlusSplash>(),
                         ' ' => new ICreature[] { },
-                         _  => throw new Exception($"wrong character for map {lines[y][x]}")
+                         _  => throw new ArgumentException($"wrong character for map {lines[y][x]}")
                     };
                 }
             }
+            
+            if (playersCount != 1)
+                throw new ArgumentException("There must be exactly 1 player on the map");
 
             return map;
         }

@@ -46,6 +46,11 @@ namespace Bomberman
             DoubleBuffered = true;
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -77,7 +82,15 @@ namespace Bomberman
                 Brushes.Wheat, 0, 0, GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight + GameState.ElementSize / 2);
             foreach (var a in gameState.Animations)
-                e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
+                // e.Graphics.DrawImage(
+                //     bitmaps[a.Creature.GetImageFileName()], 
+                //     a.Location);
+                e.Graphics.DrawImageUnscaled(
+                    bitmaps[a.Creature.GetImageFileName()],
+                    a.Location.X,
+                    a.Location.Y,
+                    GameState.ElementSize,
+                    GameState.ElementSize);
             e.Graphics.ResetTransform();
             e.Graphics.DrawString($"Level: {Game.Level}", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, 0, 0);
             e.Graphics.DrawImage((Bitmap) Image.FromFile(bombIcon.FullName), (float)(GameState.ElementSize * 2.5 + 5), 0);

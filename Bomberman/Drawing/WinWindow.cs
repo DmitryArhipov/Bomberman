@@ -18,6 +18,12 @@ namespace Bomberman
             ActiveControl = null;
         }
         
+        
+        protected override void OnClosed(EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        
         protected override CreateParams CreateParams 
         {
             get
