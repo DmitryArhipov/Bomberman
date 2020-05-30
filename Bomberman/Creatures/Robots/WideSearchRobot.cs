@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace Bomberman
 {
-    public class WideSearchMonster : Monster
+    public class WideSearchRobot : Robot
     {
-        public override string GetImageFileName() => "WideSearchMonster.png";
+        public override string GetImageFileName() => "WideSearchRobot.png";
         private const double msBeforeGo = 200;
         private static readonly Random random = new Random();
 
@@ -17,19 +17,19 @@ namespace Bomberman
             Position = new Point(x, y);
             if (Timer.ElapsedMilliseconds < msBeforeGo)
             {
-                Game.WantToMoveMonster[x, y] = true;
+                Game.WantToMoveRobot[x, y] = true;
                 return new CreatureCommand();
             }
 
             Timer = Stopwatch.StartNew();
-            Game.WantToMoveMonster[x, y] = false;
+            Game.WantToMoveRobot[x, y] = false;
             var newPosition = GetOptimalMove(x, y);
             if (!CanMoveFinal(newPosition))
             {
-                Game.WantToMoveMonster[x, y] = true;
+                Game.WantToMoveRobot[x, y] = true;
                 return new CreatureCommand();
             }
-            Game.WantToMoveMonster[newPosition.X, newPosition.Y] = true;
+            Game.WantToMoveRobot[newPosition.X, newPosition.Y] = true;
             var command = new CreatureCommand{DeltaX = newPosition.X - x, DeltaY = newPosition.Y - y};
             Position = newPosition;
 
@@ -73,15 +73,15 @@ namespace Bomberman
         {
             return point.X >= 0 && point.X < Game.MapWidth &&
                    point.Y >= 0 && point.Y < Game.MapHeight &&
-                   !Game.Map[point.X, point.Y].ContainsHole() &&
+                   !Game.Map[point.X, point.Y].ContainsForceField() &&
                    !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb();
         }
         
         private static bool CanMoveFinal(Point point)
         {
             return CanMove(point) &&
-                   !Game.Map[point.X, point.Y].ContainsMonster() &&
-                   !Game.WantToMoveMonster[point.X, point.Y];
+                   !Game.Map[point.X, point.Y].ContainsRobot() &&
+                   !Game.WantToMoveRobot[point.X, point.Y];
         }
 
         private readonly Point[] AllDirections = {

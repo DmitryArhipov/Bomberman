@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -78,13 +78,10 @@ namespace Bomberman
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.TranslateTransform(0, 23);
-            e.Graphics.FillRectangle(
-                Brushes.Wheat, 0, 0, GameState.ElementSize * Game.MapWidth,
+            e.Graphics.FillRectangle(Brushes.Silver, 0, 0, 
+                GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight + GameState.ElementSize / 2);
             foreach (var a in gameState.Animations)
-                // e.Graphics.DrawImage(
-                //     bitmaps[a.Creature.GetImageFileName()], 
-                //     a.Location);
                 e.Graphics.DrawImageUnscaled(
                     bitmaps[a.Creature.GetImageFileName()],
                     a.Location.X,
@@ -92,11 +89,14 @@ namespace Bomberman
                     GameState.ElementSize,
                     GameState.ElementSize);
             e.Graphics.ResetTransform();
-            e.Graphics.DrawString($"Level: {Game.Level}", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, 0, 0);
-            e.Graphics.DrawImage((Bitmap) Image.FromFile(bombIcon.FullName), (float)(GameState.ElementSize * 2.5 + 5), 0);
-            e.Graphics.DrawString($"×{Bombs}", new Font("Arial", 16), Brushes.Black, GameState.ElementSize * 3 - 3, 0);
-            e.Graphics.DrawImage((Bitmap) Image.FromFile(splashIcon.FullName), GameState.ElementSize * 4 + 5, 0);
-            e.Graphics.DrawString($"×{Splash}", new Font("Arial", 16), Brushes.Black, (float)(GameState.ElementSize * 4.5), 0);
+            e.Graphics.DrawString($"Level: {Game.Level} / {Program.AllLevels.Count - 1}", 
+                new Font("Arial", 16, FontStyle.Bold), Brushes.Black, 0, 0);
+            e.Graphics.DrawImage((Bitmap) Image.FromFile(bombIcon.FullName), (float)(GameState.ElementSize * 3.5 + 5), 0);
+            e.Graphics.DrawString($"×{Bombs}", new Font("Arial", 16), 
+                Brushes.Black, GameState.ElementSize * 4 - 3, 0);
+            e.Graphics.DrawImage((Bitmap) Image.FromFile(splashIcon.FullName), GameState.ElementSize * 5 + 5, 0);
+            e.Graphics.DrawString($"×{Splash}", new Font("Arial", 16), 
+                Brushes.Black, (float)(GameState.ElementSize * 5.5), 0);
         }
 
         private void TimerTick(object sender, EventArgs args)

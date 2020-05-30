@@ -2,10 +2,7 @@
 {
     public class SpecialWall : ICreature
     {
-        public string GetImageFileName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string GetImageFileName() => "SpecialWall.png";
         
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 

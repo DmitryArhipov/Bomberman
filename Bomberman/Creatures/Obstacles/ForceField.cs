@@ -1,8 +1,8 @@
 ﻿namespace Bomberman
 {
-    public class Hole : ICreature
+    public class ForceField : ICreature
     {
-        public string GetImageFileName() => "Hole.png";
+        public string GetImageFileName() => "ForceField.png";
 
         public CreatureCommand Act(int x, int y) => new CreatureCommand();
 

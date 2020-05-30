@@ -11,18 +11,18 @@ namespace Bomberman
         public static Keys KeyPressed;
         public static int MapWidth => Map.GetLength(0);
         public static int MapHeight => Map.GetLength(1);
-        public static bool[,] WantToMoveMonster;
-        public static int MonstersCount;
+        public static bool[,] WantToMoveRobot;
+        public static int RobotsCount;
         public static int PlatesCount;
-        public static int Level = 0;
+        public static int Level;
         public static bool IsPlayerDead;
 
         public static void CreateMap(string map)
         {
-            MonstersCount = 0;
+            RobotsCount = 0;
             PlatesCount = 0;
             Map = MapParser.GetMapFromText(map);
-            WantToMoveMonster = new bool[MapWidth, MapHeight];
+            WantToMoveRobot = new bool[MapWidth, MapHeight];
         }
     }
 }

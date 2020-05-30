@@ -5,9 +5,9 @@ using System.Drawing;
 
 namespace Bomberman
 {
-    public class RandomMonster : Monster
+    public class RandomRobot : Robot
     {
-        public override string GetImageFileName() => "RandomMonster.png";
+        public override string GetImageFileName() => "RandomRobot.png";
         private Point? direction;
         private const double msBeforeGo = 500;
         private readonly Random random = new Random();
@@ -17,14 +17,14 @@ namespace Bomberman
             Position = new Point(x, y);
             if (Timer.ElapsedMilliseconds < msBeforeGo)
             {
-                Game.WantToMoveMonster[x, y] = true;
+                Game.WantToMoveRobot[x, y] = true;
                 return new CreatureCommand();
             }
 
             Timer = Stopwatch.StartNew();
-            Game.WantToMoveMonster[x, y] = false;
+            Game.WantToMoveRobot[x, y] = false;
             var command = GetOptimalMove(x, y);
-            Game.WantToMoveMonster[x + command.DeltaX, y + command.DeltaY] = true;
+            Game.WantToMoveRobot[x + command.DeltaX, y + command.DeltaY] = true;
             Position = new Point(x + command.DeltaX, y + command.DeltaY);
 
             return command;
@@ -56,15 +56,15 @@ namespace Bomberman
         {
             return point.X >= 0 && point.X < Game.MapWidth &&
                    point.Y >= 0 && point.Y < Game.MapHeight &&
-                   !Game.Map[point.X, point.Y].ContainsHole() &&
+                   !Game.Map[point.X, point.Y].ContainsForceField() &&
                    !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb();
         }
         
         private static bool CanMoveFinal(Point point)
         {
             return CanMove(point) &&
-                   !Game.Map[point.X, point.Y].ContainsMonster() &&
-                   !Game.WantToMoveMonster[point.X, point.Y];
+                   !Game.Map[point.X, point.Y].ContainsRobot() &&
+                   !Game.WantToMoveRobot[point.X, point.Y];
         }
 
         private readonly Point[] AllDirections = {

@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Bomberman
 {
-    public class SmartMonster : Monster
+    public class SmartRobot : Robot
     {
-        public override string GetImageFileName() => "SmartMonster.png";
+        public override string GetImageFileName() => "SmartRobot.png";
         
         private const double msBeforeGo = 150;
         private readonly Random random = new Random();
@@ -17,14 +17,14 @@ namespace Bomberman
             Position = new Point(x, y);
             if (Timer.ElapsedMilliseconds < msBeforeGo)
             {
-                Game.WantToMoveMonster[x, y] = true;
+                Game.WantToMoveRobot[x, y] = true;
                 return new CreatureCommand();
             }
 
             Timer = Stopwatch.StartNew();
-            Game.WantToMoveMonster[x, y] = false;
+            Game.WantToMoveRobot[x, y] = false;
             var command = GetOptimalMove(x, y);
-            Game.WantToMoveMonster[x + command.DeltaX, y + command.DeltaY] = true;
+            Game.WantToMoveRobot[x + command.DeltaX, y + command.DeltaY] = true;
 
             Position = new Point(x + command.DeltaX, y + command.DeltaY);
             return command;
@@ -64,9 +64,9 @@ namespace Bomberman
             return point.X >= 0 && point.X < Game.MapWidth &&
                    point.Y >= 0 && point.Y < Game.MapHeight &&
                    !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb() &&
-                   !Game.Map[point.X, point.Y].ContainsMonster() &&
-                   !Game.Map[point.X, point.Y].ContainsHole() &&
-                   !Game.WantToMoveMonster[point.X, point.Y];
+                   !Game.Map[point.X, point.Y].ContainsRobot() &&
+                   !Game.Map[point.X, point.Y].ContainsForceField() &&
+                   !Game.WantToMoveRobot[point.X, point.Y];
         }
 
         private Point[] AllDirections = {

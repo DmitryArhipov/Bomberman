@@ -158,7 +158,7 @@ namespace TestProject
 
             Game.Map[2, 1].Length.Should().Be(1);
             Game.Map[2, 1].Select(c => c.GetType().Name).Should().NotContain("Player");
-            Game.Map[2, 1].Should().ContainItemsAssignableTo<PredictableMonster>();
+            Game.Map[2, 1].Should().ContainItemsAssignableTo<PredictableRobot>();
         }
 
         [Test]

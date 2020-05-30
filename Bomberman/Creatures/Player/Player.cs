@@ -32,28 +32,28 @@ namespace Bomberman
             {
                 case Keys.Right:
                     if (x + 1 < Game.MapWidth && !Game.Map[x + 1, y].ContainsObstaclesOrBomb()
-                                              && !Game.Map[x + 1, y].ContainsHole())
+                                              && !Game.Map[x + 1, y].ContainsForceField())
                         result.DeltaX = 1;
                     break;
                 case Keys.Left:
                     if (x > 0 && !Game.Map[x - 1, y].ContainsObstaclesOrBomb()
-                              && !Game.Map[x - 1, y].ContainsHole())
+                              && !Game.Map[x - 1, y].ContainsForceField())
                         result.DeltaX = -1;
                     break;
                 case Keys.Down:
                     if (y + 1 < Game.MapHeight && !Game.Map[x, y + 1].ContainsObstaclesOrBomb()
-                                               && !Game.Map[x, y + 1].ContainsHole())
+                                               && !Game.Map[x, y + 1].ContainsForceField())
                         result.DeltaY = 1;
                     break;
                 case Keys.Up:
                     if (y > 0 && !Game.Map[x, y - 1].ContainsObstaclesOrBomb()
-                              && !Game.Map[x, y - 1].ContainsHole())
+                              && !Game.Map[x, y - 1].ContainsForceField())
                         result.DeltaY = -1;
                     break;
                 case Keys.Space:
-                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsObstaclesOrBomb() && !Game.WantToMoveMonster[x, y])
+                    if (CurrentBombs < BombsLimit && !Game.Map[x,y].ContainsObstaclesOrBomb() && !Game.WantToMoveRobot[x, y])
                     {
-                        Game.WantToMoveMonster[x, y] = true;
+                        Game.WantToMoveRobot[x, y] = true;
                         result.TransformTo = new ICreature[] {this, new Bomb(this)};
                         CurrentBombs++;
                     }
@@ -65,7 +65,7 @@ namespace Bomberman
         public bool DeadInConflict(ICreature conflictedObject)
         {
             Game.IsPlayerDead = conflictedObject is Fire ||
-                                conflictedObject is Monster || 
+                                conflictedObject is Robot || 
                                 conflictedObject is Block;
 
             if (Game.IsPlayerDead && Program.EnableSound && File.Exists(soundFile))

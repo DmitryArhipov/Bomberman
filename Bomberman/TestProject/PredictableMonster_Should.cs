@@ -16,7 +16,7 @@ namespace TestProject
         [Test]
         public void PredictableMonster_GetImageFileName_RightImageName()
         {
-            var monster = new PredictableMonster();
+            var monster = new PredictableRobot();
             monster.GetImageFileName().Should().Be("PredictableMonster.png");
         }
         
@@ -41,7 +41,7 @@ namespace TestProject
 
             Game.Map[xWas, yWas].Should().BeEmpty();
             Game.Map[x, y].Length.Should().Be(1);
-            Game.Map[x, y].First().Should().BeAssignableTo<PredictableMonster>();
+            Game.Map[x, y].First().Should().BeAssignableTo<PredictableRobot>();
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace TestProject
             }
 
             Game.Map[1, 1].Length.Should().Be(1);
-            Game.Map[1, 1].First().Should().BeAssignableTo<PredictableMonster>();
+            Game.Map[1, 1].First().Should().BeAssignableTo<PredictableRobot>();
         }
     }
 }

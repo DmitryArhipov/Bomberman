@@ -32,7 +32,7 @@ namespace Bomberman
                     new SoundPlayer(soundFile).Play();
                 }
                 
-                Game.WantToMoveMonster[x, y] = false;
+                Game.WantToMoveRobot[x, y] = false;
                 player.CurrentBombs--;
                 return 
                     new CreatureCommand { TransformTo =

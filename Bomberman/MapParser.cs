@@ -8,7 +8,7 @@ namespace Bomberman
 {
     public static class MapParser
     {
-        private static readonly HashSet<char> MonstersAsLetters = new HashSet<char>{'0', '1', '2', '3'};
+        private static readonly HashSet<char> RobotsAsSymbols = new HashSet<char>{'0', '1', '2', '3'};
     
         public static ICreature[,][] GetMapFromText(string text)
         {
@@ -22,14 +22,14 @@ namespace Bomberman
                 {
                     if (lines[y][x] == 'P')
                         playersCount++;
-                    if (MonstersAsLetters.Contains(lines[y][x]))
-                        Game.MonstersCount++;
+                    if (RobotsAsSymbols.Contains(lines[y][x]))
+                        Game.RobotsCount++;
                     if (lines[y][x] == 'X')
                         Game.PlatesCount++;
                     
                     map[x, y] = lines[y][x] switch
                     {
-                        'H' => Helpers.Array<Hole>(),
+                        'H' => Helpers.Array<ForceField>(),
                         'X' => Helpers.Array<Plate>(),
                         'B' => Helpers.Array<Block>(),
                         'P' => Helpers.Array<Player>(),
@@ -40,10 +40,10 @@ namespace Bomberman
                         'R' => Helpers.Array<RemoteControl>(),
                         'W' => Helpers.Array<BreakableWall>(),
                         '#' => Helpers.Array<UnbreakableWall>(),
-                        '0' => Helpers.Array<PredictableMonster>(),
-                        '1' => Helpers.Array<RandomMonster>(),
-                        '2' => Helpers.Array<SmartMonster>(),
-                        '3' => Helpers.Array<WideSearchMonster>(),
+                        '0' => Helpers.Array<PredictableRobot>(),
+                        '1' => Helpers.Array<RandomRobot>(),
+                        '2' => Helpers.Array<SmartRobot>(),
+                        '3' => Helpers.Array<WideSearchRobot>(),
                         'Q' => new ICreature[] {new BreakableWall(), new ClosedDoor()},
                         'b' => Helpers.Array<PlusBomb>(),
                         's' => Helpers.Array<PlusSplash>(),

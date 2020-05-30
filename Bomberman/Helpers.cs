@@ -12,14 +12,14 @@ namespace Bomberman
                                         || creature is Dynamite || creature is Block || creature is SpecialWall);
         }
 
-        public static bool ContainsHole(this IEnumerable<ICreature> cell)
+        public static bool ContainsForceField(this IEnumerable<ICreature> cell)
         {
-            return cell.OfType<Hole>().Any();
+            return cell.OfType<ForceField>().Any();
         }
         
-        public static bool ContainsMonster(this IEnumerable<ICreature> cell)
+        public static bool ContainsRobot(this IEnumerable<ICreature> cell)
         {
-            return cell.Any(creature => creature is Monster);
+            return cell.Any(creature => creature is Robot);
         }
 
         public static ICreature[] Array<T>() where T : ICreature, new() => new ICreature[] { new T() };

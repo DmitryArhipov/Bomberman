@@ -31,7 +31,7 @@ namespace Bomberman
 
             foreach (var level in AllLevels)
                 LevelsToPlay.Enqueue(level);
-            
+                      
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartWindow()); 

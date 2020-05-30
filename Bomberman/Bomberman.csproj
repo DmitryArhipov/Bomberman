@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -57,18 +57,18 @@
     <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
     <Compile Include="Creatures\ICreatureWithTimer.cs" />
-    <Compile Include="Creatures\Monsters\Monster.cs" />
-    <Compile Include="Creatures\Monsters\RandomMonster.cs" />
-    <Compile Include="Creatures\Monsters\SmartMonster.cs" />
-    <Compile Include="Creatures\Monsters\PredictableMonster.cs" />
-    <Compile Include="Creatures\Monsters\WideSearchMonster.cs" />
+    <Compile Include="Creatures\Robots\Robot.cs" />
+    <Compile Include="Creatures\Robots\RandomRobot.cs" />
+    <Compile Include="Creatures\Robots\SmartRobot.cs" />
+    <Compile Include="Creatures\Robots\PredictableRobot.cs" />
+    <Compile Include="Creatures\Robots\WideSearchRobot.cs" />
     <Compile Include="Creatures\Obstacles\Block.cs" />
     <Compile Include="Creatures\Obstacles\BreakableWall.cs" />
     <Compile Include="Creatures\Obstacles\Plate.cs" />
     <Compile Include="Creatures\Obstacles\Dynamite.cs" />
     <Compile Include="Creatures\Obstacles\PressedPlate.cs" />
     <Compile Include="Creatures\Obstacles\UnbreakableWall.cs" />
-    <Compile Include="Creatures\Obstacles\Hole.cs" />
+    <Compile Include="Creatures\Obstacles\ForceField.cs" />
     <Compile Include="Creatures\Player\Bomb.cs" />
     <Compile Include="Creatures\Player\Player.cs" />
     <Compile Include="Drawing\PauseBackground.cs">
@@ -109,63 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Drawing\Images\Button.png" />
-    <Content Include="Drawing\Images\ClickedButton.png" />
-    <Content Include="Drawing\Images\Hole.png" />
-    <Content Include="Drawing\Images\RemoteControl.png" />
-    <Content Include="Drawing\Images\SmartMonster.png" />
-    <Content Include="Drawing\Images\PredictableMonster.png" />
-    <Content Include="Drawing\Images\WideSearchMonster.png" />
-    <Content Include="Drawing\Images\RandomMonster.png" />
-    <Content Include="Drawing\Images\Bomb.png" />
-    <Content Include="Drawing\Images\PlusBombIcon.png" />
-    <Content Include="Drawing\Images\PlusSplashIcon.png" />
-    <Content Include="Drawing\Images\Block.png" />
-    <Content Include="Drawing\Images\ClosedDoor.png" />
-    <Content Include="Drawing\Images\BreakableWall.png" />
-    <Content Include="Drawing\Images\Dynamite.png" />
-    <Content Include="Drawing\Images\Fire.png" />
-    <Content Include="Drawing\Images\OpenDoor.png" />
-    <Content Include="Drawing\Images\running-left.png" />
-    <Content Include="Drawing\Images\running-right.png" />
-    <Content Include="Drawing\Images\UnbreakableWall.png" />
-    <Content Include="Maps\Level26.txt" />
-    <Content Include="Maps\Level18.txt" />
-    <Content Include="Maps\Level28.txt" />
-    <Content Include="Maps\Level29.txt" />
-    <Content Include="Maps\Level30.txt" />
-    <Content Include="Maps\Level31.txt" />
-    <Content Include="Maps\Level19.txt" />
-    <Content Include="Maps\Level23.txt" />
-    <Content Include="Maps\Level21.txt" />
-    <Content Include="Maps\Level16.txt" />
-    <Content Include="Maps\Level13.txt" />
-    <Content Include="Maps\Level25.txt" />
-    <Content Include="Maps\Level00begin.txt" />
-    <Content Include="Maps\Level15.txt" />
-    <Content Include="Maps\Level12.txt" />
-    <Content Include="Maps\Level22.txt" />
-    <Content Include="Maps\Level17.txt" />
-    <Content Include="Maps\Level27.txt" />
-    <Content Include="Maps\Level01.txt" />
-    <Content Include="Maps\Level02.txt" />
-    <Content Include="Maps\Level03.txt" />
-    <Content Include="Maps\Level04.txt" />
-    <Content Include="Maps\Level06.txt" />
-    <Content Include="Maps\Level08.txt" />
-    <Content Include="Maps\Level07.txt" />
-    <Content Include="Maps\Level09.txt" />
-    <Content Include="Maps\Level10.txt" />
-    <Content Include="Maps\Level11.txt" />
-    <Content Include="Maps\Level14.txt" />
-    <Content Include="Maps\Level24.txt" />
-    <Content Include="Maps\Level05.txt" />
-    <Content Include="Maps\Level20.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Drawing\PauseBackground.resx">
