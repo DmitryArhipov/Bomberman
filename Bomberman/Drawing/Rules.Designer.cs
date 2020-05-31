@@ -40,7 +40,7 @@ namespace Bomberman
             Back.FlatStyle = FlatStyle.Flat;
             Back.Font = new Font("Snowcard Gotic", 15F, FontStyle.Bold);
             Back.Margin = new Padding(3, 2, 3, 2);
-            Back.Name = "Next";
+            Back.Name = "Back";
             Back.Size = new Size(200, 40);
             Back.TabIndex = 0;
             Back.Text = "Назад";
@@ -62,7 +62,6 @@ namespace Bomberman
             Name = "Rules";
             Controls.Add(Back);
             StartPosition = FormStartPosition.CenterScreen;
-            TopMost = true;
             
             Back.Location = new Point((Width - Back.Width) / 2, Height - Back.Height - 5);
         }

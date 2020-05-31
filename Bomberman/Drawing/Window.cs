@@ -103,10 +103,10 @@ namespace Bomberman
         {
             if (Game.IsOver)
             {
-                Close();
                 var winWindow = new WinWindow(mainMenu);
                 winWindow.Show();
                 timer.Stop();
+                Hide();
             }
 
             if (Game.IsRemoteControl)

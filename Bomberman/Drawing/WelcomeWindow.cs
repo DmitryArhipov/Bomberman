@@ -28,7 +28,7 @@ namespace Bomberman
                 game.Show();
                 game.gameState.Unpause();
                 game.timer.Start();
-                Close();
+                Hide();
             }
             if (storyLine.Count > 0)
             {
@@ -43,7 +43,12 @@ namespace Bomberman
             game.Show();
             game.gameState.Unpause();
             game.timer.Start();
-            Close();
+            Hide();
+        }
+        
+        protected override void OnClosed(EventArgs e)
+        {
+            Scip_Click(null, e);
         }
         
         protected override CreateParams CreateParams

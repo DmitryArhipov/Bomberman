@@ -24,16 +24,9 @@ namespace Bomberman
         
         private void InMainMenu_Click(object sender, EventArgs e)
         {
-            Close();
+            Hide();
             mainMenu.Show();
         }
-        
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            ActiveControl = null;
-        }
-        
         
         protected override void OnClosed(EventArgs e)
         {

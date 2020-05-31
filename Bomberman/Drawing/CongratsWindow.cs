@@ -25,7 +25,12 @@ namespace Bomberman
         {
             game.gameState.Unpause();
             game.timer.Start();
-            Close();
+            Hide();
+        }
+        
+        protected override void OnClosed(EventArgs e)
+        {
+            Next_Click(null, e);
         }
         
         protected override CreateParams CreateParams
