@@ -42,6 +42,7 @@ namespace Bomberman
 
         private void NewGame_Click(object sender, EventArgs e)
         {
+            player.Stop();
             Hide();
             var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
             var welcomeWindow = new WelcomeWindow(gameWindow);
@@ -54,6 +55,7 @@ namespace Bomberman
         {
             if (File.Exists(Program.SavePath))
             {
+                player.Stop();
                 var save = File.ReadAllText(Program.SavePath);
                 if (int.TryParse(save, out var levelId))
                     for (int i = 0; i < levelId; i++)
@@ -61,10 +63,10 @@ namespace Bomberman
                         Program.LevelsToPlay.Dequeue();
                         Game.Level++;
                     }
+                Hide();
+                var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
+                gameWindow.Show();
             }
-            Hide();
-            var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
-            gameWindow.Show();
         }
 
         private void AboutGame_Click(object sender, EventArgs e)
