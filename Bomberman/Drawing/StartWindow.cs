@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Bomberman
@@ -12,9 +13,17 @@ namespace Bomberman
         private static readonly Size ButtonSize = new Size(300, 70);
         public static FileInfo volumeIcon = Window.Icons.GetFiles("Volume.png").First();
         public static FileInfo volumeMuteIcon = Window.Icons.GetFiles("VolumeMute.png").First();
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "menu.wav");
+        private SoundPlayer player;
+
         public StartWindow()
         {
             InitializeComponent();
+            if (File.Exists(soundFile))
+            {
+                player = new SoundPlayer(soundFile);
+                player.Play();
+            }
         }
         
         protected override void OnClosed(EventArgs e)
@@ -70,12 +79,18 @@ namespace Bomberman
                 VolumeButton.BackgroundImage = Image.FromFile(volumeMuteIcon.FullName);
                 VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
                 Program.EnableSound = false;
+                player?.Stop();
             }
             else
             {
                 VolumeButton.BackgroundImage = Image.FromFile(volumeIcon.FullName);
                 VolumeButton.BackgroundImageLayout = ImageLayout.Stretch;
                 Program.EnableSound = true;
+                if (File.Exists(soundFile))
+                {
+                    player = new SoundPlayer(soundFile);
+                    player.Play();
+                }
             }
         }
 
