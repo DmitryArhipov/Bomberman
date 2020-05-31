@@ -26,6 +26,8 @@ namespace Bomberman
                         Game.RobotsCount++;
                     if (lines[y][x] == 'X')
                         Game.PlatesCount++;
+                    if (lines[y][x] == 'R')
+                        Game.RemoteControlInMap = true;
                     
                     map[x, y] = lines[y][x] switch
                     {

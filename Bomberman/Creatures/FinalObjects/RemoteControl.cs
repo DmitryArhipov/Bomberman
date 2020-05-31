@@ -10,8 +10,11 @@
         {
             var result = conflictedObject is Player;
             if (result)
+            {
                 Game.IsRemoteControl = true;
-
+                Game.RemoteControlInMap = false;
+            }
+            
             return result;
         }
         

@@ -6,7 +6,7 @@
 
         public CreatureCommand Act(int x, int y)
         {
-            return Game.RobotsCount == 0 && Game.PlatesCount == 0 
+            return Game.RobotsCount == 0 && Game.PlatesCount == 0 && !Game.RemoteControlInMap
                 ? new CreatureCommand { TransformTo = new[] { new OpenDoor() } } 
                 : new CreatureCommand();
         }

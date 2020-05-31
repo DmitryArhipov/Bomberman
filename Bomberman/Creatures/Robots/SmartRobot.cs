@@ -61,12 +61,13 @@ namespace Bomberman
 
         private bool CanMove(Point point)
         {
-            return point.X >= 0 && point.X < Game.MapWidth &&
-                   point.Y >= 0 && point.Y < Game.MapHeight &&
-                   !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb() &&
-                   !Game.Map[point.X, point.Y].ContainsRobot() &&
-                   !Game.Map[point.X, point.Y].ContainsForceField() &&
-                   !Game.WantToMoveRobot[point.X, point.Y];
+            return point.X >= 0
+                   && point.X < Game.MapWidth
+                   && point.Y >= 0 && point.Y < Game.MapHeight
+                   && !Game.Map[point.X, point.Y].ContainsObstaclesOrBomb()
+                   && !Game.Map[point.X, point.Y].ContainsRobot()
+                   && !Game.Map[point.X, point.Y].ContainsForceField()
+                   && !Game.WantToMoveRobot[point.X, point.Y];
         }
 
         private Point[] AllDirections = {

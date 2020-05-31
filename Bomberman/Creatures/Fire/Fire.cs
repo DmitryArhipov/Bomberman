@@ -1,4 +1,5 @@
 ﻿using System;
+using Bomberman.FinalObjects;
 
 namespace Bomberman
 {
@@ -36,7 +37,8 @@ namespace Bomberman
         public bool DeadInConflict(ICreature conflictedObject)
         {
             return conflictedObject is Bomb || conflictedObject is Dynamite || conflictedObject is BreakableWall
-                                            || conflictedObject is UnbreakableWall || conflictedObject is Block;
+                                            || conflictedObject is UnbreakableWall || conflictedObject is Block
+                                            || conflictedObject is SpecialWall;
         }
 
         public int GetDrawingPriority() => 2;
