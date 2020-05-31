@@ -28,7 +28,7 @@ namespace Bomberman
                 using StreamReader sr = level.OpenText();
                 AllLevels.Add(sr.ReadToEnd());
             }
-
+            
             foreach (var level in AllLevels)
                 LevelsToPlay.Enqueue(level);
                       

@@ -104,10 +104,23 @@ namespace Bomberman
             if (Game.IsOver)
             {
                 Close();
-                var winWindow = new WinWindow();
+                var winWindow = new WinWindow(mainMenu);
                 winWindow.Show();
                 timer.Stop();
             }
+
+            if (Game.IsRemoteControl)
+            {
+                timer.Stop();
+                tickCount = 0;
+                gameState.Pause();
+                Game.KeyPressed = Keys.None;
+                pressedKeys.Clear();
+                var congratsWindow = new CongratsWindow(this);
+                congratsWindow.Show();
+                Game.IsRemoteControl = false;
+            }
+            
             if (tickCount == 0) gameState.BeginAct();
             foreach (var e in gameState.Animations)
                 e.Location = new Point(e.Location.X + 4 * e.Command.DeltaX, e.Location.Y + 4 * e.Command.DeltaY);

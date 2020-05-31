@@ -75,6 +75,9 @@ namespace Bomberman
 
         private void Rules_Click(object sender, EventArgs e)
         {
+            var rules = new Rules(this);
+            rules.Show();
+            Hide();
         }
 
         private void VolumeButton_Click(object sender, EventArgs e)

@@ -71,6 +71,12 @@
     <Compile Include="Creatures\Obstacles\ForceField.cs" />
     <Compile Include="Creatures\Player\Bomb.cs" />
     <Compile Include="Creatures\Player\Player.cs" />
+    <Compile Include="Drawing\CongratsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\CongratsWindow.Designer.cs">
+      <DependentUpon>CongratsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\PauseBackground.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="Drawing\Pause.Designer.cs">
       <DependentUpon>Pause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drawing\Rules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\Rules.Designer.cs">
+      <DependentUpon>Rules.cs</DependentUpon>
     </Compile>
     <Compile Include="Drawing\StartWindow.cs">
       <SubType>Form</SubType>

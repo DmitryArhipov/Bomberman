@@ -76,7 +76,6 @@ namespace Bomberman
                 Program.EnableSound = true;
             }
         }
-        
         protected override CreateParams CreateParams
         {
             get

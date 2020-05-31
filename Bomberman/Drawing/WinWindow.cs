@@ -1,16 +1,32 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Bomberman
 {
     public partial class WinWindow : Form
     {
+        private static FileInfo backgroundImage = Window.Icons.GetFiles("WinWindow.jpg").First();
+        private static StartWindow mainMenu;
         public WinWindow()
         {
             InitializeComponent();
         }
         
-        private void CloseButton_Click(object sender, EventArgs e) => Application.Exit();
+        public WinWindow(StartWindow startWindow)
+        {
+            mainMenu = startWindow;
+            InitializeComponent();
+        }
+        
+        private void Exit_Click(object sender, EventArgs e) => Application.Exit();
+        
+        private void InMainMenu_Click(object sender, EventArgs e)
+        {
+            Close();
+            mainMenu.Show();
+        }
         
         protected override void OnShown(EventArgs e)
         {
@@ -23,7 +39,7 @@ namespace Bomberman
         {
             Environment.Exit(0);
         }
-        
+
         protected override CreateParams CreateParams 
         {
             get

@@ -34,48 +34,48 @@ namespace Bomberman
         /// </summary>
         private void InitializeComponent()
         {
-            WinText = new Label();
-            CloseButton = new Button();
+            Exit = new Button();
+            InMainMenu = new Button();
             SuspendLayout();
+            //
+            // InMainMenu
+            //
+            InMainMenu.FlatStyle = FlatStyle.Flat;
+            InMainMenu.Font = new Font("Snowcard Gotic", 15F);
+            InMainMenu.Margin = new Padding(3, 2, 3, 2);
+            InMainMenu.Name = "InMainMenu";
+            InMainMenu.Size = new Size(280, 80);
+            InMainMenu.TabIndex = 0;
+            InMainMenu.Text = "Главное меню";
+            InMainMenu.UseVisualStyleBackColor = true;
+            InMainMenu.FlatAppearance.BorderColor = Color.FromArgb(156, 34, 93);
+            InMainMenu.BackColor = Color.FromArgb(213, 100, 124); 
+            InMainMenu.Click += new System.EventHandler(this.InMainMenu_Click);
             //
             // CloseButton
             // 
-            CloseButton.FlatStyle = FlatStyle.Flat;
-            CloseButton.Font = new Font("Snowcard Gotic", 15F);
-            CloseButton.Margin = new Padding(3, 2, 3, 2);
-            CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(80, 50);
-            CloseButton.TabIndex = 0;
-            CloseButton.Text = "X";
-            CloseButton.Font = new Font(FontFamily.GenericSerif, 9F);
-            CloseButton.BackColor = Color.Red;
-            CloseButton.UseVisualStyleBackColor = true;
-            CloseButton.FlatAppearance.BorderColor = Color.Brown;
-            CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
-            // WinText
-            // 
-            WinText.BackColor = Color.ForestGreen;
-            WinText.Font = new Font("Showcard Gothic", 48F, FontStyle.Bold,
-                GraphicsUnit.Point, ((byte) (0)));
-            WinText.Location = new Point(125, 135);
-            WinText.Name = "WinText";
-            WinText.Size = new Size(550, 130);
-            WinText.TabStop = true;
-            WinText.Text = "YOU WIN";
-            WinText.BorderStyle = BorderStyle.None;
-            WinText.TextAlign = ContentAlignment.TopCenter;
-            WinText.Cursor = DefaultCursor;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Snowcard Gotic", 15F);
+            Exit.Margin = new Padding(3, 2, 3, 2);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(280, 80);
+            Exit.TabIndex = 0;
+            Exit.Text = "Выход";
+            Exit.UseVisualStyleBackColor = true;
+            Exit.FlatAppearance.BorderColor = Color.FromArgb(156, 34, 93);
+            Exit.BackColor = Color.FromArgb(213, 100, 124); 
+            Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // WinWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.ForestGreen;
-            ClientSize = new Size(800, 400);
+            BackgroundImage = Image.FromFile(backgroundImage.FullName);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(900, 600);
             ControlBox = false;
-            Controls.Add(this.WinText);
-            Controls.Add(CloseButton);
+            Controls.Add(Exit);
+            Controls.Add(InMainMenu);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "WinWindow";
@@ -84,12 +84,13 @@ namespace Bomberman
             ResumeLayout(false);
             PerformLayout();
             
-            CloseButton.Location = new Point(this.Width - CloseButton.Width, 0);
+            Exit.Location = new Point(Width - Exit.Width - 20, 30);
+            InMainMenu.Location = new Point(20, 30);
         }
 
         #endregion
 
-        private Label WinText;
-        private Button CloseButton;
+        private Button Exit;
+        private Button InMainMenu;
     }
 }
