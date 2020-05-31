@@ -18,6 +18,7 @@ namespace Bomberman
             InitializeComponent();
             ClientSize = this.pause.ClientSize;
         }
+        
         protected override CreateParams CreateParams 
         {
             get

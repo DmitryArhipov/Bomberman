@@ -64,7 +64,6 @@ namespace Bomberman
             Name = "WelcomeWindow";
             Controls.Add(Next);
             StartPosition = FormStartPosition.CenterScreen;
-            TopMost = true;
 
             Next.Location = new Point(Width / 2 - Next.Width + 20, Height - Next.Height - 10);
         }

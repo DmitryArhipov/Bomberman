@@ -71,11 +71,23 @@
     <Compile Include="Creatures\Obstacles\ForceField.cs" />
     <Compile Include="Creatures\Player\Bomb.cs" />
     <Compile Include="Creatures\Player\Player.cs" />
+    <Compile Include="Drawing\AboutGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\AboutGame.Designer.cs">
+      <DependentUpon>AboutGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\CongratsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Drawing\CongratsWindow.Designer.cs">
       <DependentUpon>CongratsWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drawing\Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\Info.Designer.cs">
+      <DependentUpon>Info.cs</DependentUpon>
     </Compile>
     <Compile Include="Drawing\PauseBackground.cs">
       <SubType>Form</SubType>
@@ -129,6 +141,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Drawing\AboutGame.resx">
+      <DependentUpon>AboutGame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Drawing\PauseBackground.resx">
       <DependentUpon>PauseBackground.cs</DependentUpon>
     </EmbeddedResource>
