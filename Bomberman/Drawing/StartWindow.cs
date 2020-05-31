@@ -44,7 +44,10 @@ namespace Bomberman
         {
             Hide();
             var gameWindow = new Window(this, new DirectoryInfo(ImagesPath));
-            gameWindow.Show();
+            var welcomeWindow = new WelcomeWindow(gameWindow);
+            welcomeWindow.Show();
+            gameWindow.timer.Stop();
+            gameWindow.gameState.Pause();
         }
 
         private void Saving_Click(object sender, EventArgs e)

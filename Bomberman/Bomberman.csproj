@@ -89,6 +89,12 @@
     <Compile Include="Drawing\StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drawing\WelcomeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drawing\WelcomeWindow.Designer.cs">
+      <DependentUpon>WelcomeWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Drawing\StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drawing\WelcomeWindow.resx">
+      <DependentUpon>WelcomeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drawing\WinWindow.resx">
       <DependentUpon>WinWindow.cs</DependentUpon>

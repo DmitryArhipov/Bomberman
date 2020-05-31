@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace TestProject
 {
     [TestFixture]
-    public class PredictableMonster_Should
+    public class PredictableRobot_Should
     {
         private const double MonsterThinkingTime = 1;
         private const double TimeGap = 0.05;

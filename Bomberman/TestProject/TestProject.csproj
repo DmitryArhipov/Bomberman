@@ -53,7 +53,7 @@
         <Compile Include="BreakableWall_Should.cs" />
         <Compile Include="Fire_Should.cs" />
         <Compile Include="MapParser_Should.cs" />
-        <Compile Include="PredictableMonster_Should.cs" />
+        <Compile Include="PredictableRobot_Should.cs" />
         <Compile Include="Player_Should.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="UnbreakableWall_Should.cs" />
