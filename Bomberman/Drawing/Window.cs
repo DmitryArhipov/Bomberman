@@ -16,6 +16,7 @@ namespace Bomberman
         private static FileInfo splashIcon = Icons.GetFiles("SplashIcon.png").First();
         public readonly GameState gameState;
         private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
+        private readonly HashSet<Keys> keysToRemove = new HashSet<Keys>();
         private int tickCount;
         public Timer timer = new Timer {Interval = 15};
         private StartWindow mainMenu;
@@ -65,13 +66,12 @@ namespace Bomberman
             else
             {
                 pressedKeys.Add(e.KeyCode);
-                Game.KeyPressed = e.KeyCode;
             }
         }
         
         protected override void OnKeyUp(KeyEventArgs e)
         {
-            pressedKeys.Remove(e.KeyCode);
+            keysToRemove.Add(e.KeyCode);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -119,6 +119,12 @@ namespace Bomberman
                 congratsWindow.Show();
                 Game.IsRemoteControl = false;
             }
+
+            Game.KeyPressed = pressedKeys.Contains(Keys.Space)
+                ? Keys.Space
+                : pressedKeys.Any()
+                    ? pressedKeys.Min()
+                    : Keys.None;
             
             if (tickCount == 0) gameState.BeginAct();
             foreach (var e in gameState.Animations)
@@ -129,7 +135,8 @@ namespace Bomberman
             if (tickCount == 8) tickCount = 0;
             Invalidate();
             
-            Game.KeyPressed = pressedKeys.Any() ? pressedKeys.Min() : Keys.None;
+            pressedKeys.ExceptWith(keysToRemove);
+            keysToRemove.Clear();
         }
         
         protected override CreateParams CreateParams 
