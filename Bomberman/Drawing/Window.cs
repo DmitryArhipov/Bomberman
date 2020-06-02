@@ -56,7 +56,6 @@ namespace Bomberman
             if (e.KeyCode == Keys.Escape)
             {
                 timer.Stop();
-                tickCount = 0;
                 pause.background.Show();
                 pause.Show();
                 gameState.Pause();
