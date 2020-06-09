@@ -1,4 +1,4 @@
-﻿namespace Bomberman.FinalObjects
+﻿namespace Bomberman
 {
     public class SpecialWall : ICreature
     {

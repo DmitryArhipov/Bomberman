@@ -9,6 +9,13 @@ namespace Bomberman
         public static bool CanGoToNextLevel;
         public static bool IsRemoteControl;
         public static bool RemoteControlInMap;
+
+        public static bool Prompt1;
+        public static bool Prompt2;
+        public static bool Prompt3;
+        public static bool Prompt4;
+        public static bool Prompt5;
+        
         public static Keys KeyPressed;
         public static int MapWidth => Map.GetLength(0);
         public static int MapHeight => Map.GetLength(1);

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Media;
 
-namespace Bomberman.Doors
+namespace Bomberman
 {
     public class OpenDoor : ICreature
     {

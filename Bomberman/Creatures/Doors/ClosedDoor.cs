@@ -1,4 +1,4 @@
-﻿namespace Bomberman.Doors
+﻿namespace Bomberman
 {
     public class ClosedDoor : ICreature
     {

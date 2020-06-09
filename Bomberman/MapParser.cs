@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bomberman.Bonuses;
-using Bomberman.Doors;
-using Bomberman.FinalObjects;
 
 namespace Bomberman
 {
@@ -49,6 +46,11 @@ namespace Bomberman
                         'Q' => new ICreature[] {new BreakableWall(), new ClosedDoor()},
                         'b' => Helpers.Array<PlusBomb>(),
                         's' => Helpers.Array<PlusSplash>(),
+                        'm' => new ICreature[] {new Prompt(1)},
+                        'n' => new ICreature[] {new Prompt(2)},
+                        'x' => new ICreature[] {new Prompt(3)},
+                        'y' => new ICreature[] {new Prompt(4)},
+                        'z' => new ICreature[] {new Prompt(5)},
                         ' ' => new ICreature[] { },
                          _  => throw new ArgumentException($"wrong character for map {lines[y][x]}")
                     };
