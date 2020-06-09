@@ -57,7 +57,7 @@
     <Compile Include="Creatures\Fire\Fire.cs" />
     <Compile Include="Creatures\ICreature.cs" />
     <Compile Include="Creatures\ICreatureWithTimer.cs" />
-    <Compile Include="Creatures\Prompts\Prompt.cs" />
+    <Compile Include="Creatures\Hints\Hint.cs" />
     <Compile Include="Creatures\Robots\Robot.cs" />
     <Compile Include="Creatures\Robots\RandomRobot.cs" />
     <Compile Include="Creatures\Robots\SmartRobot.cs" />
