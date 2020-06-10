@@ -31,13 +31,6 @@ namespace Bomberman
             Environment.Exit(0);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            var companyString = "© 2020   Sweet   Brioches   Entertainment";
-            e.Graphics.DrawString(companyString, new Font("Kristen ITC", 11F, FontStyle.Bold), 
-                Brushes.Black, (int)(Width - companyString.Length * 13.5), Height - 18);
-        }
-
         private void CloseButton_Click(object sender, EventArgs e) => Application.Exit();
 
         private void NewGame_Click(object sender, EventArgs e)

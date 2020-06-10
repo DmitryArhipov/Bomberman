@@ -84,6 +84,12 @@
     <Compile Include="Drawing\CongratsWindow.Designer.cs">
       <DependentUpon>CongratsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drawing\HintControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Drawing\HintControl.Designer.cs">
+      <DependentUpon>HintControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Drawing\Info.cs">
       <SubType>Form</SubType>
     </Compile>

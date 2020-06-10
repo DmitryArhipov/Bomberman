@@ -21,12 +21,14 @@ namespace Bomberman
         public Timer timer = new Timer {Interval = 15};
         private StartWindow mainMenu;
         private Pause pause;
+        private HintControl hint;
         public static int Bombs = 1;
         public static int Splash = 1;
 
         public Window(StartWindow startWindow, DirectoryInfo imagesDirectory = null)
         {
             mainMenu = startWindow;
+            hint = new HintControl(this) {Size = new Size(500, 300), Dock = DockStyle.None};
             gameState = new GameState();
             ClientSize = new Size(
                 GameState.ElementSize * Game.MapWidth,
@@ -39,6 +41,9 @@ namespace Bomberman
             timer.Tick += TimerTick;
             timer.Start();
             pause = new Pause(mainMenu, this);
+            hint.Location = new Point((Width - hint.Width) / 2, (Height - hint.Height) / 2);
+            Controls.Add(hint);
+            Focus();
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -118,6 +123,18 @@ namespace Bomberman
                 var congratsWindow = new CongratsWindow(this);
                 congratsWindow.Show();
                 Game.IsRemoteControl = false;
+            }
+            
+            if (Game.Hint1 || Game.Hint2 || Game.Hint3 || Game.Hint4 || Game.Hint5)
+            {
+                hint.Focus();
+                timer.Stop();
+                tickCount = 0;
+                gameState.Pause();
+                Game.KeyPressed = Keys.None;
+                pressedKeys.Clear();
+                hint.SetHintText();
+                hint.Show();
             }
 
             Game.KeyPressed = pressedKeys.Contains(Keys.Space)
