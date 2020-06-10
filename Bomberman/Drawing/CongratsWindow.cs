@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Bomberman
@@ -9,10 +10,18 @@ namespace Bomberman
     {
         private static Window game;
         private static FileInfo background = Window.Icons.GetFiles("Congrats.jpg").First();
+        private static readonly string soundFile = Path.Combine(Program.SoundsPath, "win.wav");
+        private SoundPlayer player;
         
         public CongratsWindow()
         {
             InitializeComponent();
+            
+            if (File.Exists(soundFile) && Program.EnableSound)
+            {
+                player = new SoundPlayer(soundFile);
+                player.Play();
+            }
         }
         
         public CongratsWindow(Window gameWindow)
