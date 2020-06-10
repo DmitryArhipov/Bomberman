@@ -1,4 +1,4 @@
-﻿namespace Bomberman.Bonuses
+﻿namespace Bomberman
 {
     public class PlusBomb : ICreature
     {
