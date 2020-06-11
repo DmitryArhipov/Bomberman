@@ -1,12 +1,12 @@
 ﻿#######################
-#P#D   D    D    W  Ws#
-# #  B   B     BB#W Wb#
-# #  BB B    B   ## ###
-# # 1     B    B #  B0#
-#W#  BBB     B   ## ###
-# #0      W  B   #  B0#
-# #         1  WQ## ###
-#B#D2 WD0   D WWW#  B0#
+#Py#D  D    D    W  Ws#
+# ## B   B     BB#W Wb#
+#  # BB B    B   ## ###
+## #1     B    B #  B0#
+#W # BBB     B   ## ###
+# ##0     W  B   #  B0#
+# #W        1  WQ## ###
+#B#WD2WD0   D WWW#  B0#
 # ################WW###
 #   #   #     B3      #
 # # W # W     B3 2    #
