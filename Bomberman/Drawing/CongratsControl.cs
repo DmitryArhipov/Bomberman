@@ -6,28 +6,27 @@ using System.Windows.Forms;
 
 namespace Bomberman
 {
-    public partial class CongratsWindow : Form
+    public partial class CongratsControl : UserControl
     {
         private static Window game;
         private static FileInfo background = Window.Icons.GetFiles("Congrats.jpg").First();
         private static readonly string soundFile = Path.Combine(Program.SoundsPath, "win.wav");
         private SoundPlayer player;
         
-        public CongratsWindow()
+        public CongratsControl()
         {
             InitializeComponent();
-            
+        }
+        
+        public CongratsControl(Window gameWindow)
+        {
+            game = gameWindow;
+            InitializeComponent();
             if (File.Exists(soundFile) && Program.EnableSound)
             {
                 player = new SoundPlayer(soundFile);
                 player.Play();
             }
-        }
-        
-        public CongratsWindow(Window gameWindow)
-        {
-            game = gameWindow;
-            InitializeComponent();
         }
 
         private void Next_Click(object sender, EventArgs e)
@@ -35,13 +34,9 @@ namespace Bomberman
             game.gameState.Unpause();
             game.timer.Start();
             Hide();
+            game.Focus();
         }
-        
-        protected override void OnClosed(EventArgs e)
-        {
-            Next_Click(null, e);
-        }
-        
+
         protected override CreateParams CreateParams
         {
             get

@@ -38,7 +38,6 @@ namespace Bomberman
             CloseButton = new Button();
             NewGame = new Button();
             Saving = new Button();
-            AboutGame = new Button();
             Rules = new Button();
             VolumeButton = new Button();
             Entertainment = new Label();
@@ -50,7 +49,7 @@ namespace Bomberman
             Entertainment.Font = new Font("Kristen ITC", 11F, FontStyle.Bold);
             Entertainment.ForeColor = Color.Black;
             Entertainment.Name = "PauseText";
-            Entertainment.Size = new Size(400, 20);
+            Entertainment.Size = new Size(1000, 50);
             Entertainment.TabStop = true;
             Entertainment.Text = "© 2020   Sweet   Brioches   Entertainment";
             Entertainment.BorderStyle = BorderStyle.None;
@@ -99,20 +98,6 @@ namespace Bomberman
             Saving.BackColor = Color.SlateBlue;
             Saving.Click += new System.EventHandler(this.Saving_Click);
             //
-            // AboutGame
-            //
-            AboutGame.FlatStyle = FlatStyle.Flat;
-            AboutGame.Font = new Font("Snowcard Gotic", 15F);
-            AboutGame.Margin = new Padding(3, 2, 3, 2);
-            AboutGame.Name = "AboutGame";
-            AboutGame.Size = ButtonSize;
-            AboutGame.TabIndex = 3;
-            AboutGame.Text = "Об Игре";
-            AboutGame.UseVisualStyleBackColor = true;
-            AboutGame.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            AboutGame.BackColor = Color.SlateBlue;
-            AboutGame.Click += new System.EventHandler(this.AboutGame_Click);
-            //
             // Rules
             //
             Rules.FlatStyle = FlatStyle.Flat;
@@ -151,7 +136,6 @@ namespace Bomberman
             Controls.Add(NewGame);
             Controls.Add(CloseButton);
             Controls.Add(Saving);
-            Controls.Add(AboutGame);
             Controls.Add(Rules);
             Controls.Add(VolumeButton);
             Controls.Add(Entertainment);
@@ -166,13 +150,11 @@ namespace Bomberman
             NewGame.Location = new Point((Width - NewGame.Width) / 2,
                 Height / 2 - ButtonSize.Height - 20);
             Saving.Location = new Point((Width - Saving.Width) / 2,
-                NewGame.Location.Y + 45);
-            AboutGame.Location = new Point((Width - Saving.Width) / 2,
-                Saving.Location.Y + 45);
-            Rules.Location = new Point((Width - Saving.Width) / 2, 
-                AboutGame.Location.Y + 45);
-            CloseButton.Location = new Point((Width - NewGame.Width) / 2,
-                Rules.Location.Y + 45);
+                NewGame.Location.Y + 55);
+            Rules.Location = new Point((Width - Saving.Width) / 2,
+                Saving.Location.Y + 55);
+            CloseButton.Location = new Point((Width - Saving.Width) / 2, 
+                Rules.Location.Y + 55);
             VolumeButton.Location = new Point(Width - VolumeButton.Width, 0);
             Entertainment.Location = new Point((Width - Entertainment.Width) / 2, Height - 18);
         }
@@ -182,7 +164,6 @@ namespace Bomberman
         private Button CloseButton;
         private Button NewGame;
         private Button Saving;
-        private Button AboutGame;
         private Button Rules;
         private Label Entertainment;
         public static Button VolumeButton;

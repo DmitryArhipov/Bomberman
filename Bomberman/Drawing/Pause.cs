@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
 namespace Bomberman
 {
-    public partial class Pause : Form
+    public partial class Pause : UserControl
     {
         private StartWindow mainMenu;
         private Window game;
-        public PauseBackground background;
         
         public Pause()
         {
@@ -21,31 +21,28 @@ namespace Bomberman
             mainMenu = startWindow;
             game = gameWindow;
             InitializeComponent();
-            background = new PauseBackground(this);
-        }
-        
-        protected override void OnClosed(EventArgs e)
-        {
-            BackInGame_Click(null, e);
+            Hide();
         }
 
         private void BackInGame_Click(object sender, EventArgs e)
         {
             game.gameState.Unpause();
             game.timer.Start();
-            background.Hide();
             Hide();
+            game.Focus();
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             File.WriteAllText(Program.SavePath, Game.Level.ToString());
+            Save.Text = "Сохранено";
+            Save.BackColor = Color.Gray;
+            Save.FlatAppearance.BorderColor = Color.DimGray;
         }
 
         private void InMainMenu_Click(object sender, EventArgs e)
         {
             game.Hide();
-            background.Hide();
             Hide();
             Game.Level = 0;
             Program.LevelsToPlay.Clear();

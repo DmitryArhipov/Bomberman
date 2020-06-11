@@ -20,7 +20,8 @@ namespace Bomberman
         private int tickCount;
         public Timer timer = new Timer {Interval = 15};
         private StartWindow mainMenu;
-        private Pause pause;
+        public static Pause pause;
+        private CongratsControl congrats;
         private HintControl hint;
         public static int Bombs = 1;
         public static int Splash = 1;
@@ -42,7 +43,9 @@ namespace Bomberman
             timer.Start();
             pause = new Pause(mainMenu, this);
             hint.Location = new Point((Width - hint.Width) / 2, (Height - hint.Height) / 2);
+            pause.Location = new Point((Width - hint.Width) / 2, (Height - hint.Height) / 2);
             Controls.Add(hint);
+            Controls.Add(pause);
             Focus();
         }
         protected override void OnLoad(EventArgs e)
@@ -62,7 +65,7 @@ namespace Bomberman
             if (e.KeyCode == Keys.Escape)
             {
                 timer.Stop();
-                pause.background.Show();
+                pause.Focus();
                 pause.Show();
                 gameState.Pause();
                 Game.KeyPressed = Keys.None;
@@ -116,12 +119,13 @@ namespace Bomberman
             if (Game.IsRemoteControl)
             {
                 timer.Stop();
-                tickCount = 0;
                 gameState.Pause();
                 Game.KeyPressed = Keys.None;
                 pressedKeys.Clear();
-                var congratsWindow = new CongratsWindow(this);
-                congratsWindow.Show();
+                congrats = new CongratsControl(this);
+                congrats.Location = new Point((Width - hint.Width) / 2, (Height - hint.Height) / 2);
+                Controls.Add(congrats);
+                congrats.Focus();
                 Game.IsRemoteControl = false;
             }
             

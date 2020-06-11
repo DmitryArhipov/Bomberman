@@ -44,7 +44,7 @@ namespace Bomberman
             // 
             // Pause
             // 
-            PauseText.BackColor = Color.SlateGray;
+            PauseText.BackColor = Color.Transparent;
             PauseText.Font = new Font("Elephant", 42F, FontStyle.Bold,
                 GraphicsUnit.Point, ((byte) (0)));
             PauseText.ForeColor = Color.Cyan;
@@ -127,17 +127,12 @@ namespace Bomberman
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            TransparencyKey = Color.SlateGray;
-            BackColor = Color.SlateGray;
+            BackColor = Color.FromArgb(120, Color.Black);
             ClientSize = new Size(3 * game.Width / 4, 
                 PauseText.Height + BackInGame.Height + InMainMenu.Height + Exit.Height + Save.Height + 110);
-            StartPosition = FormStartPosition.CenterScreen;
-            ControlBox = false;
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Pause";
             Text = "Pause";
-            TopMost = true;
             Controls.Add(InMainMenu);
             Controls.Add(BackInGame);
             Controls.Add(Save);
@@ -158,7 +153,7 @@ namespace Bomberman
 
         private Label PauseText;
         private Button InMainMenu;
-        private Button Save;
+        public Button Save;
         private Button BackInGame;
         private Button Exit;
         private Button VolumeButton;

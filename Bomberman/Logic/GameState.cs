@@ -29,6 +29,9 @@ namespace Bomberman
                     Game.CanGoToNextLevel = false;
                     Window.Bombs = 1;
                     Window.Splash = 1;
+                    Window.pause.Save.Text = "Сохранить";
+                    Window.pause.Save.BackColor = Color.Cyan;
+                    Window.pause.Save.FlatAppearance.BorderColor = Color.DarkCyan;
                 }
                 else
                     Game.IsOver = true;

@@ -78,11 +78,11 @@
     <Compile Include="Drawing\AboutGame.Designer.cs">
       <DependentUpon>AboutGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Drawing\CongratsWindow.cs">
+    <Compile Include="Drawing\CongratsControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Drawing\CongratsWindow.Designer.cs">
-      <DependentUpon>CongratsWindow.cs</DependentUpon>
+    <Compile Include="Drawing\CongratsControl.Designer.cs">
+      <DependentUpon>CongratsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Drawing\HintControl.cs">
       <SubType>UserControl</SubType>
@@ -95,12 +95,6 @@
     </Compile>
     <Compile Include="Drawing\Info.Designer.cs">
       <DependentUpon>Info.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Drawing\PauseBackground.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Drawing\PauseBackground.Designer.cs">
-      <DependentUpon>PauseBackground.cs</DependentUpon>
     </Compile>
     <Compile Include="Drawing\Pause.cs">
       <SubType>Form</SubType>
@@ -150,9 +144,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Drawing\AboutGame.resx">
       <DependentUpon>AboutGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Drawing\PauseBackground.resx">
-      <DependentUpon>PauseBackground.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drawing\Pause.resx">
       <DependentUpon>Pause.cs</DependentUpon>

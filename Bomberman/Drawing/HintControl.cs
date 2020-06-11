@@ -8,6 +8,7 @@ namespace Bomberman
     public partial class HintControl : UserControl
     {
         private Window game;
+        private static FileInfo background = Window.Icons.GetFiles("Hint.jpg").First();
         
         public HintControl(Window game)
         {

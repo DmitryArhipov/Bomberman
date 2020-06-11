@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Bomberman
 {
-    partial class CongratsWindow
+    partial class CongratsControl
     {
         /// <summary>
         /// Required designer variable.
@@ -58,12 +58,9 @@ namespace Bomberman
             BackgroundImage = Image.FromFile(background.FullName);
             BackgroundImageLayout = ImageLayout.Stretch;
             Size = new Size(500, 300);
-            ControlBox = false;
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "WelcomeWindow";
             Controls.Add(Next);
-            StartPosition = FormStartPosition.CenterScreen;
 
             Next.Location = new Point(Width / 2 - Next.Width + 20, Height - Next.Height - 10);
         }
